@@ -3,6 +3,8 @@ package setupClient;
 import java.rmi.RemoteException;
 import java.util.Scanner;
 
+import setupClient.controllers.Controller;
+
 public class MainMenu {
 	
 	private boolean running;
@@ -15,6 +17,8 @@ public class MainMenu {
 		this.create = create;
 		this.end = end;
 		this.view = view;
+		running = true;
+		in = new Scanner(System.in);
 	}
 
 	

@@ -1,4 +1,4 @@
-package setupClient;
+package setupClient.controllers;
 
 public interface Controller {
 	

@@ -1,6 +1,6 @@
-package setupClient;
+package setupClient.controllers;
 
-import server.Server;
+import server.interfaces.Server;
 
 public class ViewQuizController implements Controller {
 	private Server server;

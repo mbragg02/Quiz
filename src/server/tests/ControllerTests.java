@@ -1,6 +1,8 @@
 package server.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 import java.util.Map;
@@ -9,11 +11,11 @@ import java.util.Map.Entry;
 import org.junit.Before;
 import org.junit.Test;
 
-import server.Answer;
-import server.Question;
-import server.Quiz;
-import server.ServerImpl;
-import server.Server;
+import server.interfaces.Answer;
+import server.interfaces.Question;
+import server.interfaces.Quiz;
+import server.interfaces.Server;
+import server.models.ServerImpl;
 
 public class ControllerTests {
 	

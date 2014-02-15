@@ -1,17 +1,20 @@
-package server;
+package server.models;
 
-public class Game {
+import server.interfaces.Game;
+
+public class GameImpl implements Game {
 	private int gameID;
 	private String playerName;
 	private int score;
 	
-	public Game(int gameID, String playerName) {
+	public GameImpl(int gameID, String playerName) {
 		setGameID(gameID);
 		setPlayerName(playerName);
 		setScore(0);
 	}
 
 
+	@Override
 	public int getGameID() {
 		return gameID;
 	}
@@ -22,6 +25,7 @@ public class Game {
 	}
 
 
+	@Override
 	public String getPlayerName() {
 		return playerName;
 	}
@@ -32,11 +36,13 @@ public class Game {
 	}
 
 
+	@Override
 	public int getScore() {
 		return score;
 	}
 
 
+	@Override
 	public void setScore(int score) {
 		this.score = score;
 	}

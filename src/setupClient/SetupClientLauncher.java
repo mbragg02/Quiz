@@ -1,7 +1,11 @@
 package setupClient;
 
-import server.Server;
-import server.ServerImpl;
+import server.interfaces.Server;
+import server.models.ServerImpl;
+import setupClient.controllers.Controller;
+import setupClient.controllers.CreateQuizController;
+import setupClient.controllers.EndQuizController;
+import setupClient.controllers.ViewQuizController;
 
 public class SetupClientLauncher {
 

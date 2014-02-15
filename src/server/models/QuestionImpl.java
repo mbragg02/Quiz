@@ -1,16 +1,19 @@
-package server;
+package server.models;
 
-public class Question {
+import server.interfaces.Question;
+
+public class QuestionImpl implements Question {
 
 	private int questionID;
 	private String question;
 	private int correctAnswerID;
 
-	public Question(int questionID, String quizQuestion) {
+	public QuestionImpl(int questionID, String quizQuestion) {
 		setQuestionID(questionID);
 		setQuestion(quizQuestion);
 	}
 
+	@Override
 	public int getQuestionID() {
 		return questionID;
 	}
@@ -19,6 +22,7 @@ public class Question {
 		this.questionID = questionID;
 	}
 
+	@Override
 	public String getQuestion() {
 		return question;
 	}
@@ -27,10 +31,12 @@ public class Question {
 		this.question = question;
 	}
 
+	@Override
 	public int getCorrectAnswerID() {
 		return correctAnswerID;
 	}
 
+	@Override
 	public void setCorrectAnswerID(int correctAnswerID) {
 		this.correctAnswerID = correctAnswerID;
 	}

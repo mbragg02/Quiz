@@ -1,4 +1,4 @@
-package server;
+package server.interfaces;
 
 import java.util.List;
 import java.util.Map;
@@ -34,5 +34,7 @@ public interface Server {
 			throws NullPointerException;
 
 	public abstract void launch();
+
+	public abstract List<Answer> getAnswersForQuestion(int questionID);
 
 }

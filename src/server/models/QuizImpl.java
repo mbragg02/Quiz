@@ -1,17 +1,20 @@
-package server;
+package server.models;
 
-public class Quiz {
+import server.interfaces.Quiz;
+
+public class QuizImpl implements Quiz {
 	
 	private int QuizID;
 	private String quizName;
 	private boolean active;
 	
-	public Quiz(int quizID, String quizName) {
+	public QuizImpl(int quizID, String quizName) {
 		setQuizID(quizID);
 		setQuizName(quizName);
 		
 	}
 
+	@Override
 	public String getQuizName() {
 		return quizName;
 	}
@@ -20,6 +23,7 @@ public class Quiz {
 		this.quizName = quizName;
 	}
 
+	@Override
 	public int getQuizID() {
 		return QuizID;
 	}
@@ -28,10 +32,12 @@ public class Quiz {
 		QuizID = quizID;
 	}
 
+	@Override
 	public boolean isActive() {
 		return active;
 	}
 
+	@Override
 	public void setActive(boolean active) {
 		this.active = active;
 	}

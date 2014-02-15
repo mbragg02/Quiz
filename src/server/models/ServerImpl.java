@@ -1,9 +1,15 @@
-package server;
+package server.models;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import server.interfaces.Answer;
+import server.interfaces.Game;
+import server.interfaces.Question;
+import server.interfaces.Quiz;
+import server.interfaces.Server;
 
 public class ServerImpl implements Server {
 
@@ -47,7 +53,7 @@ public class ServerImpl implements Server {
 			throw new IllegalArgumentException("Quiz name can not be blank");
 		}
 
-		Quiz quiz = new Quiz(quizIDs, quizName);
+		Quiz quiz = new QuizImpl(quizIDs, quizName);
 
 		quizes.put(quiz.getQuizID(), quiz);
 
@@ -69,7 +75,7 @@ public class ServerImpl implements Server {
 
 		validateQuizID(quizID);
 
-		Question question = new Question(questionIDs, quizQuestion);
+		Question question = new QuestionImpl(questionIDs, quizQuestion);
 
 		questions.put(questionIDs, question);
 
@@ -90,7 +96,7 @@ public class ServerImpl implements Server {
 		}
 		validateQuestionID(questionID);
 
-		Answer answer = new Answer(answerIDs, quizAnswer);
+		Answer answer = new AnswerImpl(answerIDs, quizAnswer);
 
 		questionAnswers.get(questions.get(questionID)).add(answer);
 		++answerIDs;
@@ -115,7 +121,13 @@ public class ServerImpl implements Server {
 		List<Question> questions = quizQuestions.get(quizes.get(quizID));
 		result.keySet().retainAll(questions);
 		return result;
-
+	}
+	
+	@Override
+	public List<Answer> getAnswersForQuestion(int questionID) {
+		Question question = questions.get(questionID);
+		List<Answer> answers = questionAnswers.get(question);
+		return answers;
 	}
 
 
@@ -192,7 +204,7 @@ public class ServerImpl implements Server {
 			throw new IllegalArgumentException("Quiz not active");
 		}
 
-		Game game = new Game(gameIDs, playerName);
+		Game game = new GameImpl(gameIDs, playerName);
 		++gameIDs;
 
 		List<Game> gamesList = quizGames.get(quiz);

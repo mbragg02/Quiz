@@ -1,6 +1,6 @@
-package setupClient;
+package setupClient.controllers;
 
-import server.Server;
+import server.interfaces.Server;
 
 public class EndQuizController implements Controller {
 	private Server server;
