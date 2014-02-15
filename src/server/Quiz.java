@@ -25,6 +25,7 @@ public class Quiz {
 	private void setQuizID(int quizID) {
 		QuizID = quizID;
 	}
+
 	
 	
 

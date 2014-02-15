@@ -15,10 +15,11 @@ public class QuizServerTests {
 		this.server = new QuizServer();
 	}
 
+	// Create new Quiz
 	@Test
 	public void CreateQuiztest() {
 		this.server = new QuizServer();
-		int quizID = server.createQuiz("test Quiz");
+		int quizID = server.createQuiz("test quiz");
 		assertEquals(0, quizID);
 	}
 	
@@ -31,6 +32,18 @@ public class QuizServerTests {
 	public void CreateQuizNullNametest() {
 		this.server = new QuizServer();
 		server.createQuiz(null);
+	}
+	
+	// Questions
+	@Test
+	public void addQuestionsToQuizTest() {
+		int quizID = this.server.createQuiz("test quiz");
+		int questionID = this.server.addQuestionToQuiz(quizID, "Some question");
+	}
+	@Test(expected = IllegalArgumentException.class)
+	public void addBlankQuestionsToQuizTest() {
+		int quizID = this.server.createQuiz("");
+		int questionID = this.server.addQuestionToQuiz(quizID, "Some question");
 	}
 
 }
