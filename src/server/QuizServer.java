@@ -179,7 +179,6 @@ public class QuizServer {
 			throw new IllegalArgumentException("Quiz not active");
 		}
 		
-		
 		Game game = new Game(gameIDs, playerName);
 		++gameIDs;
 		

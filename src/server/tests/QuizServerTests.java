@@ -154,7 +154,25 @@ public class QuizServerTests {
 	//Games
 	@Test
 	public void startGameTest() {
-		int gameID = this.server.startGame(0, "Michael");
+		int quizID = this.server.createQuiz("test quiz");
+		this.server.setQuizActive(quizID);
+		this.server.startGame(quizID, "Michael");
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void startGameTestNoQuiz() {
+		this.server.startGame(0, "Michael");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void startGameTestBlankName() {
+		int quizID = this.server.createQuiz("test quiz");
+		this.server.startGame(quizID, "");
+	}
+	@Test(expected = IllegalArgumentException.class)
+	public void startGameTestInactive() {
+		int quizID = this.server.createQuiz("test quiz");
+		this.server.startGame(quizID, "Michael");
 	}
 
 }
