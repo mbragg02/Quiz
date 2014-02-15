@@ -10,9 +10,13 @@ public class QuizServer {
 	private int quizIDs;
 	private int questionIDs;
 	private int answerIDs;
+	private int gameIDs;
+
 
 	private Map<Integer, Quiz> quizes;
 	private Map<Integer, Question> questions;
+	private Map<Quiz, List<Game>> quizGames;
+
 	private Map<Quiz, List<Question>> quizQuestions;
 	private Map<Question, List<Answer>> questionAnswers;
 	
@@ -20,6 +24,8 @@ public class QuizServer {
 		this.quizIDs = 0;
 		quizes   	    = new HashMap<Integer, Quiz>();
 		questions 		= new HashMap<Integer, Question>();
+		quizGames 		= new HashMap<Quiz, List<Game>>();
+
 		quizQuestions   = new HashMap<Quiz, List<Question>>();
 		questionAnswers = new HashMap<Question, List<Answer>>();
 	}
@@ -99,6 +105,7 @@ public class QuizServer {
 		List<Question> questions = quizQuestions.get(quizes.get(quizID));
 		result.keySet().retainAll(questions);
 		return result;
+		
 	}
 	
 	
@@ -128,6 +135,64 @@ public class QuizServer {
 		if (!valid) {
 			throw new NullPointerException("Could not find a answer matching: " + answerID + ", for the question");
 		}
+	}
+
+	public void setQuizActive(int quizID) {
+		validateQuizID(quizID);
+		quizes.get(quizID).setActive(true);
+	}
+	
+	public List<Quiz> getActiveQuizes() {
+		List<Quiz> activeQuizes = new ArrayList<Quiz>();
+		for (Quiz quiz : quizes.values()) {
+			if (quiz.isActive()) {
+				activeQuizes.add(quiz);
+			}
+		}
+		return activeQuizes;
+	}
+	
+	public void setQuizInactive(int quizID) 
+			throws IllegalArgumentException, NullPointerException {
+		validateQuizID(quizID);
+		Quiz quiz = quizes.get(quizID);
+		if (!getActiveQuizes().contains(quiz)) {
+			throw new IllegalArgumentException("Quiz not active");
+		}
+		
+		quiz.setActive(false);
+		
+		//TODO return high scores for a game
+		
+		
+	}
+
+	public int startGame(int quizID, String playerName) {
+		validateQuizID(quizID);
+		Quiz quiz = quizes.get(quizID);
+		
+		if (playerName.isEmpty()) {
+			throw new IllegalArgumentException("Player name can not be blank");
+		}
+		
+		if (!getActiveQuizes().contains(quiz)) {
+			throw new IllegalArgumentException("Quiz not active");
+		}
+		
+		
+		Game game = new Game(gameIDs, playerName);
+		++gameIDs;
+		
+		List<Game> gamesList = quizGames.get(quiz);
+		
+		if (gamesList == null) {
+			gamesList = new ArrayList<Game>();
+			quizGames.put(quiz, gamesList);
+		}
+		
+		gamesList.add(game);
+		
+		return game.getGameID();
 	}
 	
 	

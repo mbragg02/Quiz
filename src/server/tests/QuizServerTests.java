@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import server.Answer;
 import server.Question;
+import server.Quiz;
 import server.QuizServer;
 
 public class QuizServerTests {
@@ -102,6 +103,7 @@ public class QuizServerTests {
 	
 	}
 	
+	// getQuestionsAndAnswers Map
 	@Test
 	public void getQuestionsAndAnswersTest() {
 		int quizID1 = this.server.createQuiz("test quiz 1");
@@ -120,6 +122,39 @@ public class QuizServerTests {
 				assertEquals("some answer 1", answer.getAnswer());
 			}	
 		}
+	}
+	
+	
+	// Active quizes
+	@Test 
+	public void setAndGetQuizActiveTest() {
+		int quizID = this.server.createQuiz("test quiz 1");
+		this.server.setQuizActive(quizID);
+		List<Quiz> active = this.server.getActiveQuizes();
+		assertEquals(quizID, active.iterator().next().getQuizID());
+	}
+	
+	@Test
+	public void setQuizInactiveTest() {
+		int quizID = this.server.createQuiz("test quiz 1");
+		
+		List<Quiz> active = this.server.getActiveQuizes();
+		assertTrue(active.isEmpty());
+		
+		this.server.setQuizActive(quizID);
+		active = this.server.getActiveQuizes();
+		assertFalse(active.isEmpty());
+		
+		this.server.setQuizInactive(quizID);
+		active = this.server.getActiveQuizes();
+		assertTrue(active.isEmpty());	
+	}
+	
+	
+	//Games
+	@Test
+	public void startGameTest() {
+		int gameID = this.server.startGame(0, "Michael");
 	}
 
 }
