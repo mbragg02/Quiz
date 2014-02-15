@@ -4,6 +4,7 @@ public class Question {
 
 	private int questionID;
 	private String question;
+	private int correctAnswerID;
 
 	public Question(int questionID, String quizQuestion) {
 		setQuestionID(questionID);
@@ -24,6 +25,14 @@ public class Question {
 
 	private void setQuestion(String question) {
 		this.question = question;
+	}
+
+	public int getCorrectAnswerID() {
+		return correctAnswerID;
+	}
+
+	public void setCorrectAnswerID(int correctAnswerID) {
+		this.correctAnswerID = correctAnswerID;
 	}
 
 }

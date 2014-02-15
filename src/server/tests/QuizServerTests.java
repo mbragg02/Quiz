@@ -44,8 +44,35 @@ public class QuizServerTests {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void addBlankQuestionsToQuizTest() {
-		int quizID = this.server.createQuiz("");
-		this.server.addQuestionToQuiz(quizID, "Some question");
+		int quizID = this.server.createQuiz("test quiz");
+		this.server.addQuestionToQuiz(quizID, "");
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void addBlankQuestionsToQuizTestNull() {
+		this.server.addQuestionToQuiz(99, "Some question");
+	}
+	
+	@Test
+	public void setQuestionCorrectAnswerTest() {
+		int quizID = this.server.createQuiz("test quiz");
+		int questionID = this.server.addQuestionToQuiz(quizID, "Some question");
+		int answerID = this.server.addAnswerToQuestion(questionID, "some answer");
+		this.server.setCorrectAnswer(questionID, answerID);
+		// assertEquals(answerID, actual);
+	}
+	@Test(expected = NullPointerException.class)
+	public void setQuestionCorrectAnswerTestNullAnswerID() {
+		int quizID = this.server.createQuiz("test quiz");
+		int questionID = this.server.addQuestionToQuiz(quizID, "Some question");
+		this.server.setCorrectAnswer(questionID, 99);
+	}
+	@Test(expected = NullPointerException.class)
+	public void setQuestionCorrectAnswerTestNullQuestionID() {
+		int quizID = this.server.createQuiz("test quiz");
+		int questionID = this.server.addQuestionToQuiz(quizID, "Some question");
+		int answerID = this.server.addAnswerToQuestion(questionID, "some answer");
+		this.server.setCorrectAnswer(99, answerID);
 	}
 	
 	// Answers
@@ -55,6 +82,18 @@ public class QuizServerTests {
 		int questionID = this.server.addQuestionToQuiz(quizID, "Some question");
 		int answerID = this.server.addAnswerToQuestion(questionID, "some answer");
 		assertEquals(0, answerID);
+	}
+	@Test(expected = NullPointerException.class)
+	public void addAnswerTestNull() {
+		this.server.addAnswerToQuestion(999, "some answer");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void addBlankAnswerTest() {
+		int quizID = this.server.createQuiz("test quiz");
+		int questionID = this.server.addQuestionToQuiz(quizID, "Some question");
+		this.server.addAnswerToQuestion(questionID, "");
+	
 	}
 
 }

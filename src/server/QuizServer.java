@@ -24,7 +24,8 @@ public class QuizServer {
 		questionAnswers = new HashMap<Question, List<Answer>>();
 	}
 
-	public int createQuiz(String quizName) throws IllegalArgumentException, NullPointerException {
+	public int createQuiz(String quizName) 
+			throws IllegalArgumentException, NullPointerException {
 		
 		if (quizName == null) {
 			throw new NullPointerException("Quiz name was null");
@@ -46,11 +47,14 @@ public class QuizServer {
 		return quiz.getQuizID();
 	}
 
-	public int addQuestionToQuiz(int quizID, String quizQuestion) throws IllegalArgumentException {
+	public int addQuestionToQuiz(int quizID, String quizQuestion) 
+			throws IllegalArgumentException, NullPointerException {
 		
 		if (quizQuestion.isEmpty()) {
 			throw new IllegalArgumentException("Question can not be blank");
 		}
+		
+		validateQuizID(quizID);
 		
 		Question question = new Question(questionIDs, quizQuestion);
 		
@@ -64,16 +68,56 @@ public class QuizServer {
 		return question.getQuestionID();
 	}
 
-	public int addAnswerToQuestion(int questionID, String quizAnswer) {
+	public int addAnswerToQuestion(int questionID, String quizAnswer) 
+			throws IllegalArgumentException, NullPointerException {
+		
 		if (quizAnswer.isEmpty()) {
 			throw new IllegalArgumentException("Answer can not be blank");
 		}
+		validateQuestionID(questionID);
 		
 		Answer answer = new Answer(answerIDs, quizAnswer);
 		
 		questionAnswers.get(questions.get(questionID)).add(answer);
 		++answerIDs;
 		return answer.getAnswerID();
+	}
+
+	public void setCorrectAnswer(int questionID, int answerID) throws NullPointerException {
+		validateQuestionID(questionID);
+		validateQuestionAnswerIDs(questionAnswers.get(questions.get(questionID)), answerID);
+		
+		questions.get(questionID).setCorrectAnswerID(answerID);
+	}
+	
+	
+	
+	
+	
+	
+	
+	private void validateQuestionID(int questionID) throws NullPointerException {
+		if (!questions.containsKey(questionID)) {
+			throw new NullPointerException("Could not find a question with the ID of: " + questionID);
+		}
+	}
+	
+	private void validateQuizID(int quizID) throws NullPointerException {
+		if (!quizes.containsKey(quizID)) {
+			throw new NullPointerException("Could not find a quiz with the ID of: " + quizID);
+		}
+	}
+	
+	private void validateQuestionAnswerIDs(List<Answer> answers, int answerID) throws NullPointerException {
+		boolean valid = false;
+		for (Answer answer: answers) {
+			if (answer.getAnswerID() == answerID) {
+				valid = true;
+			}
+		}
+		if (!valid) {
+			throw new NullPointerException("Could not find a answer matching: " + answerID + ", for the question");
+		}
 	}
 	
 	
