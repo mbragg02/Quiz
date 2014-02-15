@@ -9,14 +9,19 @@ public class QuizServer {
 	
 	private int quizIDs;
 	private int questionIDs;
+	private int answerIDs;
 
 	private Map<Integer, Quiz> quizes;
-	private Map<Quiz, List<Question>> questions;
+	private Map<Integer, Question> questions;
+	private Map<Quiz, List<Question>> quizQuestions;
+	private Map<Question, List<Answer>> questionAnswers;
 	
 	public QuizServer() {
 		this.quizIDs = 0;
-		quizes = new HashMap<Integer, Quiz>();
-		questions = new HashMap<Quiz, List<Question>>();
+		quizes   	    = new HashMap<Integer, Quiz>();
+		questions 		= new HashMap<Integer, Question>();
+		quizQuestions   = new HashMap<Quiz, List<Question>>();
+		questionAnswers = new HashMap<Question, List<Answer>>();
 	}
 
 	public int createQuiz(String quizName) throws IllegalArgumentException, NullPointerException {
@@ -32,14 +37,16 @@ public class QuizServer {
 		Quiz quiz = new Quiz(quizIDs, quizName);
 		
 		quizes.put(quiz.getQuizID(), quiz);
-				
-		questions.put(quiz, new ArrayList<Question>());
+		
+		if(quizQuestions.get(quiz) == null) {
+			quizQuestions.put(quiz, new ArrayList<Question>());
+		}
 		
 		++quizIDs;
 		return quiz.getQuizID();
 	}
 
-	public int addQuestionToQuiz(int quizID, String quizQuestion) {
+	public int addQuestionToQuiz(int quizID, String quizQuestion) throws IllegalArgumentException {
 		
 		if (quizQuestion.isEmpty()) {
 			throw new IllegalArgumentException("Question can not be blank");
@@ -47,10 +54,26 @@ public class QuizServer {
 		
 		Question question = new Question(questionIDs, quizQuestion);
 		
-		questions.get(quizes.get(quizID)).add(question);		
+		questions.put(questionIDs, question);
+		
+		quizQuestions.get(quizes.get(quizID)).add(question);
+		
+		questionAnswers.put(question, new ArrayList<Answer>());
 		
 		++questionIDs;
 		return question.getQuestionID();
+	}
+
+	public int addAnswerToQuestion(int questionID, String quizAnswer) {
+		if (quizAnswer.isEmpty()) {
+			throw new IllegalArgumentException("Answer can not be blank");
+		}
+		
+		Answer answer = new Answer(answerIDs, quizAnswer);
+		
+		questionAnswers.get(questions.get(questionID)).add(answer);
+		++answerIDs;
+		return answer.getAnswerID();
 	}
 	
 	
