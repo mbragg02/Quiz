@@ -12,32 +12,33 @@ import org.junit.Test;
 import server.Answer;
 import server.Question;
 import server.Quiz;
-import server.QuizServer;
+import server.ServerImpl;
+import server.Server;
 
-public class QuizServerTests {
+public class ControllerTests {
 	
-	private QuizServer server;
+	private Server server;
 	@Before
 	public void before() {
-		this.server = new QuizServer();
+		this.server = new ServerImpl();
 	}
 
 	// Create new Quiz
 	@Test
 	public void CreateQuiztest() {
-		this.server = new QuizServer();
+		this.server = new ServerImpl();
 		int quizID = server.createQuiz("test quiz");
 		assertEquals(0, quizID);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void CreateQuizBlankNametest() {
-		this.server = new QuizServer();
+		this.server = new ServerImpl();
 		server.createQuiz("");
 	}
 	@Test(expected = NullPointerException.class)
 	public void CreateQuizNullNametest() {
-		this.server = new QuizServer();
+		this.server = new ServerImpl();
 		server.createQuiz(null);
 	}
 	
@@ -173,6 +174,29 @@ public class QuizServerTests {
 	public void startGameTestInactive() {
 		int quizID = this.server.createQuiz("test quiz");
 		this.server.startGame(quizID, "Michael");
+	}
+	
+	//Scores
+	@Test
+	public void submitScoreTest() {
+		int quizID = this.server.createQuiz("test quiz");
+		this.server.setQuizActive(quizID);
+		int gameID = this.server.startGame(quizID, "Michael");
+		this.server.submitScore(quizID, gameID, 10);
+	}
+	@Test(expected = NullPointerException.class)
+	public void submitScoreTestNullGame() {
+		int quizID = this.server.createQuiz("test quiz");
+		this.server.setQuizActive(quizID);
+		int gameID = this.server.startGame(quizID, "Michael");
+		this.server.submitScore(999, gameID, 10);
+	}
+	@Test(expected = NullPointerException.class)
+	public void submitScoreTestNullQuiz() {
+		int quizID = this.server.createQuiz("test quiz");
+		this.server.setQuizActive(quizID);
+		int gameID = this.server.startGame(999, "Michael");
+		this.server.submitScore(quizID, gameID, 10);
 	}
 
 }
