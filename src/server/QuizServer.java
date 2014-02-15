@@ -91,6 +91,16 @@ public class QuizServer {
 	}
 	
 	
+	public Map<Question, List<Answer>> getQuestionsAndAnswers(int quizID) {
+		validateQuizID(quizID);
+		
+		Map<Question, List<Answer>> result = questionAnswers;
+
+		List<Question> questions = quizQuestions.get(quizes.get(quizID));
+		result.keySet().retainAll(questions);
+		return result;
+	}
+	
 	
 	
 	

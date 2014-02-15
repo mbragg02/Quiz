@@ -2,9 +2,15 @@ package server.tests;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import server.Answer;
+import server.Question;
 import server.QuizServer;
 
 public class QuizServerTests {
@@ -94,6 +100,26 @@ public class QuizServerTests {
 		int questionID = this.server.addQuestionToQuiz(quizID, "Some question");
 		this.server.addAnswerToQuestion(questionID, "");
 	
+	}
+	
+	@Test
+	public void getQuestionsAndAnswersTest() {
+		int quizID1 = this.server.createQuiz("test quiz 1");
+		int questionID1 = this.server.addQuestionToQuiz(quizID1, "Some question 1");
+		this.server.addAnswerToQuestion(questionID1, "some answer 1");
+		
+		int quizID2 = this.server.createQuiz("test quiz 2");
+		int questionID2 = this.server.addQuestionToQuiz(quizID2, "Some question 2");
+		this.server.addAnswerToQuestion(questionID2, "some answer 2");
+		
+		Map<Question, List<Answer>> result = this.server.getQuestionsAndAnswers(quizID1);
+		
+		for (Entry<Question, List<Answer>> entry : result.entrySet()) {
+			assertEquals("Some question 1", entry.getKey().getQuestion());
+			for (Answer answer: entry.getValue()) {
+				assertEquals("some answer 1", answer.getAnswer());
+			}	
+		}
 	}
 
 }
