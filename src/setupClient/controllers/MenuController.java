@@ -9,15 +9,15 @@ public class MenuController extends Controller {
 	
 	private boolean running;
 	private Scanner in;
-	private Controller create;
-	private Controller view;
-	private Controller end;
+	private Controller createQuizController;
+	private Controller viewActiveQuizesController;
+	private Controller endQuizContoller;
 	private MenuView menuView;
 	
 	public MenuController(Controller create, Controller end, Controller view, MenuView menuView ) {
-		this.create = create;
-		this.end = end;
-		this.view = view;
+		this.createQuizController 		= create;
+		this.endQuizContoller 			= end;
+		this.viewActiveQuizesController = view;
 		this.menuView = menuView;
 		running = true;
 		in = new Scanner(System.in);
@@ -65,13 +65,13 @@ public class MenuController extends Controller {
 	private void mainMenu(int action) throws RemoteException {
 		switch(action) {
 		case 1: 
-			create.launch();;
+			createQuizController.launch();;
 			break;
 		case 2:
-			view.launch();
+			viewActiveQuizesController.launch();
 			break;
 		case 3: 
-			end.launch();
+			endQuizContoller.launch();
 			break;
 		default: 
 			menuView.printInvalidInputMessage();
