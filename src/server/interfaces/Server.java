@@ -27,5 +27,8 @@ public interface Server extends Remote {
 	List<Question> getQuizQuestionsAndAnswers(int quizID) throws RemoteException, NullPointerException;
 
 	List<String> getAnswersForQuestion(int quizID, int questionID) throws RemoteException, NullPointerException;
+	
+	
+	
 
 }

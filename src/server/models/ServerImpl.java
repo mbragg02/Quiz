@@ -28,6 +28,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	private Map<Integer, List<Game>> games;
 
 	public ServerImpl() throws RemoteException {
+		super();
 		dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
 		this.quizIDs = 0;

@@ -20,7 +20,7 @@ public class PlayerClientImpl implements PlayerClient {
 	private int answer;
 	private int quizID;
 	private int gameID;
-	private String name;
+	private String playerName;
 
 	public PlayerClientImpl(Server server) {
 		this.server = server;			
@@ -50,7 +50,7 @@ public class PlayerClientImpl implements PlayerClient {
 	private void setPlayerName() {
 		System.out.print("Please enter your name: ");
 		try {
-			this.name = in.nextLine();
+			this.playerName = in.nextLine();
 		} catch (NoSuchElementException e) {
 			System.out.println(e.getMessage());
 		}
@@ -84,7 +84,7 @@ public class PlayerClientImpl implements PlayerClient {
 	public void playQuiz() throws RemoteException {
 		do {
 			try {
-				this.gameID = server.startGame(this.quizID, this.name);
+				this.gameID = server.startGame(this.quizID, this.playerName);
 				break;
 			} catch (RemoteException ex) {
 				System.out.println(ex.getMessage());

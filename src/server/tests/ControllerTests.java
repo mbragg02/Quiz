@@ -6,8 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.rmi.RemoteException;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,183 +16,198 @@ import server.interfaces.Server;
 import server.models.ServerImpl;
 
 public class ControllerTests {
-	
+
 	private Server server;
+
 	@Before
-	public void before() {
+	public void before() throws RemoteException {
 		this.server = new ServerImpl();
 	}
 
 	// Create new Quiz
 	@Test
-	public void CreateQuiztest() throws RemoteException, IllegalArgumentException, NullPointerException {
-		this.server = new ServerImpl();
+	public void CreateQuiztest() throws Exception {
 		int quizID = server.createQuiz("test quiz");
 		assertEquals(0, quizID);
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
-	public void CreateQuizBlankNametest() throws RemoteException, IllegalArgumentException, NullPointerException {
-		this.server = new ServerImpl();
+	public void CreateQuizBlankNametest() throws Exception {
+		server = new ServerImpl();
 		server.createQuiz("");
-	}
-	@Test(expected = NullPointerException.class)
-	public void CreateQuizNullNametest() throws RemoteException, IllegalArgumentException, NullPointerException {
-		this.server = new ServerImpl();
-		server.createQuiz(null);
-	}
-	
-	// Questions
-	@Test
-	public void addQuestionsToQuizTest() {
-		int quizID = this.server.createQuiz("test quiz");
-		int questionID = this.server.addQuestionToQuiz(quizID, "Some question");
-		assertEquals(0, questionID);
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void addBlankQuestionsToQuizTest() {
-		int quizID = this.server.createQuiz("test quiz");
-		this.server.addQuestionToQuiz(quizID, "");
-	}
-	
-	@Test(expected = NullPointerException.class)
-	public void addBlankQuestionsToQuizTestNull() {
-		this.server.addQuestionToQuiz(99, "Some question");
-	}
-	
-	@Test
-	public void setQuestionCorrectAnswerTest() {
-		int quizID = this.server.createQuiz("test quiz");
-		int questionID = this.server.addQuestionToQuiz(quizID, "Some question");
-		this.server.addAnswerToQuestion(quizID, questionID, "some answer");
-//		this.server.setCorrectAnswer(questionID, answerID);
-		// assertEquals(answerID, actual);
 	}
 
 	@Test(expected = NullPointerException.class)
-	public void setQuestionCorrectAnswerTestNullQuestionID() {
-		int quizID = this.server.createQuiz("test quiz");
-		int questionID = this.server.addQuestionToQuiz(quizID, "Some question");
-		this.server.addAnswerToQuestion(quizID, questionID, "some answer");
-		this.server.setCorrectAnswer(quizID, 99, 0);
+	public void CreateQuizNullNametest() throws Exception{
+		server = new ServerImpl();
+		server.createQuiz(null);
+	}
+
+	// Questions
+	@Test
+	public void addQuestionsToQuizTest() throws Exception {
+		int quizID = server.createQuiz("test quiz");
+		int questionID = server.addQuestionToQuiz(quizID, "Some question");
+		assertEquals(0, questionID);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void addBlankQuestionsToQuizTest() throws Exception {
+		int quizID = server.createQuiz("test quiz");
+		server.addQuestionToQuiz(quizID, "");
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void addBlankQuestionsToQuizTestNull() throws Exception {
+		server.addQuestionToQuiz(99, "Some question");
+	}
+
+	@Test
+	public void setQuestionCorrectAnswerTest() throws Exception {
+		int quizID = server.createQuiz("test quiz");
+		int questionID = server.addQuestionToQuiz(quizID, "Some question");
+		server.addAnswerToQuestion(quizID, questionID, "some answer");
+		server.setCorrectAnswer(quizID, questionID, 0);
+		// No exception so passed
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void setQuestionCorrectAnswerTestUnknownQuestionID() throws Exception {
+		int quizID = server.createQuiz("test quiz");
+		int questionID = server.addQuestionToQuiz(quizID, "Some question");
+		server.addAnswerToQuestion(quizID, questionID, "some answer");
+		server.setCorrectAnswer(quizID, 99, 0);
 	}
 	
+	@Test(expected = NullPointerException.class)
+	public void setQuestionCorrectAnswerTestUnknownQuizID() throws Exception {
+		int quizID = server.createQuiz("test quiz");
+		int questionID = server.addQuestionToQuiz(quizID, "Some question");
+		server.addAnswerToQuestion(quizID, questionID, "some answer");
+		server.setCorrectAnswer(99, questionID, 0);
+	}
+
+
 	// Answers
 	@Test
-	public void addAnswerTest() {
-		int quizID = this.server.createQuiz("test quiz");
-		int questionID = this.server.addQuestionToQuiz(quizID, "Some question");
-		this.server.addAnswerToQuestion(quizID, questionID, "some answer");
+	public void addAnswerTest() throws Exception {
+		int quizID = server.createQuiz("test quiz");
+		int questionID = server.addQuestionToQuiz(quizID, "Some question");
+		server.addAnswerToQuestion(quizID, questionID, "some answer");
 		assertEquals(0, 0);
 	}
 	@Test(expected = NullPointerException.class)
-	public void addAnswerTestNull() {
-		int quizID = this.server.createQuiz("test quiz");
-		this.server.addAnswerToQuestion(quizID, 999, "some answer");
+	public void addAnswerTestUnknownQuestionID() throws Exception {
+		int quizID = server.createQuiz("test quiz");
+		server.addAnswerToQuestion(quizID, 999, "some answer");
 	}
 	
+	@Test(expected = NullPointerException.class)
+	public void addAnswerTestUnknownQuizID() throws Exception {
+		int quizID = server.createQuiz("test quiz");
+		int questionID = server.addQuestionToQuiz(quizID, "Some question");
+		server.addAnswerToQuestion(999, questionID, "some answer");
+	}
+
 	@Test(expected = IllegalArgumentException.class)
-	public void addBlankAnswerTest() {
-		int quizID = this.server.createQuiz("test quiz");
-		int questionID = this.server.addQuestionToQuiz(quizID, "Some question");
-		this.server.addAnswerToQuestion(quizID, questionID, "");
-	
+	public void addBlankAnswerTest() throws Exception {
+		int quizID = server.createQuiz("test quiz");
+		int questionID = server.addQuestionToQuiz(quizID, "Some question");
+		server.addAnswerToQuestion(quizID, questionID, "");
+
 	}
-	
-	// getQuestionsAndAnswers Map
+
+	// getQuestionsAndAnswers
 	@Test
-	public void getQuestionsAndAnswersTest() {
-		int quizID1 = this.server.createQuiz("test quiz 1");
-		int questionID1 = this.server.addQuestionToQuiz(quizID1, "Some question 1");
-		this.server.addAnswerToQuestion(quizID1, questionID1, "some answer 1");
+	public void getQuestionsAndAnswersTest() throws Exception {
+		int quizID = server.createQuiz("test quiz");
 		
-		int quizID2 = this.server.createQuiz("test quiz 2");
-		int questionID2 = this.server.addQuestionToQuiz(quizID2, "Some question 2");
-		this.server.addAnswerToQuestion(quizID2, questionID2, "some answer 2");
+		List<Question> result = server.getQuizQuestionsAndAnswers(quizID);
+		assertTrue(result.isEmpty());
 		
-		List<Question> result = this.server.getQuizQuestionsAndAnswers(quizID1);
-		
-//		for (Entry<Question, List<Answer>> entry : result.entrySet()) {
-//			assertEquals("Some question 1", entry.getKey().getQuestion());
-//			for (Answer answer: entry.getValue()) {
-//				assertEquals("some answer 1", answer.getAnswer());
-//			}	
-//		}
+		int questionID = server.addQuestionToQuiz(quizID, "Some question");
+		server.addAnswerToQuestion(quizID, questionID, "some answer 1");
+		result = server.getQuizQuestionsAndAnswers(quizID);
+		assertFalse(result.isEmpty());
 	}
 	
-	
+	@Test(expected = NullPointerException.class)
+	public void getQuestionsAndAnswersTestNullPointer() throws Exception {
+		server.getQuizQuestionsAndAnswers(999);
+	}
+
+
 	// Active quizes
 	@Test 
-	public void setAndGetQuizActiveTest() {
-		int quizID = this.server.createQuiz("test quiz 1");
-		this.server.setQuizActive(quizID);
-		List<Quiz> active = this.server.getActiveQuizes();
+	public void setAndGetQuizActiveTest() throws Exception {
+		int quizID = server.createQuiz("test quiz 1");
+		server.setQuizActive(quizID);
+		List<Quiz> active = server.getActiveQuizes();
 		assertEquals(quizID, active.iterator().next().getQuizID());
 	}
-	
+
 	@Test
-	public void setQuizInactiveTest() {
-		int quizID = this.server.createQuiz("test quiz 1");
-		
-		List<Quiz> active = this.server.getActiveQuizes();
+	public void setQuizInactiveTest() throws Exception {
+		int quizID = server.createQuiz("test quiz 1");
+
+		List<Quiz> active = server.getActiveQuizes();
 		assertTrue(active.isEmpty());
-		
-		this.server.setQuizActive(quizID);
-		active = this.server.getActiveQuizes();
+
+		server.setQuizActive(quizID);
+		active = server.getActiveQuizes();
 		assertFalse(active.isEmpty());
-		
-		this.server.setQuizInactive(quizID);
-		active = this.server.getActiveQuizes();
+
+		server.setQuizInactive(quizID);
+		active = server.getActiveQuizes();
 		assertTrue(active.isEmpty());	
 	}
-	
-	
+
+
 	//Games
 	@Test
-	public void startGameTest() {
-		int quizID = this.server.createQuiz("test quiz");
-		this.server.setQuizActive(quizID);
-		this.server.startGame(quizID, "Michael");
+	public void startGameTest() throws Exception {
+		int quizID = server.createQuiz("test quiz");
+		server.setQuizActive(quizID);
+		server.startGame(quizID, "Michael");
 	}
-	
+
 	@Test(expected = NullPointerException.class)
-	public void startGameTestNoQuiz() {
-		this.server.startGame(0, "Michael");
+	public void startGameTestNoQuiz() throws Exception {
+		server.startGame(0, "Michael");
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
-	public void startGameTestBlankName() {
-		int quizID = this.server.createQuiz("test quiz");
-		this.server.startGame(quizID, "");
+	public void startGameTestBlankName() throws Exception {
+		int quizID = server.createQuiz("test quiz");
+		server.startGame(quizID, "");
 	}
 	@Test(expected = IllegalArgumentException.class)
-	public void startGameTestInactive() {
-		int quizID = this.server.createQuiz("test quiz");
-		this.server.startGame(quizID, "Michael");
+	public void startGameTestInactive() throws Exception{
+		int quizID = server.createQuiz("test quiz");
+		server.startGame(quizID, "Michael");
 	}
-	
+
 	//Scores
 	@Test
-	public void submitScoreTest() {
-		int quizID = this.server.createQuiz("test quiz");
-		this.server.setQuizActive(quizID);
-		int gameID = this.server.startGame(quizID, "Michael");
-		this.server.submitScore(quizID, gameID, 10);
+	public void submitScoreTest() throws Exception {
+		int quizID = server.createQuiz("test quiz");
+		server.setQuizActive(quizID);
+		int gameID = server.startGame(quizID, "Michael");
+		server.submitScore(quizID, gameID, 10);
 	}
 	@Test(expected = NullPointerException.class)
-	public void submitScoreTestNullGame() {
-		int quizID = this.server.createQuiz("test quiz");
-		this.server.setQuizActive(quizID);
-		int gameID = this.server.startGame(quizID, "Michael");
-		this.server.submitScore(999, gameID, 10);
+	public void submitScoreTestNullGame() throws Exception {
+		int quizID = server.createQuiz("test quiz");
+		server.setQuizActive(quizID);
+		int gameID = server.startGame(quizID, "Michael");
+		server.submitScore(999, gameID, 10);
 	}
 	@Test(expected = NullPointerException.class)
-	public void submitScoreTestNullQuiz() {
-		int quizID = this.server.createQuiz("test quiz");
-		this.server.setQuizActive(quizID);
-		int gameID = this.server.startGame(999, "Michael");
-		this.server.submitScore(quizID, gameID, 10);
-	}
+	public void submitScoreTestNullQuiz() throws Exception{
+		int quizID = server.createQuiz("test quiz");
+		server.setQuizActive(quizID);
+		int gameID = server.startGame(999, "Michael");
+		server.submitScore(quizID, gameID, 10);
+	}	
 
 }
