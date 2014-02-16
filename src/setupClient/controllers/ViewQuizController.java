@@ -1,5 +1,6 @@
 package setupClient.controllers;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 import server.interfaces.Quiz;
@@ -13,12 +14,12 @@ public class ViewQuizController extends Controller {
 	}
 	
 	@Override
-	public void launch() {
+	public void launch() throws RemoteException {
 		getActiveQuizzes();
 		
 	}
 	
-	public void getActiveQuizzes() {
+	public void getActiveQuizzes() throws RemoteException {
 		List<Quiz> quizzes = server.getActiveQuizes();
 		if(quizzes.isEmpty()) {
 			System.out.println("Currently no active quizzes");

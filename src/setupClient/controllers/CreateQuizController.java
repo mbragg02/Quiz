@@ -1,5 +1,6 @@
 package setupClient.controllers;
 
+import java.rmi.RemoteException;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -18,7 +19,7 @@ public class CreateQuizController extends Controller {
 	}
 	
 	@Override
-	public void launch() {
+	public void launch() throws RemoteException {
 		createQuizWithName();
 		addQuestionsAndAnswers();
 		System.out.println("Your quiz id is: " + quizId);
@@ -26,7 +27,7 @@ public class CreateQuizController extends Controller {
 		
 	}
 	
-	private void createQuizWithName() {
+	private void createQuizWithName() throws RemoteException, NullPointerException {
 		do {
 			System.out.print("Please enter a name for your quiz: ");
 			String quizName = in.nextLine().trim();
@@ -40,7 +41,7 @@ public class CreateQuizController extends Controller {
 	}
 
 	
-	public void addQuestionsAndAnswers() {
+	public void addQuestionsAndAnswers() throws RemoteException {
 		String userQuestion;
 		do {
 			System.out.print("Please enter a question for your quiz or \"y\" when you are finished: ");
@@ -66,7 +67,7 @@ public class CreateQuizController extends Controller {
 	}
 
 
-	public void addAnswers(int questionId) {
+	public void addAnswers(int questionId) throws RemoteException, NullPointerException {
 		String userInput;
 		do {
 			System.out.print("Please enter an answer for your question or \"y\" when you are finished: ");
@@ -93,7 +94,7 @@ public class CreateQuizController extends Controller {
 	}
 
 	
-	public void selectCorrectAnswer(int questionId) {
+	public void selectCorrectAnswer(int questionId) throws RemoteException, NullPointerException {
 		do {
 			System.out.println("Please enter the number of the correct answer: ");
 			displayQuestionsAndAnswers(questionId);
@@ -114,7 +115,7 @@ public class CreateQuizController extends Controller {
 
 	}
 	
-	protected void displayQuestionsAndAnswers(int questionID) {
+	protected void displayQuestionsAndAnswers(int questionID) throws RemoteException, NullPointerException {
 		List<Question> questions = server.getQuizQuestionsAndAnswers(quizId);
 		for (Question question : questions) {
 			if(question.getQuestionID() == questionID) {
@@ -131,7 +132,7 @@ public class CreateQuizController extends Controller {
 
 	}
 	
-	public void setQuizStatus() {
+	public void setQuizStatus() throws RemoteException {
 		System.out.print("Would you like to activate your new quiz? y / n : ");
 		String choice = in.nextLine();
 		if (choice.trim().equalsIgnoreCase("y")) {

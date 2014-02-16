@@ -1,12 +1,14 @@
 package server.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import server.interfaces.Question;
 
-public class QuestionImpl implements Question {
+public class QuestionImpl implements Question, Serializable {
 
+	private static final long serialVersionUID = 2103675520207133041L;
 	private int questionID;
 	private String question;
 	private int correctAnswerID;

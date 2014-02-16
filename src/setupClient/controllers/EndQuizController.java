@@ -1,5 +1,6 @@
 package setupClient.controllers;
 
+import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,12 +16,12 @@ public class EndQuizController extends Controller{
 	}
 	
 	@Override
-	public void launch() {
+	public void launch() throws RemoteException, IllegalArgumentException, NullPointerException {
 		deactivateQuiz();
 		
 	}
 	
-	public void deactivateQuiz() {
+	public void deactivateQuiz() throws RemoteException, IllegalArgumentException, NullPointerException {
 		if (server.getActiveQuizes().isEmpty()) {
 			System.out.println("Currently no active quizzes");
 		} else {

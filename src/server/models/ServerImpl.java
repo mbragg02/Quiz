@@ -1,5 +1,7 @@
 package server.models;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,8 +15,9 @@ import server.interfaces.Question;
 import server.interfaces.Quiz;
 import server.interfaces.Server;
 
-public class ServerImpl implements Server {
+public class ServerImpl extends UnicastRemoteObject implements Server {
 
+	private static final long serialVersionUID = -8930948399199628273L;
 	private int quizIDs;
 	private int questionIDs;
 	private int gameIDs;
@@ -24,7 +27,7 @@ public class ServerImpl implements Server {
 	private Map<Integer, Quiz> quizes;
 	private Map<Integer, List<Game>> games;
 
-	public ServerImpl() {
+	public ServerImpl() throws RemoteException {
 		dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
 		this.quizIDs = 0;
@@ -32,9 +35,6 @@ public class ServerImpl implements Server {
 		this.gameIDs = 0;
 		quizes = new HashMap<Integer, Quiz>();
 		games = new HashMap<Integer, List<Game>>();
-	}
-
-	public void launch() {
 		System.out.println("Quiz Server running");	
 	}
 

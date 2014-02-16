@@ -1,31 +1,31 @@
 package server.interfaces;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.List;
 
-public interface Server {
+public interface Server extends Remote {
 
-	int createQuiz(String quizName) throws IllegalArgumentException, NullPointerException;
+	int createQuiz(String quizName) throws RemoteException, IllegalArgumentException, NullPointerException;
 
-	int addQuestionToQuiz(int quizID, String quizQuestion) throws IllegalArgumentException, NullPointerException;
+	int addQuestionToQuiz(int quizID, String quizQuestion) throws RemoteException, IllegalArgumentException, NullPointerException;
 
-	void setQuizActive(int quizID);
+	void setQuizActive(int quizID) throws RemoteException;
 
-	List<Quiz> getActiveQuizes();
+	List<Quiz> getActiveQuizes() throws RemoteException;
 
-	List<Game> setQuizInactive(int quizID) throws IllegalArgumentException, NullPointerException;
+	List<Game> setQuizInactive(int quizID) throws RemoteException, IllegalArgumentException, NullPointerException;
 
-	int startGame(int quizID, String playerName) throws IllegalArgumentException, NullPointerException;
+	int startGame(int quizID, String playerName) throws RemoteException, IllegalArgumentException, NullPointerException;
 
-	void submitScore(int quizID, int gameID, int score) throws NullPointerException;
+	void submitScore(int quizID, int gameID, int score) throws RemoteException, NullPointerException;
 
-	void launch();
+	void addAnswerToQuestion(int quizID, int questionID, String quizAnswer) throws RemoteException, IllegalArgumentException, NullPointerException;
 
-	void addAnswerToQuestion(int quizID, int questionID, String quizAnswer) throws IllegalArgumentException, NullPointerException;
+	void setCorrectAnswer(int quizID, int questionID, int correctAnswer) throws RemoteException, NullPointerException;
 
-	void setCorrectAnswer(int quizID, int questionID, int correctAnswer) throws NullPointerException;
+	List<Question> getQuizQuestionsAndAnswers(int quizID) throws RemoteException, NullPointerException;
 
-	List<Question> getQuizQuestionsAndAnswers(int quizID) throws NullPointerException;
-
-	List<String> getAnswersForQuestion(int quizID, int questionID) throws NullPointerException;
+	List<String> getAnswersForQuestion(int quizID, int questionID) throws RemoteException, NullPointerException;
 
 }

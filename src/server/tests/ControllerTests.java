@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -26,19 +27,19 @@ public class ControllerTests {
 
 	// Create new Quiz
 	@Test
-	public void CreateQuiztest() {
+	public void CreateQuiztest() throws RemoteException, IllegalArgumentException, NullPointerException {
 		this.server = new ServerImpl();
 		int quizID = server.createQuiz("test quiz");
 		assertEquals(0, quizID);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void CreateQuizBlankNametest() {
+	public void CreateQuizBlankNametest() throws RemoteException, IllegalArgumentException, NullPointerException {
 		this.server = new ServerImpl();
 		server.createQuiz("");
 	}
 	@Test(expected = NullPointerException.class)
-	public void CreateQuizNullNametest() {
+	public void CreateQuizNullNametest() throws RemoteException, IllegalArgumentException, NullPointerException {
 		this.server = new ServerImpl();
 		server.createQuiz(null);
 	}

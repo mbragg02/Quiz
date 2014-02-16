@@ -22,7 +22,7 @@ public class MainMenu {
 	}
 
 	
-	public void launch()  {
+	public void launch() throws RemoteException  {
 		System.out.println("Welcome to Quiz Setup Client");
 		while(running) {
 			displayActions();
@@ -40,7 +40,7 @@ public class MainMenu {
 		System.out.println(": ");
 	}
 
-	private void selectAction() {
+	private void selectAction() throws RemoteException {
 
 		String userChoice;
 		userChoice = in.nextLine().trim();
@@ -52,7 +52,7 @@ public class MainMenu {
 		}
 	}
 
-	private void mainMenuLaunch(String userChoice) {
+	private void mainMenuLaunch(String userChoice) throws RemoteException {
 		try {
 			int action = Integer.parseInt(userChoice);
 			mainMenu(action);
@@ -70,7 +70,7 @@ public class MainMenu {
 	 * @throws RemoteException 
 	 * @throws IllegalArgumentException. Input must be between 1 and 3
 	 */
-	private void mainMenu(int action) {
+	private void mainMenu(int action) throws RemoteException {
 		switch(action) {
 		case 1: 
 			create.launch();;

@@ -1,13 +1,15 @@
 package server.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import server.interfaces.Question;
 import server.interfaces.Quiz;
 
-public class QuizImpl implements Quiz {
+public class QuizImpl implements Quiz, Serializable {
 	
+	private static final long serialVersionUID = 2700824645029004884L;
 	private int QuizID;
 	private String quizName;
 	private boolean active;

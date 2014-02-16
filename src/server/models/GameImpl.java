@@ -1,8 +1,12 @@
 package server.models;
 
+import java.io.Serializable;
+
 import server.interfaces.Game;
 
-public class GameImpl implements Game {
+public class GameImpl implements Game, Serializable {
+
+	private static final long serialVersionUID = -3849918143166439866L;
 	private int gameID;
 	private String playerName;
 	private int score;

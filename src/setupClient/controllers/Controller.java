@@ -1,5 +1,7 @@
 package setupClient.controllers;
 
+import java.rmi.RemoteException;
+
 import server.interfaces.Server;
 
 public abstract class Controller {
@@ -10,6 +12,6 @@ public abstract class Controller {
 		this.server = server;
 	}
 	
-	public abstract void launch();
+	public abstract void launch() throws RemoteException ;
 
 }
