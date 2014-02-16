@@ -26,11 +26,11 @@ public class PlayerClientLauncher {
 			System.out.println("Can not find server at: " + serverAddress);
 			return;
 		}
-		Server server = (Server) service;
-				
-		PlayerClient client = new PlayerClientImpl(server);
-		client.launch();
+		Server model = (Server) service;
+		PlayerClientView view = new PlayerClientView();
 		
+		PlayerClientController client = new PlayerClientControllerImpl(model, view);
+		client.launch();
 	}
 
 }

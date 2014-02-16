@@ -11,19 +11,21 @@ import server.interfaces.Question;
 import server.interfaces.Quiz;
 import server.interfaces.Server;
 
-public class PlayerClientImpl implements PlayerClient {
+public class PlayerClientControllerImpl implements PlayerClientController {
 
 	private Scanner in;
-	private Server server;
+	private Server model;
 	private List<Question> questions;
 	private int score;
 	private int answer;
 	private int quizID;
 	private int gameID;
 	private String playerName;
+	private PlayerClientView view;
 
-	public PlayerClientImpl(Server server) {
-		this.server = server;			
+	public PlayerClientControllerImpl(Server model, PlayerClientView view) {
+		this.model = model;	
+		this.view = view;
 		in = new Scanner(System.in);
 		questions = null;
 		score = 0;
@@ -34,10 +36,10 @@ public class PlayerClientImpl implements PlayerClient {
 	
 	@Override
 	public void launch() throws RemoteException {
-		System.out.println("Welcome to Quiz Player Client");
+		view.displayWelcomeMessage();
 
-		if (server.getActiveQuizes().isEmpty()) {
-			System.out.println("Currently no active quizzes. Please try again later.");
+		if (model.getActiveQuizes().isEmpty()) {
+			view.displayNoActiveQuizesMessage();
 			return;
 		} else {
 			setPlayerName();
@@ -48,21 +50,21 @@ public class PlayerClientImpl implements PlayerClient {
 	}
 
 	private void setPlayerName() {
-		System.out.print("Please enter your name: ");
+		view.displayNameRequest();
 		try {
 			this.playerName = in.nextLine();
-		} catch (NoSuchElementException e) {
-			System.out.println(e.getMessage());
+		} catch (NoSuchElementException ex) {
+			view.displayException(ex.getMessage());
 		}
 		
 	}
 
 	@Override
 	public void displayActiveQuizzes() throws RemoteException {
-		List<Quiz> quizzes = server.getActiveQuizes();
-		System.out.println("Current active games: ");
+		List<Quiz> quizzes = model.getActiveQuizes();
+		view.displayCurrentActiveQuizesMessage();
 		for (Quiz quiz : quizzes) {
-			System.out.println("Quiz " + quiz.getQuizID() + ": " + quiz.getQuizName());
+			view.displayQuizDetails(quiz.getQuizID(), quiz.getQuizName());
 		}
 	}
 
@@ -70,11 +72,11 @@ public class PlayerClientImpl implements PlayerClient {
 	public void setPlayerQuiz() {
 		do {
 			try {
-				System.out.print("Please select a quiz to play: ");
+				view.displaySelectQuizMessage();
 				this.quizID = in.nextInt();
 				break;
 			} catch (InputMismatchException ex) {
-				System.out.println(ex.getMessage());
+				view.displayException(ex.getMessage());
 			}
 		} while (true);
 		in.nextLine();	
@@ -84,15 +86,15 @@ public class PlayerClientImpl implements PlayerClient {
 	public void playQuiz() throws RemoteException {
 		do {
 			try {
-				this.gameID = server.startGame(this.quizID, this.playerName);
+				this.gameID = model.startGame(this.quizID, this.playerName);
 				break;
 			} catch (RemoteException ex) {
-				System.out.println(ex.getMessage());
+				view.displayException(ex.getMessage());
 			} catch (IllegalArgumentException ex) {
-				System.out.println(ex.getMessage());
+				view.displayException(ex.getMessage());
 				setPlayerName();
 			} catch (NullPointerException ex) {
-				System.out.println(ex.getMessage());
+				view.displayException(ex.getMessage());
 				displayActiveQuizzes();
 				setPlayerQuiz();
 			}
@@ -105,14 +107,14 @@ public class PlayerClientImpl implements PlayerClient {
 	private void displayQuestions() {
 		
 		try {
-			questions = server.getQuizQuestionsAndAnswers(this.quizID);
-		} catch (NullPointerException | RemoteException e) {
-			System.out.println(e.getMessage());
+			questions = model.getQuizQuestionsAndAnswers(this.quizID);
+		} catch (NullPointerException | RemoteException ex) {
+			view.displayException(ex.getMessage());
 		}
 
 		int questionCount = 1;
 		for (Question question : questions) {
-			System.out.println("Q" + questionCount + ": " + question.getQuestion());
+			view.displayQuestion(questionCount, question.getQuestion());
 			displayAnswers(question);
 			selectAnswer();
 			if (answer == question.getCorrectAnswerID()) {
@@ -125,7 +127,7 @@ public class PlayerClientImpl implements PlayerClient {
 	private void displayAnswers(Question question) {
 		int answerCount = 1;
 		for (String answer : question.getAnswers()) {
-			System.out.println(" [" + answerCount + "] " + answer);
+			view.displayAnswer(answerCount, answer);
 			++answerCount;
 		}
 
@@ -134,12 +136,12 @@ public class PlayerClientImpl implements PlayerClient {
 	private void selectAnswer() {
 		int playerAnswer = 0;
 		do {
-			System.out.print("Please select an answer: ");
+			view.displayAnswerRequest();
 			try {
 				playerAnswer = in.nextInt();
 				break;
 			} catch (InputMismatchException ex) {
-				System.out.println("Invalid input");
+				view.displayInvlaidInputException();
 				in.nextLine();
 			}
 		} while (true);
@@ -151,11 +153,11 @@ public class PlayerClientImpl implements PlayerClient {
 	@Override
 	public void submitScore() {
 		try {
-			server.submitScore(this.quizID, this.gameID, this.score);
+			model.submitScore(this.quizID, this.gameID, this.score);
 		} catch (NullPointerException | RemoteException e) {
-			System.out.println(e.getMessage());
+			view.displayException(e.getMessage());
 		}
-		System.out.println("Your score was: " + score + " out of " + questions.size());
+		view.displayScoreDetails(score, questions.size());
 	}
 
 }

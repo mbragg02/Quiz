@@ -2,7 +2,7 @@ package playerClient;
 
 import java.rmi.RemoteException;
 
-public interface PlayerClient {
+public interface PlayerClientController {
 	
 	void launch() throws RemoteException;
 	
