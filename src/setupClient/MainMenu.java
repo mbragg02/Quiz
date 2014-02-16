@@ -76,10 +76,10 @@ public class MainMenu {
 			create.launch();;
 			break;
 		case 2:
-			end.launch();
+			view.launch();
 			break;
 		case 3: 
-			view.launch();
+			end.launch();
 			break;
 		default: 
 			throw new IllegalArgumentException("Input must be between 1 and 3");

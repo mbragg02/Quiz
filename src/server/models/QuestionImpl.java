@@ -1,5 +1,8 @@
 package server.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import server.interfaces.Question;
 
 public class QuestionImpl implements Question {
@@ -7,10 +10,12 @@ public class QuestionImpl implements Question {
 	private int questionID;
 	private String question;
 	private int correctAnswerID;
+	private List<String> answers;
 
 	public QuestionImpl(int questionID, String quizQuestion) {
 		setQuestionID(questionID);
 		setQuestion(quizQuestion);
+		answers = new ArrayList<>();
 	}
 
 	@Override
@@ -39,6 +44,16 @@ public class QuestionImpl implements Question {
 	@Override
 	public void setCorrectAnswerID(int correctAnswerID) {
 		this.correctAnswerID = correctAnswerID;
+	}
+	
+	@Override
+	public void addAnswer(String answer) {
+		answers.add(answer);
+	}
+
+	@Override
+	public List<String> getAnswers() {
+		return this.answers;
 	}
 
 }

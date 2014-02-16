@@ -2,11 +2,8 @@ package setupClient.controllers;
 
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Scanner;
 
-import server.interfaces.Answer;
 import server.interfaces.Question;
 import server.interfaces.Server;
 
@@ -55,7 +52,7 @@ public class CreateQuizController implements Controller {
 			System.out.print("Please enter a question for your quiz or \"y\" when you are finished: ");
 			userQuestion = in.nextLine().trim();
 			if (userQuestion.trim().equalsIgnoreCase("y")) {
-				if (server.getQuestionsAndAnswers(quizId).isEmpty()) {
+				if (server.getQuizQuestionsAndAnswers(quizId).isEmpty()) {
 					System.out.println("A quiz must have at least 1 question");
 				} else {
 					break;
@@ -81,14 +78,14 @@ public class CreateQuizController implements Controller {
 			System.out.print("Please enter an answer for your question or \"y\" when you are finished: ");
 			userInput = in.nextLine().trim();
 			if (userInput.trim().equalsIgnoreCase("y")) {
-				if (server.getAnswersForQuestion(questionId).isEmpty()) {
+				if (server.getAnswersForQuestion(quizId, questionId).isEmpty()) {
 					System.out.println("A question must have at least 1 answer");
 				} else {
 					break;
 				}
 			} else {
 				try {
-					server.addAnswerToQuestion(questionId, userInput);
+					server.addAnswerToQuestion(quizId, questionId, userInput);
 				} catch (IllegalArgumentException e) {
 					System.out.println(e.getMessage());
 				} catch (NullPointerException e) {
@@ -101,17 +98,6 @@ public class CreateQuizController implements Controller {
 		selectCorrectAnswer(questionId);
 	}
 
-
-	public void setQuizStatus() {
-		System.out.print("Would you like to activate your new quiz? y / n : ");
-		String choice = in.nextLine();
-		if (choice.trim().equalsIgnoreCase("y")) {
-			server.setQuizActive(quizId);
-			System.out.println("Quiz active");
-		} else {
-			System.out.println("Quiz NOT active");
-		}
-	}
 	
 	public void selectCorrectAnswer(int questionId) {
 		do {
@@ -120,8 +106,7 @@ public class CreateQuizController implements Controller {
 
 			try {
 				int correctAnswer = in.nextInt();
-				// minus 1 because the answers are displayed starting at 1. But stored in a 0-index array.
-				server.setCorrectAnswer(questionId, correctAnswer - 1);
+				server.setCorrectAnswer(quizId, questionId, correctAnswer - 1);
 				break;
 			} 
 			catch (InputMismatchException e) {
@@ -136,18 +121,31 @@ public class CreateQuizController implements Controller {
 	}
 	
 	protected void displayQuestionsAndAnswers(int questionID) {
-		Map<Question, List<Answer>> questionsAndAnswers = server.getQuestionsAndAnswers(quizId);
-		
-		for (Entry<Question, List<Answer>> entry: questionsAndAnswers.entrySet()) {
-			System.out.println("Q: " + entry.getKey().getQuestion());
-			List<Answer> answers = entry.getValue();
-			int answerCount = 1;
-			for (Answer answer : answers) {
-				System.out.println(answerCount + ": " + answer.getAnswer());
-				++answerCount;
+		List<Question> questions = server.getQuizQuestionsAndAnswers(quizId);
+		for (Question question : questions) {
+			if(question.getQuestionID() == questionID) {
+				System.out.println("Q: " + question.getQuestion());
+				List<String> answers = question.getAnswers();
+				int answerCount = 1;
+				for (String answer : answers) {
+					System.out.println(answerCount + ": " + answer);
+					++answerCount;
+				}
 			}
+
 		}
 
+	}
+	
+	public void setQuizStatus() {
+		System.out.print("Would you like to activate your new quiz? y / n : ");
+		String choice = in.nextLine();
+		if (choice.trim().equalsIgnoreCase("y")) {
+			server.setQuizActive(quizId);
+			System.out.println("Quiz active");
+		} else {
+			System.out.println("Quiz NOT active");
+		}
 	}
 
 

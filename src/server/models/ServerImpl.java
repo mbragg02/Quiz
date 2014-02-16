@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentMap;
 
-import server.interfaces.Answer;
 import server.interfaces.Game;
 import server.interfaces.Question;
 import server.interfaces.Quiz;
@@ -15,26 +16,25 @@ public class ServerImpl implements Server {
 
 	private int quizIDs;
 	private int questionIDs;
-	private int answerIDs;
 	private int gameIDs;
 
 	private Map<Integer, Quiz> quizes;
-	private Map<Integer, Question> questions;
-	private Map<Quiz, List<Game>> quizGames;
-	private Map<Quiz, List<Question>> quizQuestions;
-	private Map<Question, List<Answer>> questionAnswers;
+	private Map<Integer, List<Game>> games;
+
+//	private Map<Integer, Question> questions;
+//	private Map<Quiz, List<Game>> quizGames;
+//	private Map<Quiz, List<Question>> quizQuestions;
 
 	public ServerImpl() {
 		this.quizIDs = 0;
 		this.questionIDs = 0;
-		this.answerIDs = 0;
 		this.gameIDs = 0;
 		
 		quizes   	    = new HashMap<Integer, Quiz>();
-		questions 		= new HashMap<Integer, Question>();
-		quizGames 		= new HashMap<Quiz, List<Game>>();
-		quizQuestions   = new HashMap<Quiz, List<Question>>();
-		questionAnswers = new HashMap<Question, List<Answer>>();	
+		games   	    = new HashMap<Integer, List<Game>>();
+//		questions 		= new HashMap<Integer, Question>();
+//		quizGames 		= new HashMap<Quiz, List<Game>>();
+//		quizQuestions   = new HashMap<Quiz, List<Question>>();
 	}
 	
 	public void launch() {
@@ -57,10 +57,6 @@ public class ServerImpl implements Server {
 
 		quizes.put(quiz.getQuizID(), quiz);
 
-		if(quizQuestions.get(quiz) == null) {
-			quizQuestions.put(quiz, new ArrayList<Question>());
-		}
-
 		++quizIDs;
 		return quiz.getQuizID();
 	}
@@ -76,58 +72,46 @@ public class ServerImpl implements Server {
 		validateQuizID(quizID);
 
 		Question question = new QuestionImpl(questionIDs, quizQuestion);
+		
+		quizes.get(quizID).addQuestion(question);	
 
-		questions.put(questionIDs, question);
-
-		quizQuestions.get(quizes.get(quizID)).add(question);
-
-		questionAnswers.put(question, new ArrayList<Answer>());
 
 		++questionIDs;
 		return question.getQuestionID();
 	}
 
 	@Override
-	public int addAnswerToQuestion(int questionID, String quizAnswer) 
+	public void addAnswerToQuestion(int quizID, int questionID, String quizAnswer) 
 			throws IllegalArgumentException, NullPointerException {
 
 		if (quizAnswer.isEmpty()) {
 			throw new IllegalArgumentException("Answer can not be blank");
 		}
-		validateQuestionID(questionID);
+		quizes.get(quizID).getQuestion(questionID).addAnswer(quizAnswer);
 
-		Answer answer = new AnswerImpl(answerIDs, quizAnswer);
-
-		questionAnswers.get(questions.get(questionID)).add(answer);
-		++answerIDs;
-		return answer.getAnswerID();
 	}
 
 	@Override
-	public void setCorrectAnswer(int questionID, int answerID) throws NullPointerException {
-		validateQuestionID(questionID);
-		validateQuestionAnswerIDs(questionAnswers.get(questions.get(questionID)), answerID);
+	public void setCorrectAnswer(int quizID, int questionID, int correctAnswer) throws NullPointerException {
 
-		questions.get(questionID).setCorrectAnswerID(answerID);
+		int numberOfAnswers = quizes.get(quizID).getQuestion(questionID).getAnswers().size();
+		
+		// numberOfAnswers - 1 to get the highest answer index
+		if (correctAnswer > numberOfAnswers - 1 || correctAnswer < 0 ) {
+			throw new IllegalArgumentException("Not a valid answer");
+		}
+		quizes.get(quizID).getQuestion(questionID).setCorrectAnswerID(correctAnswer);	
 	}
 
-
 	@Override
-	public Map<Question, List<Answer>> getQuestionsAndAnswers(int quizID) {
+	public List<Question> getQuizQuestionsAndAnswers(int quizID) throws NullPointerException{
 		validateQuizID(quizID);
-
-		Map<Question, List<Answer>> result = questionAnswers;
-
-		List<Question> questions = quizQuestions.get(quizes.get(quizID));
-		result.keySet().retainAll(questions);
-		return result;
+		return quizes.get(quizID).getQuestions();		
 	}
-	
+
 	@Override
-	public List<Answer> getAnswersForQuestion(int questionID) {
-		Question question = questions.get(questionID);
-		List<Answer> answers = questionAnswers.get(question);
-		return answers;
+	public List<String> getAnswersForQuestion(int quizID, int questionID) throws NullPointerException {
+		return quizes.get(quizID).getQuestion(questionID).getAnswers();
 	}
 
 
@@ -159,7 +143,7 @@ public class ServerImpl implements Server {
 
 		quiz.setActive(false);
 		
-		List<Game> playedGames = quizGames.get(quiz);
+		List<Game> playedGames = games.get(quiz);
 		List<Game> result;
 		
 		if (playedGames == null) {
@@ -207,11 +191,11 @@ public class ServerImpl implements Server {
 		Game game = new GameImpl(gameIDs, playerName);
 		++gameIDs;
 
-		List<Game> gamesList = quizGames.get(quiz);
+		List<Game> gamesList = games.get(quiz);
 
 		if (gamesList == null) {
 			gamesList = new ArrayList<Game>();
-			quizGames.put(quiz, gamesList);
+			games.put(quizID, gamesList);
 		}
 
 		gamesList.add(game);
@@ -223,14 +207,14 @@ public class ServerImpl implements Server {
 	public void submitScore(int quizID, int gameID, int score) throws NullPointerException {
 		validateQuizID(quizID);
 
-		Quiz quiz = quizes.get(quizID);
-		List<Game> games = quizGames.get(quiz);
+		List<Game> gamesList = games.get(quizID);
 		
-		if (games == null) {
+		if (gamesList == null) {
 			throw new NullPointerException("Could not find any games for that quiz.");
 		}
 		Game result = null;
-		for (Game game: games) {
+		
+		for (Game game: gamesList) {
 			if(game.getGameID() == gameID) {
 				result = game;
 			}
@@ -242,11 +226,6 @@ public class ServerImpl implements Server {
 		result.setScore(score);
 	}
 
-	private void validateQuestionID(int questionID) throws NullPointerException {
-		if (!questions.containsKey(questionID)) {
-			throw new NullPointerException("Could not find a question with the ID of: " + questionID);
-		}
-	}
 
 	private void validateQuizID(int quizID) throws NullPointerException {
 		if (!quizes.containsKey(quizID)) {
@@ -254,16 +233,5 @@ public class ServerImpl implements Server {
 		}
 	}
 
-	private void validateQuestionAnswerIDs(List<Answer> answers, int answerID) throws NullPointerException {
-		boolean invalid = true;
-		for (Answer answer: answers) {
-			if (answer.getAnswerID() == answerID) {
-				invalid = false;
-			}
-		}
-		if (invalid) {
-			throw new NullPointerException("Could not find a answer matching: " + answerID + ", for the question");
-		}
-	}
 
 }

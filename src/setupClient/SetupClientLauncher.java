@@ -2,10 +2,8 @@ package setupClient;
 
 import server.interfaces.Server;
 import server.models.ServerImpl;
-import setupClient.controllers.Controller;
-import setupClient.controllers.CreateQuizController;
-import setupClient.controllers.EndQuizController;
-import setupClient.controllers.ViewQuizController;
+import setupClient.controllers.*;
+
 
 public class SetupClientLauncher {
 
@@ -19,8 +17,8 @@ public class SetupClientLauncher {
 		Server server = new ServerImpl();
 		
 		Controller create = new CreateQuizController(server);
-		Controller end = new EndQuizController(server);
-		Controller view = new ViewQuizController(server);
+		Controller end =    new EndQuizController(server);
+		Controller view =   new ViewQuizController(server);
 
 		MainMenu menu = new MainMenu(create, end, view);
 		menu.launch();

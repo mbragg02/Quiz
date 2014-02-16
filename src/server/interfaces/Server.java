@@ -11,15 +11,6 @@ public interface Server {
 	public abstract int addQuestionToQuiz(int quizID, String quizQuestion)
 			throws IllegalArgumentException, NullPointerException;
 
-	public abstract int addAnswerToQuestion(int questionID, String quizAnswer)
-			throws IllegalArgumentException, NullPointerException;
-
-	public abstract void setCorrectAnswer(int questionID, int answerID)
-			throws NullPointerException;
-
-	public abstract Map<Question, List<Answer>> getQuestionsAndAnswers(
-			int quizID);
-
 	public abstract void setQuizActive(int quizID);
 
 	public abstract List<Quiz> getActiveQuizes();
@@ -35,6 +26,16 @@ public interface Server {
 
 	public abstract void launch();
 
-	public abstract List<Answer> getAnswersForQuestion(int questionID);
+	void addAnswerToQuestion(int quizID, int questionID, String quizAnswer)
+			throws IllegalArgumentException, NullPointerException;
+
+	void setCorrectAnswer(int quizID, int questionID, int correctAnswer)
+			throws NullPointerException;
+
+	List<Question> getQuizQuestionsAndAnswers(int quizID)
+			throws NullPointerException;
+
+	List<String> getAnswersForQuestion(int quizID, int questionID)
+			throws NullPointerException;
 
 }
