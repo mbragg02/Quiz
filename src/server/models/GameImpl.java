@@ -16,6 +16,7 @@ public class GameImpl implements Game, Serializable {
 	public GameImpl(int gameID, String playerName) {
 		setGameID(gameID);
 		setPlayerName(playerName);
+		this.score = 0;
 	}
 
 

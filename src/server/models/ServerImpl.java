@@ -179,13 +179,17 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		if (playerName.isEmpty()) {
 			throw new IllegalArgumentException("Player name can not be blank");
 		}
-		
-		Quiz quiz = quizes.get(quizID);
-		
+		if (Character.isDigit(playerName.charAt(0))) {
+			throw new IllegalArgumentException("Name can not begin with a number");
+		}
+				
 		Game game = new GameImpl(gameIDs, playerName);
 		++gameIDs;
+		Quiz quiz = quizes.get(quizID);		
 
-		List<Game> gamesList = games.get(quiz);
+		game.setNumberOfQuestions(quiz.getQuestions().size());
+
+		List<Game> gamesList = games.get(quizID);
 
 		if (gamesList == null) {
 			gamesList = new ArrayList<Game>();

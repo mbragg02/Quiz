@@ -34,7 +34,6 @@ public class EndQuizController extends Controller{
 				System.out.println("There were no players that took the quiz");
 			} else {
 				displayPlayers(highscoreGames);
-
 			}	
 		}
 	}
@@ -44,7 +43,6 @@ public class EndQuizController extends Controller{
 		int winnerCount = 1;
 		for (Game game : games) {
 			System.out.println(formatWinner(game, winnerCount));
-			System.out.println(game.getPlayerName() + " with a score of: " + game.getScore());
 			++winnerCount;
 		}
 		System.out.println("\n");
