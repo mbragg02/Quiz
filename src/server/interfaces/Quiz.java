@@ -1,17 +1,16 @@
 package server.interfaces;
 
 import java.util.List;
-import java.util.Set;
 
 public interface Quiz {
 
-	public abstract String getQuizName();
+	String getQuizName();
 
-	public abstract int getQuizID();
+	int getQuizID();
 
-	public abstract boolean isActive();
+	boolean isActive();
 
-	public abstract void setActive(boolean active);
+	void setActive(boolean active);
 
 	Question getQuestion(int questionId);
 

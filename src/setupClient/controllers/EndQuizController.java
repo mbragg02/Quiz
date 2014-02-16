@@ -6,20 +6,14 @@ import java.util.Scanner;
 import server.interfaces.Game;
 import server.interfaces.Server;
 
-public class EndQuizController implements Controller {
-	private Server server;
+public class EndQuizController extends Controller{
 	private Scanner in;
 	
 	public EndQuizController(Server server) {
-		this.server = server;
+		super(server);
 		in = new Scanner(System.in);
 	}
-
-	@Override
-	public String toString() {
-		return null;
-	}
-
+	
 	@Override
 	public void launch() {
 		deactivateQuiz();
@@ -48,20 +42,20 @@ public class EndQuizController implements Controller {
 		System.out.println("And the winners are...");
 		int winnerCount = 1;
 		for (Game game : games) {
-//			System.out.println(formatWinner(game, winnerCount));
+			System.out.println(formatWinner(game, winnerCount));
 			System.out.println(game.getPlayerName() + " with a score of: " + game.getScore());
 			++winnerCount;
 		}
 		System.out.println("\n");
 	}
 	
-//	private String formatWinner(Game game, int winnerCount) {
-//		StringBuilder sb = new StringBuilder();
-//		sb.append("[" + winnerCount + "] " + game.getPlayerName());
-//		sb.append(" with a score of: " + calculatePercentage(game.getScore(), game.getNumberOfQuestions()) + "%");
-//		sb.append(" on " + game.getDateCompleted());
-//		return sb.toString();
-//	}
+	private String formatWinner(Game game, int winnerCount) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[" + winnerCount + "] " + game.getPlayerName());
+		sb.append(" with a score of: " + calculatePercentage(game.getScore(), game.getNumberOfQuestions()) + "%");
+		sb.append(" on " + game.getDateCompleted());
+		return sb.toString();
+	}
 	
 	private double calculatePercentage(int score, int total) {
 		double result = 1d* score/total;

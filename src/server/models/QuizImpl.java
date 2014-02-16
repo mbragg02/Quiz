@@ -17,7 +17,6 @@ public class QuizImpl implements Quiz {
 		setQuizID(quizID);
 		setQuizName(quizName);
 		questions = new ArrayList<Question>();	
-		
 	}
 
 	@Override

@@ -6,11 +6,12 @@ public class GameImpl implements Game {
 	private int gameID;
 	private String playerName;
 	private int score;
+	private int numberOfQuestions;
+	private String dateCompleted;
 	
 	public GameImpl(int gameID, String playerName) {
 		setGameID(gameID);
 		setPlayerName(playerName);
-		setScore(0);
 	}
 
 
@@ -43,8 +44,24 @@ public class GameImpl implements Game {
 
 
 	@Override
-	public void setScore(int score) {
+	public void setPlayerScoreWithDate(int score, String date) {
 		this.score = score;
+		this.dateCompleted = date;
+	}
+	
+	@Override
+	public String getDateCompleted() {
+		return this.dateCompleted;
+	}
+
+	@Override
+	public int getNumberOfQuestions() {
+		return numberOfQuestions;
+	}
+
+	@Override
+	public void setNumberOfQuestions(int numberOfQuestions) {
+		this.numberOfQuestions = numberOfQuestions;
 	}
 
 }

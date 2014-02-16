@@ -7,22 +7,16 @@ import java.util.Scanner;
 import server.interfaces.Question;
 import server.interfaces.Server;
 
-public class CreateQuizController implements Controller {
+public class CreateQuizController extends Controller {
 	
-	private Server server;
 	private Scanner in;
 	private int quizId;	
 	
 	public CreateQuizController(Server server) {
-		this.server = server;
+		super(server);
 		in = new Scanner(System.in);
 	}
-
-	@Override
-	public String toString() {
-		return null;
-	}
-
+	
 	@Override
 	public void launch() {
 		createQuizWithName();

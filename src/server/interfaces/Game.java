@@ -2,12 +2,18 @@ package server.interfaces;
 
 public interface Game {
 
-	public abstract int getGameID();
+	int getGameID();
 
-	public abstract String getPlayerName();
+	String getPlayerName();
 
-	public abstract int getScore();
+	int getScore();
 
-	public abstract void setScore(int score);
+	void setPlayerScoreWithDate(int score, String date);
+
+	String getDateCompleted();
+
+	int getNumberOfQuestions();
+
+	void setNumberOfQuestions(int numberOfQuestions);
 
 }

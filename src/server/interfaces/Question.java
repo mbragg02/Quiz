@@ -4,13 +4,13 @@ import java.util.List;
 
 public interface Question {
 
-	public abstract int getQuestionID();
+	int getQuestionID();
 
-	public abstract String getQuestion();
+	String getQuestion();
 
-	public abstract int getCorrectAnswerID();
+	int getCorrectAnswerID();
 
-	public abstract void setCorrectAnswerID(int correctAnswerID);
+	void setCorrectAnswerID(int correctAnswerID);
 
 	void addAnswer(String answer);
 

@@ -1,9 +1,15 @@
 package setupClient.controllers;
 
-public interface Controller {
+import server.interfaces.Server;
+
+public abstract class Controller {
 	
-	public String toString();
+	protected Server server;
 	
-	public void launch();
+	public Controller(Server server) {
+		this.server = server;
+	}
+	
+	public abstract void launch();
 
 }
