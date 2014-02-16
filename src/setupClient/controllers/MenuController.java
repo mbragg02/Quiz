@@ -1,44 +1,39 @@
-package setupClient;
+package setupClient.controllers;
 
 import java.rmi.RemoteException;
 import java.util.Scanner;
 
-import setupClient.controllers.Controller;
+import setupClient.views.MenuView;
 
-public class MainMenu {
+public class MenuController extends Controller {
 	
 	private boolean running;
 	private Scanner in;
 	private Controller create;
 	private Controller view;
 	private Controller end;
+	private MenuView menuView;
 	
-	public MainMenu(Controller create, Controller end, Controller view ) {
+	public MenuController(Controller create, Controller end, Controller view, MenuView menuView ) {
 		this.create = create;
 		this.end = end;
 		this.view = view;
+		this.menuView = menuView;
 		running = true;
 		in = new Scanner(System.in);
 	}
-
 	
+	@Override
 	public void launch() throws RemoteException  {
-		System.out.println("Welcome to Quiz Setup Client");
+		menuView.printWelcomeMessage();
+
 		while(running) {
-			displayActions();
+			menuView.printMainMenu();
 			selectAction();	
 		} 
 		in.close();
 	}
 
-	private void displayActions(){
-		System.out.println("  Main Menu");
-		System.out.println("> Enter 1 to create a new Quiz");
-		System.out.println("> Enter 2 to view all current quizzes");
-		System.out.println("> Enter 3 to end a running Quiz");
-		System.out.println("> Enter EXIT to disconnect");
-		System.out.println(": ");
-	}
 
 	private void selectAction() throws RemoteException {
 
@@ -46,7 +41,7 @@ public class MainMenu {
 		userChoice = in.nextLine().trim();
 		if (userChoice.toLowerCase().equals("exit")) {
 			running = false;
-			System.out.println("Exit succesfull");
+			menuView.printExitMessage();
 		} else {
 			mainMenuLaunch(userChoice);
 		}
@@ -57,10 +52,8 @@ public class MainMenu {
 			int action = Integer.parseInt(userChoice);
 			mainMenu(action);
 		} catch (NumberFormatException ex) {
-			System.out.println("Not a valid option. Please try again");
-		} catch (IllegalArgumentException ex) {
-			System.out.println(ex.getMessage());
-		}
+			menuView.printInvalidInputMessage();
+		} 
 	}
 
 
@@ -68,7 +61,6 @@ public class MainMenu {
 	 * Main application menu
 	 * @param action int 1 to 3
 	 * @throws RemoteException 
-	 * @throws IllegalArgumentException. Input must be between 1 and 3
 	 */
 	private void mainMenu(int action) throws RemoteException {
 		switch(action) {
@@ -82,7 +74,7 @@ public class MainMenu {
 			end.launch();
 			break;
 		default: 
-			throw new IllegalArgumentException("Input must be between 1 and 3");
+			menuView.printInvalidInputMessage();
 		}
 	}
 

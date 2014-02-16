@@ -5,29 +5,29 @@ import java.util.List;
 
 import server.interfaces.Quiz;
 import server.interfaces.Server;
+import setupClient.views.ViewQuizView;
 
 public class ViewQuizController extends Controller {
 	
+	private ViewQuizView view;
 	
-	public ViewQuizController(Server server) {
-		super(server);
+	public ViewQuizController(Server model, ViewQuizView view) {
+		super(model);
+		this.view = view;
 	}
 	
 	@Override
 	public void launch() throws RemoteException {
-		getActiveQuizzes();
-		
-	}
-	
-	public void getActiveQuizzes() throws RemoteException {
-		List<Quiz> quizzes = server.getActiveQuizes();
+		List<Quiz> quizzes = model.getActiveQuizes();
 		if(quizzes.isEmpty()) {
 			System.out.println("Currently no active quizzes");
+			view.displayNoActiveQuizesMessage();
 		} else {
-			int quizCounter = 1;
 			for (Quiz quiz : quizzes) {
-				System.out.println(quizCounter + ": " + quiz.getQuizName() + " [" + quiz.getQuizID() + "]");
+				view.displayQuizDetails(quiz.getQuizID(), quiz.getQuizName());
 			}
 		}
+		
 	}
+
 }

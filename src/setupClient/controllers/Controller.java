@@ -6,10 +6,12 @@ import server.interfaces.Server;
 
 public abstract class Controller {
 	
-	protected Server server;
+	protected Server model;
 	
-	public Controller(Server server) {
-		this.server = server;
+	public Controller() {}
+	
+	public Controller(Server model) {
+		this.model = model;
 	}
 	
 	public abstract void launch() throws RemoteException ;

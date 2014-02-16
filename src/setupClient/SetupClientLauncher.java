@@ -8,6 +8,10 @@ import java.rmi.RemoteException;
 
 import server.interfaces.Server;
 import setupClient.controllers.*;
+import setupClient.views.CreateQuizView;
+import setupClient.views.EndQuizView;
+import setupClient.views.MenuView;
+import setupClient.views.ViewQuizView;
 
 
 public class SetupClientLauncher {
@@ -27,14 +31,18 @@ public class SetupClientLauncher {
 			System.out.println("Can not find server at: " + serverAddress);
 			return;
 		}
+		
 		Server server = (Server) service;
+		
+		ControllerFactory factory = ControllerFactory.getInstance();
+		factory.setServer(server);
 				
-		Controller create = new CreateQuizController(server);
-		Controller end =    new EndQuizController(server);
-		Controller view =   new ViewQuizController(server);
-
-		MainMenu menu = new MainMenu(create, end, view);
-		menu.launch();
+		MenuView menuView = new MenuView();
+		CreateQuizView createView = new CreateQuizView();
+		EndQuizView endView = new EndQuizView();
+		ViewQuizView view = new ViewQuizView();
+		
+		factory.getMenuController(menuView, createView, endView, view).launch();
 	}
 	
 

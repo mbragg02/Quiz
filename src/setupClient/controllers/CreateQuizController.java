@@ -7,14 +7,17 @@ import java.util.Scanner;
 
 import server.interfaces.Question;
 import server.interfaces.Server;
+import setupClient.views.CreateQuizView;
 
 public class CreateQuizController extends Controller {
 	
 	private Scanner in;
-	private int quizId;	
+	private int quizID;	
+	private CreateQuizView view;
 	
-	public CreateQuizController(Server server) {
-		super(server);
+	public CreateQuizController(Server model, CreateQuizView view) {
+		super(model);
+		this.view = view;
 		in = new Scanner(System.in);
 	}
 	
@@ -22,17 +25,17 @@ public class CreateQuizController extends Controller {
 	public void launch() throws RemoteException {
 		createQuizWithName();
 		addQuestionsAndAnswers();
-		System.out.println("Your quiz id is: " + quizId);
+		view.printQuizID(quizID);
 		setQuizStatus();
 		
 	}
 	
 	private void createQuizWithName() throws RemoteException, NullPointerException {
 		do {
-			System.out.print("Please enter a name for your quiz: ");
+			view.printNameInputRequest();
 			String quizName = in.nextLine().trim();
 			try {
-				this.quizId = server.createQuiz(quizName);	
+				this.quizID = model.createQuiz(quizName);	
 				break;
 			} catch(IllegalArgumentException e) {
 				System.out.println(e.getMessage());
@@ -44,18 +47,18 @@ public class CreateQuizController extends Controller {
 	public void addQuestionsAndAnswers() throws RemoteException {
 		String userQuestion;
 		do {
-			System.out.print("Please enter a question for your quiz or \"y\" when you are finished: ");
+			view.printQuestionInputRequest();
 			userQuestion = in.nextLine().trim();
 			if (userQuestion.trim().equalsIgnoreCase("y")) {
-				if (server.getQuizQuestionsAndAnswers(quizId).isEmpty()) {
-					System.out.println("A quiz must have at least 1 question");
+				if (model.getQuizQuestionsAndAnswers(quizID).isEmpty()) {
+					view.printAnswerNumberException();
 				} else {
 					break;
 				}
 			} else {
 				int questionId;
 				try {
-					questionId = server.addQuestionToQuiz(quizId, userQuestion);
+					questionId = model.addQuestionToQuiz(quizID, userQuestion);
 					addAnswers(questionId);
 				} catch (IllegalArgumentException e) {
 					System.out.println(e.getMessage());
@@ -70,17 +73,17 @@ public class CreateQuizController extends Controller {
 	public void addAnswers(int questionId) throws RemoteException, NullPointerException {
 		String userInput;
 		do {
-			System.out.print("Please enter an answer for your question or \"y\" when you are finished: ");
+			view.printAnswerInputRequest();
 			userInput = in.nextLine().trim();
 			if (userInput.trim().equalsIgnoreCase("y")) {
-				if (server.getAnswersForQuestion(quizId, questionId).isEmpty()) {
-					System.out.println("A question must have at least 1 answer");
+				if (model.getAnswersForQuestion(quizID, questionId).isEmpty()) {
+					view.printAnswerNumberException();
 				} else {
 					break;
 				}
 			} else {
 				try {
-					server.addAnswerToQuestion(quizId, questionId, userInput);
+					model.addAnswerToQuestion(quizID, questionId, userInput);
 				} catch (IllegalArgumentException e) {
 					System.out.println(e.getMessage());
 				} catch (NullPointerException e) {
@@ -96,16 +99,16 @@ public class CreateQuizController extends Controller {
 	
 	public void selectCorrectAnswer(int questionId) throws RemoteException, NullPointerException {
 		do {
-			System.out.println("Please enter the number of the correct answer: ");
+			view.printCorrectAnswerRequest();
 			displayQuestionsAndAnswers(questionId);
 
 			try {
 				int correctAnswer = in.nextInt();
-				server.setCorrectAnswer(quizId, questionId, correctAnswer - 1);
+				model.setCorrectAnswer(quizID, questionId, correctAnswer - 1);
 				break;
 			} 
 			catch (InputMismatchException e) {
-				System.out.println("Not a valid number");
+				view.printInvalidInputException();
 			} catch (IllegalArgumentException e) {
 				System.out.println(e.getMessage());
 			} finally {
@@ -116,14 +119,14 @@ public class CreateQuizController extends Controller {
 	}
 	
 	protected void displayQuestionsAndAnswers(int questionID) throws RemoteException, NullPointerException {
-		List<Question> questions = server.getQuizQuestionsAndAnswers(quizId);
+		List<Question> questions = model.getQuizQuestionsAndAnswers(quizID);
 		for (Question question : questions) {
 			if(question.getQuestionID() == questionID) {
-				System.out.println("Q: " + question.getQuestion());
+				view.printQuestion(question.getQuestion());
 				List<String> answers = question.getAnswers();
 				int answerCount = 1;
 				for (String answer : answers) {
-					System.out.println(answerCount + ": " + answer);
+					view.printAnswer(answerCount, answer);
 					++answerCount;
 				}
 			}
@@ -133,13 +136,13 @@ public class CreateQuizController extends Controller {
 	}
 	
 	public void setQuizStatus() throws RemoteException {
-		System.out.print("Would you like to activate your new quiz? y / n : ");
+		view.printActivationRequest();
 		String choice = in.nextLine();
 		if (choice.trim().equalsIgnoreCase("y")) {
-			server.setQuizActive(quizId);
-			System.out.println("Quiz active");
+			model.setQuizActive(quizID);
+			view.printActiveMessage();
 		} else {
-			System.out.println("Quiz NOT active");
+			view.printInActiveMessage();
 		}
 	}
 
