@@ -1,6 +1,6 @@
 package setupClient.views;
 
-public class MenuView {
+public class MenuView extends SetupClientView{
 	
 	public void printMainMenu() {
 		System.out.println("  Main Menu");
@@ -19,7 +19,5 @@ public class MenuView {
 		System.out.println("Exit succesfull");
 	}
 	
-	public void printInvalidInputMessage() {
-		System.out.println("Not a valid option. Please try again");
-	}
+
 }

@@ -3,7 +3,6 @@ package setupClient.controllers;
 import java.rmi.RemoteException;
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Scanner;
 
 import server.interfaces.Question;
 import server.interfaces.Server;
@@ -11,14 +10,12 @@ import setupClient.views.CreateQuizView;
 
 public class CreateQuizController extends Controller {
 	
-	private Scanner in;
 	private int quizID;	
 	private CreateQuizView view;
 	
 	public CreateQuizController(Server model, CreateQuizView view) {
 		super(model);
 		this.view = view;
-		in = new Scanner(System.in);
 	}
 	
 	@Override
@@ -33,7 +30,7 @@ public class CreateQuizController extends Controller {
 	private void createQuizWithName() throws RemoteException, NullPointerException {
 		do {
 			view.printNameInputRequest();
-			String quizName = in.nextLine().trim();
+			String quizName = view.getNextLineFromConsole().trim();
 			try {
 				this.quizID = model.createQuiz(quizName);	
 				break;
@@ -48,7 +45,7 @@ public class CreateQuizController extends Controller {
 		String userQuestion;
 		do {
 			view.printQuestionInputRequest();
-			userQuestion = in.nextLine().trim();
+			userQuestion = view.getNextLineFromConsole().trim();
 			if (userQuestion.trim().equalsIgnoreCase("y")) {
 				if (model.getQuizQuestionsAndAnswers(quizID).isEmpty()) {
 					view.printAnswerNumberException();
@@ -74,7 +71,7 @@ public class CreateQuizController extends Controller {
 		String userInput;
 		do {
 			view.printAnswerInputRequest();
-			userInput = in.nextLine().trim();
+			userInput = view.getNextLineFromConsole().trim();
 			if (userInput.trim().equalsIgnoreCase("y")) {
 				if (model.getAnswersForQuestion(quizID, questionId).isEmpty()) {
 					view.printAnswerNumberException();
@@ -103,7 +100,7 @@ public class CreateQuizController extends Controller {
 			displayQuestionsAndAnswers(questionId);
 
 			try {
-				int correctAnswer = in.nextInt();
+				int correctAnswer = view.getNextIntFromConsole();
 				model.setCorrectAnswer(quizID, questionId, correctAnswer - 1);
 				break;
 			} 
@@ -112,7 +109,7 @@ public class CreateQuizController extends Controller {
 			} catch (IllegalArgumentException e) {
 				System.out.println(e.getMessage());
 			} finally {
-				in.nextLine();
+				view.getNextLineFromConsole();
 			}
 		} while (true);
 
@@ -137,7 +134,7 @@ public class CreateQuizController extends Controller {
 	
 	public void setQuizStatus() throws RemoteException {
 		view.printActivationRequest();
-		String choice = in.nextLine();
+		String choice = view.getNextLineFromConsole();
 		if (choice.trim().equalsIgnoreCase("y")) {
 			model.setQuizActive(quizID);
 			view.printActiveMessage();

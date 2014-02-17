@@ -2,20 +2,17 @@ package setupClient.controllers;
 
 import java.rmi.RemoteException;
 import java.util.List;
-import java.util.Scanner;
 
 import server.interfaces.Game;
 import server.interfaces.Server;
 import setupClient.views.EndQuizView;
 
 public class EndQuizController extends Controller{
-	private Scanner in;
 	private EndQuizView view;
 	
 	public EndQuizController(Server model, EndQuizView view) {
 		super(model);
 		this.view = view;
-		in = new Scanner(System.in);
 	}
 	
 	@Override
@@ -24,8 +21,8 @@ public class EndQuizController extends Controller{
 			view.printNoActiveQuizesMessage();
 		} else {
 			view.printQuizIDDeactivationRequest();
-			int input = in.nextInt();
-			in.nextLine();
+			int input = view.getNextIntFromConsole();
+			view.getNextLineFromConsole();
 
 			List<Game> highscoreGames = model.setQuizInactive(input);
 			if (highscoreGames.isEmpty()) {

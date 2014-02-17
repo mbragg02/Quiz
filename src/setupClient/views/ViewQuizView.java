@@ -1,12 +1,8 @@
 package setupClient.views;
 
-public class ViewQuizView {
+public class ViewQuizView extends SetupClientView {
 	
-	public void displayNoActiveQuizesMessage() {
-		System.out.println("Currently no active quizzes");
-	}
-	
-	public void displayQuizDetails(int quizID, String quizName) {
+	public void printQuizDetails(int quizID, String quizName) {
 		System.out.println(quizID + ": " + quizName);
 	}
 

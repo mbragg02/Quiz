@@ -1,6 +1,6 @@
 package setupClient.views;
 
-public class CreateQuizView {
+public class CreateQuizView extends SetupClientView {
 	
 	public void printQuizID(int quizID) {
 		System.out.println("Your quiz id is: " + quizID);
@@ -28,14 +28,6 @@ public class CreateQuizView {
 	
 	public void printCorrectAnswerRequest() {
 		System.out.println("Please enter the number of the correct answer: ");
-	}
-	
-	public void printInvalidInputException() {
-		System.out.println("Not a valid number");
-	}
-	
-	public void printException(String e) {
-		System.out.println(e);
 	}
 	
 	public void printActivationRequest() {

@@ -1,10 +1,6 @@
 package setupClient.views;
 
-public class EndQuizView {
-
-	public void printNoActiveQuizesMessage() {
-		System.out.println("Currently no active quizzes");
-	}
+public class EndQuizView extends SetupClientView {
 
 	public void printQuizIDDeactivationRequest() {
 		System.out.print("Please enter a Quiz ID to deactivate: ");

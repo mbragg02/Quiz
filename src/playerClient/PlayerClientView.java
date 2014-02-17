@@ -8,7 +8,6 @@ public class PlayerClientView {
 	
 	public PlayerClientView() {
 		in = new Scanner(System.in);
-
 	}
 	
 	public void displayWelcomeMessage() {

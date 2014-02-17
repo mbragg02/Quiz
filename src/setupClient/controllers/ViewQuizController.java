@@ -21,10 +21,10 @@ public class ViewQuizController extends Controller {
 		List<Quiz> quizzes = model.getActiveQuizes();
 		if(quizzes.isEmpty()) {
 			System.out.println("Currently no active quizzes");
-			view.displayNoActiveQuizesMessage();
+			view.printNoActiveQuizesMessage();
 		} else {
 			for (Quiz quiz : quizzes) {
-				view.displayQuizDetails(quiz.getQuizID(), quiz.getQuizName());
+				view.printQuizDetails(quiz.getQuizID(), quiz.getQuizName());
 			}
 		}
 		
