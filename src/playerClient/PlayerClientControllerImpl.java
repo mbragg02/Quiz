@@ -2,10 +2,10 @@ package playerClient;
 
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 import server.interfaces.Question;
 import server.interfaces.Quiz;
@@ -13,7 +13,6 @@ import server.interfaces.Server;
 
 public class PlayerClientControllerImpl implements PlayerClientController {
 
-	private Scanner in;
 	private Server model;
 	private List<Question> questions;
 	private int score;
@@ -26,8 +25,7 @@ public class PlayerClientControllerImpl implements PlayerClientController {
 	public PlayerClientControllerImpl(Server model, PlayerClientView view) {
 		this.model = model;	
 		this.view = view;
-		in = new Scanner(System.in);
-		questions = null;
+		questions = new ArrayList<Question>();
 		score = 0;
 		answer = 0;
 		quizID = 0;
@@ -48,11 +46,11 @@ public class PlayerClientControllerImpl implements PlayerClientController {
 			playQuiz();
 		}
 	}
-
+	
 	private void setPlayerName() {
 		view.displayNameRequest();
 		try {
-			this.playerName = in.nextLine();
+			this.playerName = view.getNextLineFromConsole();
 		} catch (NoSuchElementException ex) {
 			view.displayException(ex.getMessage());
 		}
@@ -73,14 +71,16 @@ public class PlayerClientControllerImpl implements PlayerClientController {
 		do {
 			try {
 				view.displaySelectQuizMessage();
-				this.quizID = in.nextInt();
+				this.quizID = view.getNextIntFromConsole();
 				break;
 			} catch (InputMismatchException ex) {
 				view.displayException(ex.getMessage());
 			}
 		} while (true);
-		in.nextLine();	
+		view.getNextLineFromConsole();
 	}
+	
+
 	
 	@Override
 	public void playQuiz() throws RemoteException {
@@ -138,11 +138,11 @@ public class PlayerClientControllerImpl implements PlayerClientController {
 		do {
 			view.displayAnswerRequest();
 			try {
-				playerAnswer = in.nextInt();
+				playerAnswer = view.getNextIntFromConsole();
 				break;
 			} catch (InputMismatchException ex) {
 				view.displayInvlaidInputException();
-				in.nextLine();
+				view.getNextLineFromConsole();
 			}
 		} while (true);
 

@@ -1,6 +1,15 @@
 package playerClient;
 
+import java.util.Scanner;
+
 public class PlayerClientView {
+	
+	private Scanner in;
+	
+	public PlayerClientView() {
+		in = new Scanner(System.in);
+
+	}
 	
 	public void displayWelcomeMessage() {
 		System.out.println("Welcome to Quiz Player Client");
@@ -49,6 +58,14 @@ public class PlayerClientView {
 	public void displayScoreDetails(int score, int numberOfQuestions) {
 		System.out.println("Your score was: " + score + " out of " + numberOfQuestions);
 
+	}
+	
+	public int getNextIntFromConsole() {
+		return in.nextInt();
+	}
+	
+	public String getNextLineFromConsole() {
+		return in.nextLine();
 	}
 
 }
