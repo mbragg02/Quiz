@@ -1,5 +1,6 @@
 package server.models;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.text.DateFormat;
@@ -9,6 +10,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import server.interfaces.Game;
 import server.interfaces.Question;
@@ -23,6 +27,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	private int gameIDs;
 	
 	private DateFormat dateFormat;
+	private Logger logger;
 
 	private Map<Integer, Quiz> quizes;
 	private Map<Integer, List<Game>> games;
@@ -36,7 +41,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		this.gameIDs = 0;
 		quizes = new HashMap<Integer, Quiz>();
 		games = new HashMap<Integer, List<Game>>();
-		System.out.println("Quiz Server running");	
+		serverLogInitialize();
+
 	}
 
 	@Override
@@ -54,6 +60,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		Quiz quiz = new QuizImpl(quizIDs, quizName);
 
 		quizes.put(quiz.getQuizID(), quiz);
+		
+		logger.info("Quiz \"" + quizName + "\" created.");
 
 		++quizIDs;
 		return quiz.getQuizID();
@@ -73,6 +81,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
 		quizes.get(quizID).addQuestion(question);	
 
+		logger.info("Question added to quiz: \"" + quizes.get(quizID).getQuizName() + "\"");
 
 		++questionIDs;
 		return question.getQuestionID();
@@ -86,6 +95,9 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 			throw new IllegalArgumentException("Answer can not be blank");
 		}
 		quizes.get(quizID).getQuestion(questionID).addAnswer(quizAnswer);
+		
+		logger.info("Answer added to quiz: \"" + quizes.get(quizID).getQuizName() + "\"");
+
 
 	}
 
@@ -118,6 +130,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	public void setQuizActive(int quizID) {
 		validateQuizID(quizID);
 		quizes.get(quizID).setActive(true);
+		logger.info("Quiz \"" + quizes.get(quizID).getQuizName() + "\" set ACTIVE");
+
 	}
 
 	@Override
@@ -149,6 +163,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		} else {
 			result = getHighscoreGames(playedGames);
 		}
+		logger.info("Quiz \"" + quizes.get(quizID).getQuizName() + "\" set INACTIVE");
 
 		return result;
 	}
@@ -199,6 +214,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
 		gamesList.add(game);
 
+		logger.info("\"" + playerName.toUpperCase() + "\" is playing quiz \"" + quiz.getQuizName() + "\"");
+		
 		return game.getGameID();
 	}
 
@@ -255,6 +272,26 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		if (result == null) {
 			throw new NullPointerException("Could not a game with that game ID.");
 		}
+	}
+	
+	private void serverLogInitialize() {
+		this.logger = Logger.getLogger("QuizServerImplLogger");  
+		FileHandler fh;  
+
+		try {  
+			fh = new FileHandler("server.log", true);			
+			logger.addHandler(fh);
+			SimpleFormatter formatter = new SimpleFormatter();  
+			fh.setFormatter(formatter);  
+
+		} catch (SecurityException e) {  
+			e.printStackTrace();  
+		} catch (IOException e) {  
+			e.printStackTrace();  
+		}  
+		logger.info("Server Started");
+		
+		Runtime.getRuntime().addShutdownHook(new ShutdownHook(logger));
 	}
 
 
