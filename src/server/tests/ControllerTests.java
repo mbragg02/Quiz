@@ -1,19 +1,16 @@
 package server.tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.rmi.RemoteException;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import server.interfaces.Question;
 import server.interfaces.Quiz;
 import server.interfaces.Server;
 import server.models.ServerImpl;
+
+import java.rmi.RemoteException;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class ControllerTests {
 
@@ -26,19 +23,19 @@ public class ControllerTests {
 
 	// Create new Quiz
 	@Test
-	public void CreateQuiztest() throws Exception {
+	public void createQuiztest() throws Exception {
 		int quizID = server.createQuiz("test quiz");
 		assertEquals(0, quizID);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void CreateQuizBlankNametest() throws Exception {
+	public void createQuizBlankNametest() throws Exception {
 		server = new ServerImpl();
 		server.createQuiz("");
 	}
 
 	@Test(expected = NullPointerException.class)
-	public void CreateQuizNullNametest() throws Exception{
+	public void createQuizNullNametest() throws Exception{
 		server = new ServerImpl();
 		server.createQuiz(null);
 	}
