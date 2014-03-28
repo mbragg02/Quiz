@@ -1,9 +1,13 @@
 package server.models;
 
-import java.io.Serializable;
-
 import server.interfaces.Game;
 
+import java.io.Serializable;
+
+/**
+ * @author Michael Bragg
+ * Class for a game played by a "player client". A game is initialized with a player name and unique ID.
+ */
 public class GameImpl implements Game, Serializable {
 
 	private static final long serialVersionUID = -3849918143166439866L;
@@ -19,34 +23,20 @@ public class GameImpl implements Game, Serializable {
 		this.score = 0;
 	}
 
-
 	@Override
 	public int getGameID() {
 		return gameID;
 	}
-
-
-	private void setGameID(int gameID) {
-		this.gameID = gameID;
-	}
-
 
 	@Override
 	public String getPlayerName() {
 		return playerName;
 	}
 
-
-	private void setPlayerName(String playerName) {
-		this.playerName = playerName;
-	}
-
-
 	@Override
 	public int getScore() {
 		return score;
 	}
-
 
 	@Override
 	public void setPlayerScoreWithDate(int score, String date) {
@@ -68,5 +58,13 @@ public class GameImpl implements Game, Serializable {
 	public void setNumberOfQuestions(int numberOfQuestions) {
 		this.numberOfQuestions = numberOfQuestions;
 	}
+
+    private void setGameID(int gameID) {
+        this.gameID = gameID;
+    }
+
+    private void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
 
 }

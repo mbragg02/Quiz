@@ -13,14 +13,14 @@ import java.util.NoSuchElementException;
 
 public class PlayerClientControllerImpl implements PlayerClientController {
 
-	private Server model;
+	private final Server model;
 	private List<Question> questions;
 	private int score;
 	private int answer;
 	private int quizID;
 	private int gameID;
 	private String playerName;
-	private PlayerClientView view;
+	private final PlayerClientView view;
 
 	public PlayerClientControllerImpl(Server model, PlayerClientView view) {
 		this.model = model;	

@@ -4,6 +4,10 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
+/**
+ * @author Michael Bragg
+ * The method decrelations for the quiz server.
+ */
 public interface Server extends Remote {
 
 	int createQuiz(String quizName) throws RemoteException, IllegalArgumentException, NullPointerException;
@@ -27,8 +31,5 @@ public interface Server extends Remote {
 	List<Question> getQuizQuestionsAndAnswers(int quizID) throws RemoteException, NullPointerException;
 
 	List<String> getAnswersForQuestion(int quizID, int questionID) throws RemoteException, NullPointerException;
-	
-	
-	
 
 }

@@ -1,16 +1,16 @@
 package setupClient.controllers;
 
-import java.rmi.RemoteException;
-
 import setupClient.views.MenuView;
+
+import java.rmi.RemoteException;
 
 public class MenuController extends Controller {
 	
 	private boolean running;
-	private Controller createQuizController;
-	private Controller viewActiveQuizesController;
-	private Controller endQuizContoller;
-	private MenuView view;
+	private final Controller createQuizController;
+	private final Controller viewActiveQuizesController;
+	private final Controller endQuizContoller;
+	private final MenuView view;
 	
 	public MenuController(Controller createContoller, Controller endContoller, Controller viewContoller, MenuView view ) {
 		this.createQuizController 		= createContoller;

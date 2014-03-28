@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public abstract class SetupClientView {
 	
-	private Scanner in = new Scanner(System.in);
+	private final Scanner in = new Scanner(System.in);
 	
 	public void printInvalidInputMessage() {
 		System.out.println("Not a valid option. Please try again");

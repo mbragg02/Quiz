@@ -6,6 +6,8 @@ import server.interfaces.Question;
 import server.interfaces.Quiz;
 import server.interfaces.Server;
 import server.models.ServerImpl;
+import server.Factories.Factory;
+import server.Factories.IDFactory;
 
 import java.rmi.RemoteException;
 import java.util.List;
@@ -15,10 +17,14 @@ import static org.junit.Assert.*;
 public class ControllerTests {
 
 	private Server server;
+    private IDFactory idFact;
+    private Factory factory;
 
 	@Before
 	public void before() throws RemoteException {
-		this.server = new ServerImpl();
+        this.idFact = IDFactory.getInstance();
+        this.factory = Factory.getInstance();
+		this.server = new ServerImpl(factory, idFact);
 	}
 
 	// Create new Quiz
@@ -30,13 +36,13 @@ public class ControllerTests {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void createQuizBlankNametest() throws Exception {
-		server = new ServerImpl();
+		server = new ServerImpl(factory, idFact);
 		server.createQuiz("");
 	}
 
 	@Test(expected = NullPointerException.class)
 	public void createQuizNullNametest() throws Exception{
-		server = new ServerImpl();
+		server = new ServerImpl(factory, idFact);
 		server.createQuiz(null);
 	}
 

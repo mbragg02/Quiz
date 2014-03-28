@@ -11,7 +11,7 @@ import java.util.List;
 public class CreateQuizController extends Controller {
 	
 	private int quizID;	
-	private CreateQuizView view;
+	private final CreateQuizView view;
 	
 	public CreateQuizController(Server model, CreateQuizView view) {
 		super(model);

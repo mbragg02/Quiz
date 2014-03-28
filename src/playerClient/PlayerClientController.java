@@ -10,8 +10,8 @@ public interface PlayerClientController {
 
 	void playQuiz() throws RemoteException;
 
-	void setPlayerQuiz() throws RemoteException;
+	void setPlayerQuiz();
 
-	void submitScore() throws RemoteException;
+	void submitScore();
 
 }

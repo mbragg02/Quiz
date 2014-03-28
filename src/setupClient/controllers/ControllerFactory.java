@@ -24,13 +24,13 @@ public class ControllerFactory {
 		this.model = model;
 	}
 	
-	public Controller getCreateQuizController(CreateQuizView view) {
+	Controller getCreateQuizController(CreateQuizView view) {
 		return new CreateQuizController(model, view);
 	}
-	public Controller getEndQuizController(EndQuizView view) {
+	Controller getEndQuizController(EndQuizView view) {
 		return new EndQuizController(model, view);
 	}
-	public Controller getViewQuizController(ViewQuizView view) {
+	Controller getViewQuizController(ViewQuizView view) {
 		return new ViewQuizController(model, view);
 	}
 	public Controller getMenuController(MenuView menuView, CreateQuizView Createview, EndQuizView endView, ViewQuizView view ) {

@@ -1,14 +1,14 @@
 package setupClient.controllers;
 
-import java.rmi.RemoteException;
-import java.util.List;
-
 import server.interfaces.Game;
 import server.interfaces.Server;
 import setupClient.views.EndQuizView;
 
+import java.rmi.RemoteException;
+import java.util.List;
+
 public class EndQuizController extends Controller{
-	private EndQuizView view;
+	private final EndQuizView view;
 	
 	public EndQuizController(Server model, EndQuizView view) {
 		super(model);
