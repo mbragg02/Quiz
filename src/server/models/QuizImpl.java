@@ -48,8 +48,10 @@ public class QuizImpl implements Quiz, Serializable {
     public Question getQuestion(int questionId) {
 
         for (Question question : questions) {
-            if (question.getQuestionID() == questionId)
+            if (question.getQuestionID() == questionId) {
                 return question;
+            }
+
         }
         return null;
     }

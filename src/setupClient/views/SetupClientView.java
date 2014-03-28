@@ -2,6 +2,10 @@ package setupClient.views;
 
 import java.util.Scanner;
 
+/**
+ * @author Michael Bragg
+ * View for general messages required for the set-up client.
+ */
 public abstract class SetupClientView {
 	
 	private final Scanner in = new Scanner(System.in);

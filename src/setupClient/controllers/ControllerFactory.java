@@ -2,40 +2,49 @@ package setupClient.controllers;
 
 import server.interfaces.Server;
 import setupClient.views.CreateQuizView;
+import setupClient.views.DisplayQuizView;
 import setupClient.views.EndQuizView;
 import setupClient.views.MenuView;
-import setupClient.views.ViewQuizView;
 
+/**
+ * @author Michael Bragg
+ *         Factory for the controller actions for the set-up client
+ */
 public class ControllerFactory {
-	
-	private static ControllerFactory controllerFactory;
-	private Server model;
-	
-	private ControllerFactory(){}
-	
-	public static ControllerFactory getInstance() {
-		if (controllerFactory == null) {
-			controllerFactory = new ControllerFactory();
-		}
-		return controllerFactory;
-	}
-	
-	public void setServer(Server model) {
-		this.model = model;
-	}
-	
-	Controller getCreateQuizController(CreateQuizView view) {
-		return new CreateQuizController(model, view);
-	}
-	Controller getEndQuizController(EndQuizView view) {
-		return new EndQuizController(model, view);
-	}
-	Controller getViewQuizController(ViewQuizView view) {
-		return new ViewQuizController(model, view);
-	}
-	public Controller getMenuController(MenuView menuView, CreateQuizView Createview, EndQuizView endView, ViewQuizView view ) {
-		return new MenuController(getCreateQuizController(Createview), getEndQuizController(endView), getViewQuizController(view), menuView);
-	}
-	
+
+    private static ControllerFactory controllerFactory;
+    private Server model;
+
+    private ControllerFactory() {
+        // Private empty constructor for factory
+    }
+
+    public static ControllerFactory getInstance() {
+        if (controllerFactory == null) {
+            controllerFactory = new ControllerFactory();
+        }
+        return controllerFactory;
+    }
+
+    public void setServer(Server model) {
+        this.model = model;
+    }
+
+    Controller getCreateQuizController(CreateQuizView view) {
+        return new CreateQuizImpl(model, view);
+    }
+
+    Controller getEndQuizController(EndQuizView view) {
+        return new EndQuiz(model, view);
+    }
+
+    Controller getViewQuizController(DisplayQuizView view) {
+        return new DisplayQuiz(model, view);
+    }
+
+    public Controller getMenuController(MenuView menuView, CreateQuizView Createview, EndQuizView endView, DisplayQuizView view) {
+        return new MenuController(getCreateQuizController(Createview), getEndQuizController(endView), getViewQuizController(view), menuView);
+    }
+
 
 }

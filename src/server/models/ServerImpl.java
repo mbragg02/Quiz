@@ -1,7 +1,7 @@
 package server.models;
 
 import server.Factories.Factory;
-import server.Factories.IDFactory;
+import server.Factories.IdFactory;
 import server.interfaces.Game;
 import server.interfaces.Question;
 import server.interfaces.Quiz;
@@ -20,7 +20,7 @@ import java.util.logging.SimpleFormatter;
 
 /**
  * @author Michael Bragg
- *         The Quiz server.
+ * The Quiz server.
  */
 public class ServerImpl extends UnicastRemoteObject implements Server {
 
@@ -31,12 +31,12 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
     private DateFormat dateFormat;
     private Logger logger;
-    private IDFactory idFact;
+    private IdFactory idFact;
     private Factory fact;
     private Map<Integer, Quiz> quizes;
     private Map<Integer, List<Game>> games;
 
-    public ServerImpl(Factory fact, IDFactory idFact) throws RemoteException {
+    public ServerImpl(Factory fact, IdFactory idFact) throws RemoteException {
         super();
         this.idFact = idFact;
         this.fact = fact;
@@ -56,7 +56,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
             SimpleFormatter formatter = new SimpleFormatter();
             fileHandler.setFormatter(formatter);
         } catch (SecurityException | IOException e) {
-            e.printStackTrace();
+            logger.severe(e.toString());
         }
         logger.info("Server Started");
 

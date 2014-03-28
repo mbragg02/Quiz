@@ -1,5 +1,9 @@
 package setupClient.views;
 
+/**
+ * @author Michael Bragg
+ * View for the set-up clients main menu
+ */
 public class MenuView extends SetupClientView{
 	
 	public void printMainMenu() {
@@ -16,8 +20,6 @@ public class MenuView extends SetupClientView{
 	}
 	
 	public void printExitMessage() {
-		System.out.println("Exit succesfull");
+		System.out.println("Exit successful");
 	}
-	
-
 }

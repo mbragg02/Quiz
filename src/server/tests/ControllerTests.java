@@ -2,12 +2,12 @@ package server.tests;
 
 import org.junit.Before;
 import org.junit.Test;
+import server.Factories.IdFactory;
 import server.interfaces.Question;
 import server.interfaces.Quiz;
 import server.interfaces.Server;
 import server.models.ServerImpl;
 import server.Factories.Factory;
-import server.Factories.IDFactory;
 
 import java.rmi.RemoteException;
 import java.util.List;
@@ -17,12 +17,12 @@ import static org.junit.Assert.*;
 public class ControllerTests {
 
 	private Server server;
-    private IDFactory idFact;
+    private IdFactory idFact;
     private Factory factory;
 
 	@Before
 	public void before() throws RemoteException {
-        this.idFact = IDFactory.getInstance();
+        this.idFact = IdFactory.getInstance();
         this.factory = Factory.getInstance();
 		this.server = new ServerImpl(factory, idFact);
 	}

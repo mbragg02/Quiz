@@ -1,9 +1,9 @@
 package server;
 
+import server.Factories.IdFactory;
 import server.interfaces.Server;
 import server.models.ServerImpl;
 import server.Factories.Factory;
-import server.Factories.IDFactory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -43,7 +43,7 @@ public class ServerLauncher {
     }
 
     private static void launch() {
-        IDFactory idFact = IDFactory.getInstance();
+        IdFactory idFact = IdFactory.getInstance();
         Factory fact = Factory.getInstance();
 
         if (System.getSecurityManager() == null) {
