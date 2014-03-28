@@ -1,4 +1,4 @@
-package playerClient;
+package playerClient.interfaces;
 
 import java.rmi.RemoteException;
 
@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
  * @author Michael Bragg
  * Player client interface.
  */
-public interface PlayerClientController {
+public interface PlayerClient {
 
     /**
      * Launches the player client

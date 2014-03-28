@@ -1,6 +1,7 @@
 package playerClient;
 
 import playerClient.controllers.PlayerClientImpl;
+import playerClient.interfaces.PlayerClient;
 import playerClient.views.PlayerClientView;
 import server.interfaces.Server;
 
@@ -36,7 +37,7 @@ public class PlayerClientLauncher {
         Server model = (Server) service;
         PlayerClientView view = new PlayerClientView();
 
-        PlayerClientController client = new PlayerClientImpl(model, view);
+        PlayerClient client = new PlayerClientImpl(model, view);
         client.launch();
     }
 }

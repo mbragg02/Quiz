@@ -1,6 +1,6 @@
 package playerClient.controllers;
 
-import playerClient.PlayerClientController;
+import playerClient.interfaces.PlayerClient;
 import playerClient.views.PlayerClientView;
 import server.interfaces.Question;
 import server.interfaces.Quiz;
@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
  * @author Michael Bragg
  * Class for a player client.
  */
-public class PlayerClientImpl implements PlayerClientController {
+public class PlayerClientImpl implements PlayerClient {
 
     private final Server model;
     private final PlayerClientView view;
