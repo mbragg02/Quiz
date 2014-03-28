@@ -1,12 +1,12 @@
 package setupClient.controllers;
 
-import java.rmi.RemoteException;
-import java.util.InputMismatchException;
-import java.util.List;
-
 import server.interfaces.Question;
 import server.interfaces.Server;
 import setupClient.views.CreateQuizView;
+
+import java.rmi.RemoteException;
+import java.util.InputMismatchException;
+import java.util.List;
 
 public class CreateQuizController extends Controller {
 	
@@ -57,12 +57,10 @@ public class CreateQuizController extends Controller {
 				try {
 					questionId = model.addQuestionToQuiz(quizID, userQuestion);
 					addAnswers(questionId);
-				} catch (IllegalArgumentException e) {
-					System.out.println(e.getMessage());
-				} catch (NullPointerException e) {
+				} catch (IllegalArgumentException | NullPointerException e) {
 					System.out.println(e.getMessage());
 				}
-			}
+            }
 		} while (true);
 	}
 
@@ -81,13 +79,11 @@ public class CreateQuizController extends Controller {
 			} else {
 				try {
 					model.addAnswerToQuestion(quizID, questionId, userInput);
-				} catch (IllegalArgumentException e) {
-					System.out.println(e.getMessage());
-				} catch (NullPointerException e) {
+				} catch (IllegalArgumentException | NullPointerException e) {
 					System.out.println(e.getMessage());
 				}
 
-			}
+            }
 		} while (true);
 		
 		selectCorrectAnswer(questionId);

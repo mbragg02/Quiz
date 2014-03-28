@@ -1,12 +1,12 @@
 package playerClient;
 
+import server.interfaces.Server;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-
-import server.interfaces.Server;
 
 public class PlayerClientLauncher {
 
@@ -18,7 +18,7 @@ public class PlayerClientLauncher {
 
 	private void launch() throws RemoteException {
 		
-		Remote service = null;
+		Remote service;
 		String serverAddress = "//127.0.0.1:1099/quiz";
 		try {
 			service = Naming.lookup(serverAddress);

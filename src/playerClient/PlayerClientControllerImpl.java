@@ -1,15 +1,15 @@
 package playerClient;
 
 
+import server.interfaces.Question;
+import server.interfaces.Quiz;
+import server.interfaces.Server;
+
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.NoSuchElementException;
-
-import server.interfaces.Question;
-import server.interfaces.Quiz;
-import server.interfaces.Server;
 
 public class PlayerClientControllerImpl implements PlayerClientController {
 
@@ -25,7 +25,7 @@ public class PlayerClientControllerImpl implements PlayerClientController {
 	public PlayerClientControllerImpl(Server model, PlayerClientView view) {
 		this.model = model;	
 		this.view = view;
-		questions = new ArrayList<Question>();
+		questions = new ArrayList<>();
 		score = 0;
 		answer = 0;
 		quizID = 0;
@@ -38,8 +38,7 @@ public class PlayerClientControllerImpl implements PlayerClientController {
 
 		if (model.getActiveQuizes().isEmpty()) {
 			view.displayNoActiveQuizesMessage();
-			return;
-		} else {
+        } else {
 			setPlayerName();
 			displayActiveQuizzes();
 			setPlayerQuiz();	
@@ -134,7 +133,7 @@ public class PlayerClientControllerImpl implements PlayerClientController {
 	}
 
 	private void selectAnswer() {
-		int playerAnswer = 0;
+		int playerAnswer;
 		do {
 			view.displayAnswerRequest();
 			try {

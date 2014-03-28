@@ -1,17 +1,17 @@
 package setupClient;
 
+import server.interfaces.Server;
+import setupClient.controllers.ControllerFactory;
+import setupClient.views.CreateQuizView;
+import setupClient.views.EndQuizView;
+import setupClient.views.MenuView;
+import setupClient.views.ViewQuizView;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-
-import server.interfaces.Server;
-import setupClient.controllers.*;
-import setupClient.views.CreateQuizView;
-import setupClient.views.EndQuizView;
-import setupClient.views.MenuView;
-import setupClient.views.ViewQuizView;
 
 
 public class SetupClientLauncher {
@@ -23,7 +23,7 @@ public class SetupClientLauncher {
 	}
 	
 	private void launch() throws RemoteException {
-		Remote service = null;
+		Remote service;
 		String serverAddress = "//127.0.0.1:1099/quiz";
 		try {
 			service = Naming.lookup(serverAddress);

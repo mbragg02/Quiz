@@ -1,23 +1,19 @@
 package server.models;
 
+import server.interfaces.Game;
+import server.interfaces.Question;
+import server.interfaces.Quiz;
+import server.interfaces.Server;
+
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
-
-import server.interfaces.Game;
-import server.interfaces.Question;
-import server.interfaces.Quiz;
-import server.interfaces.Server;
 
 public class ServerImpl extends UnicastRemoteObject implements Server {
 
@@ -39,8 +35,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		this.quizIDs = 0;
 		this.questionIDs = 0;
 		this.gameIDs = 0;
-		quizes = new HashMap<Integer, Quiz>();
-		games = new HashMap<Integer, List<Game>>();
+		quizes = new HashMap<>();
+		games = new HashMap<>();
 		serverLogInitialize();
 
 	}
@@ -136,7 +132,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
 	@Override
 	public List<Quiz> getActiveQuizes() {
-		List<Quiz> activeQuizes = new ArrayList<Quiz>();
+		List<Quiz> activeQuizes = new ArrayList<>();
 		for (Quiz quiz : quizes.values()) {
 			if (quiz.isActive()) {
 				activeQuizes.add(quiz);
@@ -159,7 +155,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		List<Game> result;
 
 		if (playedGames == null) {
-			result = new ArrayList<Game>();
+			result = new ArrayList<>();
 		} else {
 			result = getHighscoreGames(playedGames);
 		}
@@ -170,7 +166,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
 	private List<Game> getHighscoreGames(List<Game> gamesList) {
 		int highscore = 0;
-		List<Game> result = new ArrayList<Game>();
+		List<Game> result = new ArrayList<>();
 
 		// Calculate the highest score
 		for (Game game : gamesList) {
@@ -208,7 +204,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		List<Game> gamesList = games.get(quizID);
 
 		if (gamesList == null) {
-			gamesList = new ArrayList<Game>();
+			gamesList = new ArrayList<>();
 			games.put(quizID, gamesList);
 		}
 
@@ -284,12 +280,10 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 			SimpleFormatter formatter = new SimpleFormatter();  
 			fh.setFormatter(formatter);  
 
-		} catch (SecurityException e) {  
+		} catch (SecurityException | IOException e) {
 			e.printStackTrace();  
-		} catch (IOException e) {  
-			e.printStackTrace();  
-		}  
-		logger.info("Server Started");
+		}
+        logger.info("Server Started");
 		
 		Runtime.getRuntime().addShutdownHook(new ShutdownHook(logger));
 	}

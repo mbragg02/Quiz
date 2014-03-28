@@ -4,11 +4,7 @@ import java.util.Scanner;
 
 public class PlayerClientView {
 	
-	private Scanner in;
-	
-	public PlayerClientView() {
-		in = new Scanner(System.in);
-	}
+	private Scanner in = new Scanner(System.in);
 	
 	public void displayWelcomeMessage() {
 		System.out.println("Welcome to Quiz Player Client");

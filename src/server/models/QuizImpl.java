@@ -1,11 +1,11 @@
 package server.models;
 
+import server.interfaces.Question;
+import server.interfaces.Quiz;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import server.interfaces.Question;
-import server.interfaces.Quiz;
 
 public class QuizImpl implements Quiz, Serializable {
 	
@@ -18,7 +18,7 @@ public class QuizImpl implements Quiz, Serializable {
 	public QuizImpl(int quizID, String quizName) {
 		setQuizID(quizID);
 		setQuizName(quizName);
-		questions = new ArrayList<Question>();	
+		questions = new ArrayList<>();
 	}
 
 	@Override

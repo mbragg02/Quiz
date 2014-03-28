@@ -1,5 +1,8 @@
 package server;
 
+import server.interfaces.Server;
+import server.models.ServerImpl;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,9 +12,6 @@ import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.util.Properties;
-
-import server.interfaces.Server;
-import server.models.ServerImpl;
 
 public class ServerLauncher {
 	private static String registryHost;
@@ -43,12 +43,10 @@ public class ServerLauncher {
 			Server server = new ServerImpl();
 
 			Naming.rebind(registryHost + serviceName, server);			
-		} catch (MalformedURLException ex) {
+		} catch (MalformedURLException | RemoteException ex) {
 			ex.printStackTrace();
-		} catch (RemoteException ex) {
-			ex.printStackTrace();
-		} 
-	}
+		}
+    }
 
 
 }
