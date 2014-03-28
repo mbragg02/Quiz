@@ -1,20 +1,20 @@
 package playerClient.tests;
 
-import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+import playerClient.PlayerClientController;
+import playerClient.controllers.PlayerClientControllerImpl;
+import playerClient.controllers.PlayerClientImpl;
+import playerClient.views.PlayerClientView;
+import server.interfaces.Server;
+import server.models.ServerImpl;
 
 import java.rmi.RemoteException;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-import playerClient.PlayerClientController;
-import playerClient.PlayerClientControllerImpl;
-import playerClient.PlayerClientView;
-import server.interfaces.Server;
-import server.models.ServerImpl;
-import static org.mockito.Mockito.*;
-
-public class PlayerClientControllerImplTest {
+public class PlayerClientImplTest {
 
 	private Server model;
 	private PlayerClientController client;
@@ -26,7 +26,7 @@ public class PlayerClientControllerImplTest {
 		this.view = mock(PlayerClientView.class);
 		when(view.getNextIntFromConsole()).thenReturn(1);
 		when(view.getNextLineFromConsole()).thenReturn("Michael");
-		this.client = new PlayerClientControllerImpl(model, view);
+		this.client = new PlayerClientImpl(model, view);
 		
 	}
 

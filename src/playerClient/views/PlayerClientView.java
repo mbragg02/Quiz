@@ -1,4 +1,4 @@
-package playerClient;
+package playerClient.views;
 
 import java.util.Scanner;
 
