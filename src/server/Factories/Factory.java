@@ -7,6 +7,8 @@ import server.models.GameImpl;
 import server.models.QuestionImpl;
 import server.models.QuizImpl;
 
+import java.util.Properties;
+
 /**
  * Created by Michael Bragg
  * Factory to create quizzes, questions and games
@@ -38,4 +40,8 @@ public class Factory {
         return new GameImpl(id, playerName);
     }
 
+
+    public Properties getProperties() {
+        return new Properties();
+    }
 }

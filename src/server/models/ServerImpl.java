@@ -1,22 +1,19 @@
 package server.models;
 
 import server.Factories.Factory;
-import server.Factories.IdFactory;
 import server.interfaces.Game;
 import server.interfaces.Question;
 import server.interfaces.Quiz;
 import server.interfaces.Server;
-import server.utilities.ShutdownHook;
 
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.logging.FileHandler;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 /**
  * @author Michael Bragg
@@ -25,58 +22,37 @@ import java.util.logging.SimpleFormatter;
 public class ServerImpl extends UnicastRemoteObject implements Server {
 
     private static final long serialVersionUID = -8930948399199628273L;
-    private static final String LOG_FILENAME = "server.log";
     private static final String DATE_FORMAT = "yyyy/MM/dd HH:mm:ss";
     private static final int ZERO_INDEX = 0;
 
     private DateFormat dateFormat;
     private Logger logger;
-    private IdFactory idFact;
     private Factory fact;
-    private Map<Integer, Quiz> quizes;
-    private Map<Integer, List<Game>> games;
+    private Data data;
 
-    public ServerImpl(Factory fact, IdFactory idFact) throws RemoteException {
+    public ServerImpl(Factory fact,Logger logger, Data data) throws RemoteException {
         super();
-        this.idFact = idFact;
         this.fact = fact;
+        this.logger = logger;
+        this.data = data;
         dateFormat = new SimpleDateFormat(DATE_FORMAT);
-        quizes = new HashMap<>();
-        games = new HashMap<>();
-        serverLogInitialize();
     }
 
-    private void serverLogInitialize() {
-        logger = Logger.getLogger("QuizServerImplLogger");
-        FileHandler fileHandler;
 
-        try {
-            fileHandler = new FileHandler(LOG_FILENAME, true);
-            logger.addHandler(fileHandler);
-            SimpleFormatter formatter = new SimpleFormatter();
-            fileHandler.setFormatter(formatter);
-        } catch (SecurityException | IOException e) {
-            logger.severe(e.toString());
-        }
-        logger.info("Server Started");
-
-        Runtime.getRuntime().addShutdownHook(new ShutdownHook(logger));
-    }
+    // Setup methods
 
     @Override
     public int createQuiz(String quizName)
             throws IllegalArgumentException, NullPointerException {
-
         if (quizName == null) {
             throw new NullPointerException("Quiz name was null");
         }
-
         if (quizName.isEmpty()) {
             throw new IllegalArgumentException("Quiz name can not be blank");
         }
 
-        Quiz quiz = fact.getQuiz(idFact.getQuizID(), quizName);
-        quizes.put(quiz.getQuizID(), quiz);
+        Quiz quiz = fact.getQuiz(data.getQuizID(), quizName);
+        data.addQuiz(quiz.getQuizID(), quiz);
         logger.info("Quiz \"" + quizName + "\" created.");
         return quiz.getQuizID();
     }
@@ -90,9 +66,9 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         }
 
         validateQuizID(quizID);
-        Question question = fact.getQuestion(idFact.getQuestionID(), quizQuestion);
-        quizes.get(quizID).addQuestion(question);
-        logger.info("Question added to quiz: \"" + quizes.get(quizID).getQuizName() + "\"");
+        Question question = fact.getQuestion(data.getQuestionID(), quizQuestion);
+        data.getQuiz(quizID).addQuestion(question);
+        logger.info("Question added to quiz: \"" +  data.getQuiz(quizID).getQuizName() + "\"");
         return question.getQuestionID();
     }
 
@@ -103,45 +79,45 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         if (quizAnswer.isEmpty()) {
             throw new IllegalArgumentException("Answer can not be blank");
         }
-        quizes.get(quizID).getQuestion(questionID).addAnswer(quizAnswer);
-        logger.info("Answer added to quiz: \"" + quizes.get(quizID).getQuizName() + "\"");
+        data.getQuiz(quizID).getQuestion(questionID).addAnswer(quizAnswer);
+        logger.info("Answer added to quiz: \"" + data.getQuiz(quizID).getQuizName() + "\"");
     }
 
     @Override
     public void setCorrectAnswer(int quizID, int questionID, int correctAnswer) throws NullPointerException {
         validateQuizAndQuestionID(quizID, questionID);
-        int numberOfAnswers = quizes.get(quizID).getQuestion(questionID).getAnswers().size();
-
+        int numberOfAnswers = data.getQuiz(quizID).getQuestion(questionID).getAnswers().size();
         // numberOfAnswers - 1 to get the highest answer index
         if (correctAnswer > numberOfAnswers - 1 || correctAnswer < 0) {
             throw new IllegalArgumentException("Not a valid answer");
         }
-        quizes.get(quizID).getQuestion(questionID).setCorrectAnswerID(correctAnswer);
+        data.getQuiz(quizID).getQuestion(questionID).setCorrectAnswerID(correctAnswer);
     }
 
     @Override
     public List<Question> getQuizQuestionsAndAnswers(int quizID) throws NullPointerException {
         validateQuizID(quizID);
-        return quizes.get(quizID).getQuestions();
+        return data.getQuiz(quizID).getQuestions();
     }
 
     @Override
     public List<String> getAnswersForQuestion(int quizID, int questionID) throws NullPointerException {
         validateQuizAndQuestionID(quizID, questionID);
-        return quizes.get(quizID).getQuestion(questionID).getAnswers();
+        return data.getQuiz(quizID).getQuestion(questionID).getAnswers();
     }
 
     @Override
     public void setQuizActive(int quizID) {
         validateQuizID(quizID);
-        quizes.get(quizID).setActive(true);
-        logger.info("Quiz \"" + quizes.get(quizID).getQuizName() + "\" set ACTIVE");
+        data.getQuiz(quizID).setActive(true);
+        logger.info("Quiz \"" + data.getQuiz(quizID).getQuizName() + "\" set ACTIVE");
     }
 
     @Override
     public List<Quiz> getActiveQuizes() {
         List<Quiz> activeQuizes = new ArrayList<>();
-        for (Quiz quiz : quizes.values()) {
+
+        for (Quiz quiz : data.getQuizzes().values()) {
             if (quiz.isActive()) {
                 activeQuizes.add(quiz);
             }
@@ -155,42 +131,43 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
         validateActiveQuizID(quizID);
 
-        Quiz quiz = quizes.get(quizID);
+        Quiz quiz = data.getQuiz(quizID);
 
         quiz.setActive(false);
 
-        List<Game> playedGames = games.get(quizID);
+        List<Game> playedGames = data.getGame(quizID);
         List<Game> result;
 
         if (playedGames == null) {
             result = new ArrayList<>();
         } else {
-            result = getHighscoreGames(playedGames);
+            result = getHighScoreGames(playedGames);
         }
-        logger.info("Quiz \"" + quizes.get(quizID).getQuizName() + "\" set INACTIVE");
+        logger.info("Quiz \"" + data.getQuiz(quizID).getQuizName() + "\" set INACTIVE");
 
         return result;
     }
 
-    private List<Game> getHighscoreGames(List<Game> gamesList) {
-        int highscore = 0;
+    private List<Game> getHighScoreGames(List<Game> gamesList) {
+        int highScore = 0;
         List<Game> result = new ArrayList<>();
 
         // Calculate the highest score
         for (Game game : gamesList) {
-            if (game.getScore() > highscore) {
-                highscore = game.getScore();
+            if (game.getScore() > highScore) {
+                highScore = game.getScore();
             }
         }
         // Find the games with that high score
         for (Game game : gamesList) {
-            if (game.getScore() == highscore) {
+            if (game.getScore() == highScore) {
                 result.add(game);
             }
         }
         return result;
     }
 
+    // Play methods
     @Override
     public int startGame(int quizID, String playerName)
             throws IllegalArgumentException, NullPointerException {
@@ -203,15 +180,15 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
             throw new IllegalArgumentException("Name can not begin with a number");
         }
 
-        Game game = fact.getGame(idFact.getGameID(), playerName);
-        Quiz quiz = quizes.get(quizID);
+        Game game = fact.getGame(data.getGameID(), playerName);
+        Quiz quiz = data.getQuiz(quizID);
         game.setNumberOfQuestions(quiz.getQuestions().size());
 
-        List<Game> gamesList = games.get(quizID);
+        List<Game> gamesList = data.getGame(quizID);
 
         if (gamesList == null) {
             gamesList = new ArrayList<>();
-            games.put(quizID, gamesList);
+            data.addGame(quizID, gamesList);
         }
 
         gamesList.add(game);
@@ -222,7 +199,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
     @Override
     public void submitScore(int quizID, int gameID, int score) throws NullPointerException {
         validateQuizAndGameID(quizID, gameID);
-        List<Game> gamesList = games.get(quizID);
+        List<Game> gamesList = data.getGame(quizID);
+
 
         for (Game game : gamesList) {
             if (game.getGameID() == gameID) {
@@ -233,14 +211,15 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         }
     }
 
+    // Validations
     private void validateQuizID(int quizID) throws NullPointerException {
-        if (!quizes.containsKey(quizID)) {
+        if (!data.getQuizzes().containsKey(quizID)) {
             throw new NullPointerException("Could not find a quiz with the ID of: " + quizID);
         }
     }
 
     private void validateActiveQuizID(int quizID) throws NullPointerException {
-        Quiz quiz = quizes.get(quizID);
+        Quiz quiz = data.getQuiz(quizID);
         validateQuizID(quizID);
         if (!quiz.isActive()) {
             throw new IllegalArgumentException("Quiz not active");
@@ -249,7 +228,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
     private void validateQuizAndQuestionID(int quizID, int questionID) throws NullPointerException {
         validateQuizID(quizID);
-        Quiz quiz = quizes.get(quizID);
+        Quiz quiz = data.getQuiz(quizID);
         if (quiz.getQuestion(questionID) == null) {
             throw new NullPointerException("Could not find a question with that ID");
         }
@@ -257,7 +236,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
     private void validateQuizAndGameID(int quizID, int gameID) {
         validateActiveQuizID(quizID);
-        List<Game> gamesList = games.get(quizID);
+        List<Game> gamesList = data.getGame(quizID);
 
         if (gamesList == null) {
             throw new NullPointerException("Could not find any games for that quiz.");
