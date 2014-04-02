@@ -52,9 +52,9 @@ public class ServerData implements Serializable {
     }
 
     public List<Game> getGame(int quizId) throws NullPointerException {
-        if (!games.containsKey(quizId)) {
-            throw new NullPointerException("Could not find any games for the quiz ID: " + quizId);
-        }
+//        if (!games.containsKey(quizId)) {
+//            throw new NullPointerException("Could not find any games for the quiz ID: " + quizId);
+//        }
         return games.get(quizId);
     }
 

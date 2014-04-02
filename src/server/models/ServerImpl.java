@@ -29,7 +29,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
     private QuizFactory factory;
     private ServerData serverData;
 
-    public ServerImpl(QuizFactory factory,Logger logger, ServerData serverData) throws RemoteException {
+    public ServerImpl(QuizFactory factory, Logger logger, ServerData serverData) throws RemoteException {
         super();
         this.factory = factory;
         this.logger = logger;
@@ -225,9 +225,9 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
         List<Game> gamesList = serverData.getGame(quizID);
 
-//        if (gamesList == null) {
-//            throw new NullPointerException("Could not find any games for that quiz.");
-//        }
+        if (gamesList == null) {
+            throw new NullPointerException("Could not find any games for that quiz.");
+        }
         Game result = null;
 
         for (Game game : gamesList) {
