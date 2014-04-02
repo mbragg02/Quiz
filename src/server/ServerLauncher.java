@@ -1,22 +1,22 @@
 package server;
 
-import server.Factories.Factory;
+import server.Factories.FileFactory;
+import server.Factories.QuizFactory;
+import server.Factories.ServerFactory;
 import server.interfaces.Server;
-import server.models.Data;
-import server.models.ServerImpl;
-import server.utilities.ShutdownHook;
+import server.models.ServerData;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.util.Arrays;
 import java.util.Properties;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 /**
  * @author Michael Bragg
@@ -26,23 +26,31 @@ public class ServerLauncher {
 
     public static final String FILENAME = "serverData.txt";
     private static final String LOG_FILENAME = "server.log";
+    private static final String SERVER_PROPERTIES_FILE = "server.properties";
     private static String registryHost;
     private static String serviceName;
     private static int port;
-    private Data data;
+    private static ServerFactory serverFactory;
+    private static FileFactory fileFactory;
+    private ServerData serverData;
     private Logger logger;
-    private static Factory factory;
 
-
+    /**
+     * Main method. Gets server properties from properties file needed before launch.
+     *
+     * @param args String[] none
+     * @throws RemoteException
+     */
     public static void main(String[] args) throws RemoteException {
 
         ServerLauncher main = new ServerLauncher();
-        factory = Factory.getInstance();
+        serverFactory = ServerFactory.getInstance();
+        fileFactory = FileFactory.getInstance();
 
-        Properties props = factory.getProperties();
+        Properties props = serverFactory.getProperties();
 
         try {
-            props.load(new FileInputStream("server.properties"));
+            props.load(fileFactory.getFileInputStream(SERVER_PROPERTIES_FILE));
             registryHost = props.getProperty("registryHost");
             serviceName = props.getProperty("serviceName");
             port = Integer.parseInt(props.getProperty("port"));
@@ -55,50 +63,78 @@ public class ServerLauncher {
         main.launch();
     }
 
+    /**
+     * Method to launch the Quiz server.
+     */
     private void launch() {
-        InitializeLog();
-        LoadServerData();
+        InitializeLog(LOG_FILENAME);
+        LoadServerData(FILENAME);
 
-        Runtime.getRuntime().addShutdownHook(new ShutdownHook(logger, data));
+        Runtime.getRuntime().addShutdownHook(serverFactory.getShutdownHook(logger, serverData));
 
         if (System.getSecurityManager() == null) {
-            System.setSecurityManager(new RMISecurityManager());
+            System.setSecurityManager(serverFactory.getRMISecurityManager());
         }
         try {
             LocateRegistry.createRegistry(port);
-            Server server = new ServerImpl(factory, logger, data);
+            Server server = serverFactory.getServer(QuizFactory.getInstance(), logger, serverData);
             Naming.rebind(registryHost + serviceName, server);
-            logger.info("Server Started");
         } catch (MalformedURLException | RemoteException ex) {
-            ex.printStackTrace();
+            logger.severe(Arrays.toString(ex.getStackTrace()));
         }
+        logger.info("Server Started");
     }
 
-    private void InitializeLog() {
+    /**
+     * Initialize the logger for the server.
+     *
+     * @param fileName String. The name of the log file.
+     */
+    private void InitializeLog(String fileName) {
         logger = Logger.getLogger("QuizServerLog");
 
+        // Remove the default logger from writing info log messages to the console.
+        logger.setUseParentHandlers(false);
+
         try {
-            FileHandler fileHandler = new FileHandler(LOG_FILENAME, true);
-            logger.addHandler(fileHandler);
-            SimpleFormatter formatter = new SimpleFormatter();
+            // Handler for writing log messages to a file.
+            Handler fileHandler = fileFactory.getFileHandler(fileName, true);
+            SimpleFormatter formatter = serverFactory.getSimpleFormatter();
             fileHandler.setFormatter(formatter);
+            fileHandler.setLevel(Level.FINE);
+
+            // Handler for writing log messages to the console. i.e Exceptions
+            Handler consoleHandler = serverFactory.getConsoleHandler();
+            consoleHandler.setFormatter(formatter);
+            consoleHandler.setLevel(Level.INFO);
+
+            // Add the fileHandler and consoleHandler to the logger.
+            logger.addHandler(fileHandler);
+            logger.addHandler(consoleHandler);
+
         } catch (SecurityException | IOException e) {
             logger.severe(e.toString());
         }
     }
 
+    /**
+     * Load the Quiz, Game and ID data from disk. If the file does not exists then
+     * initiate a new empty data store.
+     *
+     * @param fileName String. Name of the server data file.
+     */
     @SuppressWarnings("unchecked")
-    private void LoadServerData() {
-        if (new File(FILENAME).exists()) {
-            logger.info("Loading data from file: " + FILENAME);
-            try (ObjectInputStream d = new ObjectInputStream(new BufferedInputStream(new FileInputStream(FILENAME)))) {
-                data = (Data) d.readObject();
+    private void LoadServerData(String fileName) {
+        if (new File(fileName).exists()) {
+            logger.fine("Loading data from file: " + fileName);
+            try (ObjectInputStream stream = fileFactory.getObjectInputStream(fileName)) {
+                serverData = (ServerData) stream.readObject();
             } catch (IOException | ClassNotFoundException e) {
                 logger.warning(Arrays.toString(e.getStackTrace()));
             }
         } else {
             logger.info("Initialize server with zero quizzes/games");
-            data = new Data();
+            serverData = new ServerData();
         }
     }
 

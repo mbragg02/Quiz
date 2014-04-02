@@ -41,7 +41,7 @@ public class PlayerClientImpl implements PlayerClient {
     public void launch() throws RemoteException {
         view.displayWelcomeMessage();
 
-        if (model.getActiveQuizes().isEmpty()) {
+        if (model.getActiveQuizzes().isEmpty()) {
             view.displayNoActiveQuizesMessage();
         } else {
             setPlayerName();
@@ -62,7 +62,7 @@ public class PlayerClientImpl implements PlayerClient {
 
     @Override
     public void displayActiveQuizzes() throws RemoteException {
-        List<Quiz> quizzes = model.getActiveQuizes();
+        List<Quiz> quizzes = model.getActiveQuizzes();
         view.displayCurrentActiveQuizesMessage();
         for (Quiz quiz : quizzes) {
             view.displayQuizDetails(quiz.getQuizID(), quiz.getQuizName());

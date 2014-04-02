@@ -28,7 +28,7 @@ public class EndQuiz extends Controller {
      */
     @Override
     public void launch() throws RemoteException, IllegalArgumentException, NullPointerException {
-        if (model.getActiveQuizes().isEmpty()) {
+        if (model.getActiveQuizzes().isEmpty()) {
             view.printNoActiveQuizesMessage();
         } else {
             view.printQuizIDDeactivationRequest();

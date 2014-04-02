@@ -1,6 +1,6 @@
 package server.models;
 
-import server.Factories.Factory;
+import server.Factories.QuizFactory;
 import server.interfaces.Game;
 import server.interfaces.Question;
 import server.interfaces.Quiz;
@@ -9,7 +9,6 @@ import server.interfaces.Server;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,19 +26,19 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
     private DateFormat dateFormat;
     private Logger logger;
-    private Factory fact;
-    private Data data;
+    private QuizFactory factory;
+    private ServerData serverData;
 
-    public ServerImpl(Factory fact,Logger logger, Data data) throws RemoteException {
+    public ServerImpl(QuizFactory factory,Logger logger, ServerData serverData) throws RemoteException {
         super();
-        this.fact = fact;
+        this.factory = factory;
         this.logger = logger;
-        this.data = data;
-        dateFormat = new SimpleDateFormat(DATE_FORMAT);
+        this.serverData = serverData;
+        dateFormat = factory.getSimpleDataFormat(DATE_FORMAT);
     }
 
 
-    // Setup methods
+    // Methods used by the setup client.
 
     @Override
     public int createQuiz(String quizName)
@@ -51,9 +50,9 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
             throw new IllegalArgumentException("Quiz name can not be blank");
         }
 
-        Quiz quiz = fact.getQuiz(data.getQuizID(), quizName);
-        data.addQuiz(quiz.getQuizID(), quiz);
-        logger.info("Quiz \"" + quizName + "\" created.");
+        Quiz quiz = factory.getQuiz(serverData.getQuizID(), quizName);
+        serverData.addQuiz(quiz.getQuizID(), quiz);
+        logger.fine("Quiz \"" + quizName + "\" created.");
         return quiz.getQuizID();
     }
 
@@ -64,11 +63,9 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         if (quizQuestion.isEmpty()) {
             throw new IllegalArgumentException("Question can not be blank");
         }
-
-        validateQuizID(quizID);
-        Question question = fact.getQuestion(data.getQuestionID(), quizQuestion);
-        data.getQuiz(quizID).addQuestion(question);
-        logger.info("Question added to quiz: \"" +  data.getQuiz(quizID).getQuizName() + "\"");
+        Question question = factory.getQuestion(serverData.getQuestionID(), quizQuestion);
+        serverData.getQuiz(quizID).addQuestion(question);
+        logger.fine("Question added to quiz: \"" + serverData.getQuiz(quizID).getQuizName() + "\"");
         return question.getQuestionID();
     }
 
@@ -79,50 +76,48 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         if (quizAnswer.isEmpty()) {
             throw new IllegalArgumentException("Answer can not be blank");
         }
-        data.getQuiz(quizID).getQuestion(questionID).addAnswer(quizAnswer);
-        logger.info("Answer added to quiz: \"" + data.getQuiz(quizID).getQuizName() + "\"");
+        serverData.getQuiz(quizID).getQuestion(questionID).addAnswer(quizAnswer);
+        logger.fine("Answer added to quiz: \"" + serverData.getQuiz(quizID).getQuizName() + "\"");
     }
 
     @Override
     public void setCorrectAnswer(int quizID, int questionID, int correctAnswer) throws NullPointerException {
         validateQuizAndQuestionID(quizID, questionID);
-        int numberOfAnswers = data.getQuiz(quizID).getQuestion(questionID).getAnswers().size();
+        int numberOfAnswers = serverData.getQuiz(quizID).getQuestion(questionID).getAnswers().size();
         // numberOfAnswers - 1 to get the highest answer index
         if (correctAnswer > numberOfAnswers - 1 || correctAnswer < 0) {
             throw new IllegalArgumentException("Not a valid answer");
         }
-        data.getQuiz(quizID).getQuestion(questionID).setCorrectAnswerID(correctAnswer);
+        serverData.getQuiz(quizID).getQuestion(questionID).setCorrectAnswerID(correctAnswer);
     }
 
     @Override
     public List<Question> getQuizQuestionsAndAnswers(int quizID) throws NullPointerException {
-        validateQuizID(quizID);
-        return data.getQuiz(quizID).getQuestions();
+        return serverData.getQuiz(quizID).getQuestions();
     }
 
     @Override
     public List<String> getAnswersForQuestion(int quizID, int questionID) throws NullPointerException {
         validateQuizAndQuestionID(quizID, questionID);
-        return data.getQuiz(quizID).getQuestion(questionID).getAnswers();
+        return serverData.getQuiz(quizID).getQuestion(questionID).getAnswers();
     }
 
     @Override
     public void setQuizActive(int quizID) {
-        validateQuizID(quizID);
-        data.getQuiz(quizID).setActive(true);
-        logger.info("Quiz \"" + data.getQuiz(quizID).getQuizName() + "\" set ACTIVE");
+        serverData.getQuiz(quizID).setActive(true);
+        logger.fine("Quiz \"" + serverData.getQuiz(quizID).getQuizName() + "\" set ACTIVE");
     }
 
     @Override
-    public List<Quiz> getActiveQuizes() {
-        List<Quiz> activeQuizes = new ArrayList<>();
+    public List<Quiz> getActiveQuizzes() {
+        List<Quiz> activeQuizzes = new ArrayList<>();
 
-        for (Quiz quiz : data.getQuizzes().values()) {
+        for (Quiz quiz : serverData.getQuizzes().values()) {
             if (quiz.isActive()) {
-                activeQuizes.add(quiz);
+                activeQuizzes.add(quiz);
             }
         }
-        return activeQuizes;
+        return activeQuizzes;
     }
 
     @Override
@@ -131,11 +126,11 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
         validateActiveQuizID(quizID);
 
-        Quiz quiz = data.getQuiz(quizID);
+        Quiz quiz = serverData.getQuiz(quizID);
 
         quiz.setActive(false);
 
-        List<Game> playedGames = data.getGame(quizID);
+        List<Game> playedGames = serverData.getGame(quizID);
         List<Game> result;
 
         if (playedGames == null) {
@@ -143,7 +138,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         } else {
             result = getHighScoreGames(playedGames);
         }
-        logger.info("Quiz \"" + data.getQuiz(quizID).getQuizName() + "\" set INACTIVE");
+        logger.fine("Quiz \"" + serverData.getQuiz(quizID).getQuizName() + "\" set INACTIVE");
 
         return result;
     }
@@ -167,7 +162,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         return result;
     }
 
-    // Play methods
+    // Methods used by the player client.
     @Override
     public int startGame(int quizID, String playerName)
             throws IllegalArgumentException, NullPointerException {
@@ -180,67 +175,59 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
             throw new IllegalArgumentException("Name can not begin with a number");
         }
 
-        Game game = fact.getGame(data.getGameID(), playerName);
-        Quiz quiz = data.getQuiz(quizID);
+        Game game = factory.getGame(serverData.getGameID(), playerName);
+        Quiz quiz = serverData.getQuiz(quizID);
         game.setNumberOfQuestions(quiz.getQuestions().size());
 
-        List<Game> gamesList = data.getGame(quizID);
+        List<Game> gamesList = serverData.getGame(quizID);
 
         if (gamesList == null) {
             gamesList = new ArrayList<>();
-            data.addGame(quizID, gamesList);
+            serverData.addGame(quizID, gamesList);
         }
 
         gamesList.add(game);
-        logger.info("\"" + playerName.toUpperCase() + "\" is playing quiz \"" + quiz.getQuizName() + "\"");
+        logger.fine("\"" + playerName.toUpperCase() + "\" is playing quiz \"" + quiz.getQuizName() + "\"");
         return game.getGameID();
     }
 
     @Override
     public void submitScore(int quizID, int gameID, int score) throws NullPointerException {
         validateQuizAndGameID(quizID, gameID);
-        List<Game> gamesList = data.getGame(quizID);
-
+        List<Game> gamesList = serverData.getGame(quizID);
 
         for (Game game : gamesList) {
             if (game.getGameID() == gameID) {
-                Date date = new Date();
+                Date date = factory.getDate();
                 game.setPlayerScoreWithDate(score, dateFormat.format(date));
                 break;
             }
         }
     }
 
-    // Validations
-    private void validateQuizID(int quizID) throws NullPointerException {
-        if (!data.getQuizzes().containsKey(quizID)) {
-            throw new NullPointerException("Could not find a quiz with the ID of: " + quizID);
-        }
-    }
-
+    // Validations of Quiz, Questions and Games.
     private void validateActiveQuizID(int quizID) throws NullPointerException {
-        Quiz quiz = data.getQuiz(quizID);
-        validateQuizID(quizID);
+        Quiz quiz = serverData.getQuiz(quizID);
         if (!quiz.isActive()) {
             throw new IllegalArgumentException("Quiz not active");
         }
     }
 
     private void validateQuizAndQuestionID(int quizID, int questionID) throws NullPointerException {
-        validateQuizID(quizID);
-        Quiz quiz = data.getQuiz(quizID);
+        Quiz quiz = serverData.getQuiz(quizID);
         if (quiz.getQuestion(questionID) == null) {
             throw new NullPointerException("Could not find a question with that ID");
         }
     }
 
-    private void validateQuizAndGameID(int quizID, int gameID) {
+    private void validateQuizAndGameID(int quizID, int gameID) throws NullPointerException {
         validateActiveQuizID(quizID);
-        List<Game> gamesList = data.getGame(quizID);
 
-        if (gamesList == null) {
-            throw new NullPointerException("Could not find any games for that quiz.");
-        }
+        List<Game> gamesList = serverData.getGame(quizID);
+
+//        if (gamesList == null) {
+//            throw new NullPointerException("Could not find any games for that quiz.");
+//        }
         Game result = null;
 
         for (Game game : gamesList) {

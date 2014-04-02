@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentMap;
  * Created by Michael Bragg
  *
  */
-public class Data implements Serializable {
+public class ServerData implements Serializable {
 
     private ConcurrentMap<Integer, Quiz> quizzes;
     private ConcurrentMap<Integer, List<Game>> games;
@@ -20,8 +20,7 @@ public class Data implements Serializable {
     private int questionIDs;
     private int gameIDs;
 
-
-    public Data() {
+    public ServerData() {
         quizzes = new ConcurrentHashMap<>();
         games = new ConcurrentHashMap<>();
         this.quizIDs = 0;
@@ -37,29 +36,26 @@ public class Data implements Serializable {
         this.quizzes = quizzes;
     }
 
-    public ConcurrentMap<Integer, List<Game>> getGames() {
-        return games;
-    }
-
-    public void setGames(ConcurrentMap<Integer, List<Game>> games) {
-        this.games = games;
-    }
-
     public void addQuiz(int key, Quiz quiz) {
         quizzes.put(key, quiz);
     }
 
     public void addGame(int key, List<Game> gamesList) {
         games.put(key, gamesList);
-
     }
 
-    public Quiz getQuiz(int key) {
-        return quizzes.get(key);
+    public Quiz getQuiz(int quizId) throws NullPointerException {
+        if (!quizzes.containsKey(quizId)) {
+            throw new NullPointerException("Could not find a quiz with the ID of: " + quizId);
+        }
+        return quizzes.get(quizId);
     }
 
-    public List<Game> getGame(int key) {
-        return games.get(key);
+    public List<Game> getGame(int quizId) throws NullPointerException {
+        if (!games.containsKey(quizId)) {
+            throw new NullPointerException("Could not find any games for the quiz ID: " + quizId);
+        }
+        return games.get(quizId);
     }
 
     public int getQuizID() {
@@ -79,5 +75,4 @@ public class Data implements Serializable {
         ++gameIDs;
         return id;
     }
-
 }

@@ -145,7 +145,7 @@
 //	public void setAndGetQuizActiveTest() throws Exception {
 //		int quizID = server.createQuiz("test quiz 1");
 //		server.setQuizActive(quizID);
-//		List<Quiz> active = server.getActiveQuizes();
+//		List<Quiz> active = server.getActiveQuizzes();
 //		assertEquals(quizID, active.iterator().next().getQuizID());
 //	}
 //
@@ -153,15 +153,15 @@
 //	public void setQuizInactiveTest() throws Exception {
 //		int quizID = server.createQuiz("test quiz 1");
 //
-//		List<Quiz> active = server.getActiveQuizes();
+//		List<Quiz> active = server.getActiveQuizzes();
 //		assertTrue(active.isEmpty());
 //
 //		server.setQuizActive(quizID);
-//		active = server.getActiveQuizes();
+//		active = server.getActiveQuizzes();
 //		assertFalse(active.isEmpty());
 //
 //		server.setQuizInactive(quizID);
-//		active = server.getActiveQuizes();
+//		active = server.getActiveQuizzes();
 //		assertTrue(active.isEmpty());
 //	}
 //

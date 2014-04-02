@@ -7,25 +7,26 @@ import server.models.GameImpl;
 import server.models.QuestionImpl;
 import server.models.QuizImpl;
 
-import java.util.Properties;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Michael Bragg
- * Factory to create quizzes, questions and games
+ * Factory to create quizzes, questions and games.
  */
-public class Factory {
+public class QuizFactory {
 
-    private static Factory fact;
+    private static QuizFactory quizFactory;
 
-    private Factory() {
+    private QuizFactory() {
         // Private empty constructor
     }
 
-    public static Factory getInstance() {
-        if (fact == null) {
-            fact = new Factory();
+    public static QuizFactory getInstance() {
+        if (quizFactory == null) {
+            quizFactory = new QuizFactory();
         }
-        return fact;
+        return quizFactory;
     }
 
     public Quiz getQuiz(int id, String name) {
@@ -40,8 +41,11 @@ public class Factory {
         return new GameImpl(id, playerName);
     }
 
+    public SimpleDateFormat getSimpleDataFormat(String dateFormat) {
+        return new SimpleDateFormat(dateFormat);
+    }
 
-    public Properties getProperties() {
-        return new Properties();
+    public Date getDate() {
+        return new Date();
     }
 }

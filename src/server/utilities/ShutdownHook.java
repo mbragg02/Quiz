@@ -1,10 +1,9 @@
 package server.utilities;
 
 
-import server.models.Data;
+import server.Factories.FileFactory;
+import server.models.ServerData;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.logging.Logger;
@@ -16,13 +15,13 @@ import java.util.logging.Logger;
  */
 public class ShutdownHook extends Thread {
 	private final Logger logger;
-    private Data data;
+    private ServerData serverData;
     private String serverDataFileName;
 
 
-    public ShutdownHook(Logger logger, Data data) {
+    public ShutdownHook(Logger logger, ServerData serverData) {
 		this.logger = logger;
-        this.data = data;
+        this.serverData = serverData;
         this.serverDataFileName = server.ServerLauncher.FILENAME;
 	}
 
@@ -34,12 +33,10 @@ public class ShutdownHook extends Thread {
     }
 
     void save() {
-        try (ObjectOutputStream encode = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(serverDataFileName)))) {
-            encode.writeObject(data);
+        try (ObjectOutputStream stream = FileFactory.getInstance().getObjectOutputStream(serverDataFileName)) {
+            stream.writeObject(serverData);
         } catch (IOException ex) {
-            System.err.println("write error: " + ex);
+            logger.warning("Write error: " + ex);
         }
     }
-
-
 }
