@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 
 /**
  * @author Michael Bragg
- * Class for a player client.
+ *         Class for a player client.
  */
 public class PlayerClientImpl implements PlayerClient {
 

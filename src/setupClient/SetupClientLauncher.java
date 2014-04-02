@@ -1,11 +1,8 @@
 package setupClient;
 
 import server.interfaces.Server;
-import setupClient.controllers.ControllerFactory;
-import setupClient.views.CreateQuizView;
-import setupClient.views.DisplayQuizView;
-import setupClient.views.EndQuizView;
-import setupClient.views.MenuView;
+import setupClient.factories.ControllerFactory;
+import setupClient.factories.ViewFactory;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -18,7 +15,7 @@ import java.rmi.RemoteException;
  *         Set-up client launcher.
  *         Set-up client connects to the Quiz server to create quizzes.
  */
-public class SetupClientLauncher {
+class SetupClientLauncher {
 
     private static final String SERVER_ADDRESS = "//127.0.0.1:1099/quiz";
 
@@ -38,14 +35,15 @@ public class SetupClientLauncher {
 
         Server server = (Server) service;
 
-        ControllerFactory factory = ControllerFactory.getInstance();
-        factory.setServer(server);
+        ControllerFactory controllerFactory = ControllerFactory.getInstance();
+        controllerFactory.setServer(server);
 
-        MenuView menuView               = new MenuView();
-        CreateQuizView createQuizView   = new CreateQuizView();
-        EndQuizView endQuizView         = new EndQuizView();
-        DisplayQuizView displayQuizView = new DisplayQuizView();
+        ViewFactory viewFactory = ViewFactory.getInstance();
 
-        factory.getMenuController(menuView, createQuizView, endQuizView, displayQuizView).launch();
+        controllerFactory.getMenuController(viewFactory.getMenuView(),
+                viewFactory.getCreateQuizView(),
+                viewFactory.getEndQuizView(),
+                viewFactory.getDisplayQuizView())
+                .launch();
     }
 }

@@ -13,11 +13,12 @@ import java.rmi.RemoteException;
 
 /**
  * @author Michael Bragg
- *         Class for launching the Quiz player client.
+ *         Class for connecting to the Quiz serve and
+ *         launching the Quiz player client.
  */
-public class PlayerClientLauncher {
+class PlayerClientLauncher {
 
-    public static final String SERVER_ADDRESS = "//127.0.0.1:1099/quiz";
+    private static final String SERVER_ADDRESS = "//127.0.0.1:1099/quiz";
 
     public static void main(String[] args) throws RemoteException {
         PlayerClientLauncher client = new PlayerClientLauncher();
@@ -27,11 +28,10 @@ public class PlayerClientLauncher {
     private void launch() throws RemoteException {
 
         Remote service;
-        String serverAddress = SERVER_ADDRESS;
         try {
-            service = Naming.lookup(serverAddress);
+            service = Naming.lookup(SERVER_ADDRESS);
         } catch (NotBoundException | MalformedURLException | RemoteException e) {
-            System.out.println("Can not find server at: " + serverAddress);
+            System.out.println("Can not find server at: " + SERVER_ADDRESS);
             return;
         }
         Server model = (Server) service;

@@ -6,16 +6,16 @@ import java.rmi.RemoteException;
 
 /**
  * @author Michael Bragg
- *         Abstract class for a set-up client action controller
+ *         Abstract class for the set-up client controllers
  */
 public abstract class Controller {
 
     protected Server model;
 
-    public Controller() {
-    }
+//    public Controller() {
+//    }
 
-    public Controller(Server model) {
+    Controller(Server model) {
         this.model = model;
     }
 

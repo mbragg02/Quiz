@@ -1,6 +1,7 @@
-package setupClient.controllers;
+package setupClient.factories;
 
 import server.interfaces.Server;
+import setupClient.controllers.*;
 import setupClient.views.CreateQuizView;
 import setupClient.views.DisplayQuizView;
 import setupClient.views.EndQuizView;

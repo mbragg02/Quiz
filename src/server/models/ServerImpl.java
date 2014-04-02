@@ -5,6 +5,7 @@ import server.interfaces.Game;
 import server.interfaces.Question;
 import server.interfaces.Quiz;
 import server.interfaces.Server;
+import server.utilities.LoggerWrapper;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -12,11 +13,11 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * @author Michael Bragg
- * The Quiz server.
+ *         The Quiz server.
  */
 public class ServerImpl extends UnicastRemoteObject implements Server {
 
@@ -25,14 +26,12 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
     private static final int ZERO_INDEX = 0;
 
     private DateFormat dateFormat;
-    private Logger logger;
     private QuizFactory factory;
     private ServerData serverData;
 
-    public ServerImpl(QuizFactory factory, Logger logger, ServerData serverData) throws RemoteException {
+    public ServerImpl(QuizFactory factory, ServerData serverData) throws RemoteException {
         super();
         this.factory = factory;
-        this.logger = logger;
         this.serverData = serverData;
         dateFormat = factory.getSimpleDataFormat(DATE_FORMAT);
     }
@@ -52,7 +51,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
         Quiz quiz = factory.getQuiz(serverData.getQuizID(), quizName);
         serverData.addQuiz(quiz.getQuizID(), quiz);
-        logger.fine("Quiz \"" + quizName + "\" created.");
+        LoggerWrapper.log(Level.FINE, "Quiz \"" + quizName + "\" created.");
         return quiz.getQuizID();
     }
 
@@ -65,7 +64,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         }
         Question question = factory.getQuestion(serverData.getQuestionID(), quizQuestion);
         serverData.getQuiz(quizID).addQuestion(question);
-        logger.fine("Question added to quiz: \"" + serverData.getQuiz(quizID).getQuizName() + "\"");
+        LoggerWrapper.log(Level.FINE, "Question added to quiz: \"" + serverData.getQuiz(quizID).getQuizName() + "\"");
         return question.getQuestionID();
     }
 
@@ -77,7 +76,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
             throw new IllegalArgumentException("Answer can not be blank");
         }
         serverData.getQuiz(quizID).getQuestion(questionID).addAnswer(quizAnswer);
-        logger.fine("Answer added to quiz: \"" + serverData.getQuiz(quizID).getQuizName() + "\"");
+        LoggerWrapper.log(Level.FINE, "Answer added to quiz: \"" + serverData.getQuiz(quizID).getQuizName() + "\"");
     }
 
     @Override
@@ -88,6 +87,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         if (correctAnswer > numberOfAnswers - 1 || correctAnswer < 0) {
             throw new IllegalArgumentException("Not a valid answer");
         }
+        LoggerWrapper.log(Level.FINE, "Answer set correct for Quiz: \"" + serverData.getQuiz(quizID).getQuizName() + "\"");
+
         serverData.getQuiz(quizID).getQuestion(questionID).setCorrectAnswerID(correctAnswer);
     }
 
@@ -105,7 +106,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
     @Override
     public void setQuizActive(int quizID) {
         serverData.getQuiz(quizID).setActive(true);
-        logger.fine("Quiz \"" + serverData.getQuiz(quizID).getQuizName() + "\" set ACTIVE");
+        LoggerWrapper.log(Level.FINE, "Quiz \"" + serverData.getQuiz(quizID).getQuizName() + "\" set ACTIVE");
+
     }
 
     @Override
@@ -138,8 +140,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         } else {
             result = getHighScoreGames(playedGames);
         }
-        logger.fine("Quiz \"" + serverData.getQuiz(quizID).getQuizName() + "\" set INACTIVE");
-
+        LoggerWrapper.log(Level.FINE, "Quiz \"" + serverData.getQuiz(quizID).getQuizName() + "\" set INACTIVE");
         return result;
     }
 
@@ -159,6 +160,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
                 result.add(game);
             }
         }
+        LoggerWrapper.log(Level.FINE, "There were:" + result.size() + "games with a high score of: " + highScore);
+
         return result;
     }
 
@@ -187,7 +190,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         }
 
         gamesList.add(game);
-        logger.fine("\"" + playerName.toUpperCase() + "\" is playing quiz \"" + quiz.getQuizName() + "\"");
+        LoggerWrapper.log(Level.FINE, "\"" + playerName.toUpperCase() + "\" is playing quiz \"" + quiz.getQuizName() + "\"");
+
         return game.getGameID();
     }
 
@@ -203,30 +207,61 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
                 break;
             }
         }
+        LoggerWrapper.log(Level.FINE, "A score of: " + score + "has been submitted for Game:" + gameID + ", playing Quiz: " + quizID);
+
     }
 
-    // Validations of Quiz, Questions and Games.
-    private void validateActiveQuizID(int quizID) throws NullPointerException {
+
+    // Validations for Quiz, Question and Game IDs.
+
+    /**
+     * Validates if a qiven Quiz is active or not
+     *
+     * @param quizID int. The ID of the Quiz to check.
+     * @throws NullPointerException               If a Quiz does not exist fof the given Quiz ID
+     * @throws java.lang.IllegalArgumentException If the Quiz for the given Quiz ID is not ACIIVE
+     */
+    private void validateActiveQuizID(int quizID) throws NullPointerException, IllegalArgumentException {
         Quiz quiz = serverData.getQuiz(quizID);
         if (!quiz.isActive()) {
-            throw new IllegalArgumentException("Quiz not active");
+            String warning = "Quiz: " + quiz.getQuizName() + " not active";
+            LoggerWrapper.log(Level.SEVERE, warning);
+            throw new IllegalArgumentException(warning);
         }
     }
 
+    /**
+     * Checks if the supplied Question & Quiz IDs are valid.
+     *
+     * @param quizID     int. The Quiz ID
+     * @param questionID int. The Question ID
+     * @throws NullPointerException If the Question or Quiz for the given IDs do not exist.
+     */
     private void validateQuizAndQuestionID(int quizID, int questionID) throws NullPointerException {
         Quiz quiz = serverData.getQuiz(quizID);
         if (quiz.getQuestion(questionID) == null) {
-            throw new NullPointerException("Could not find a question with that ID");
+            String warning = "Could not find a question with an id of: " + questionID;
+            LoggerWrapper.log(Level.SEVERE, warning);
+            throw new NullPointerException(warning);
         }
     }
 
+    /**
+     * Checks if the supplied Quiz and Game IDs are valid.
+     *
+     * @param quizID int. The Quiz ID
+     * @param gameID int. The Game ID
+     * @throws NullPointerException If the Quiz or Game do not exist. If there are no Games that have been played fpr the supplied Quiz.
+     */
     private void validateQuizAndGameID(int quizID, int gameID) throws NullPointerException {
         validateActiveQuizID(quizID);
 
         List<Game> gamesList = serverData.getGame(quizID);
-
+        String warning;
         if (gamesList == null) {
-            throw new NullPointerException("Could not find any games for that quiz.");
+            warning = "Could not find any games for that quiz.";
+            LoggerWrapper.log(Level.SEVERE, warning);
+            throw new NullPointerException(warning);
         }
         Game result = null;
 
@@ -236,6 +271,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
             }
         }
         if (result == null) {
+            warning = "Could not a game with that game ID.";
+            LoggerWrapper.log(Level.SEVERE, warning);
             throw new NullPointerException("Could not a game with that game ID.");
         }
     }

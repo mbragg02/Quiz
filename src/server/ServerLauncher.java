@@ -5,6 +5,7 @@ import server.Factories.QuizFactory;
 import server.Factories.ServerFactory;
 import server.interfaces.Server;
 import server.models.ServerData;
+import server.utilities.LoggerWrapper;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +17,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.util.Arrays;
 import java.util.Properties;
-import java.util.logging.*;
+import java.util.logging.Level;
 
 /**
  * @author Michael Bragg
@@ -25,7 +26,6 @@ import java.util.logging.*;
 public class ServerLauncher {
 
     public static final String FILENAME = "serverData.txt";
-    private static final String LOG_FILENAME = "server.log";
     private static final String SERVER_PROPERTIES_FILE = "server.properties";
     private static String registryHost;
     private static String serviceName;
@@ -33,7 +33,6 @@ public class ServerLauncher {
     private static ServerFactory serverFactory;
     private static FileFactory fileFactory;
     private ServerData serverData;
-    private Logger logger;
 
     /**
      * Main method. Gets server properties from properties file needed before launch.
@@ -43,9 +42,12 @@ public class ServerLauncher {
      */
     public static void main(String[] args) throws RemoteException {
 
+        //System.setProperty("java.rmi.server.logCalls", "true");
+
         ServerLauncher main = new ServerLauncher();
         serverFactory = ServerFactory.getInstance();
         fileFactory = FileFactory.getInstance();
+
 
         Properties props = serverFactory.getProperties();
 
@@ -59,7 +61,6 @@ public class ServerLauncher {
         } catch (IOException e) {
             System.out.println("Exception reading server properties file.");
         }
-
         main.launch();
     }
 
@@ -67,54 +68,21 @@ public class ServerLauncher {
      * Method to launch the Quiz server.
      */
     private void launch() {
-        InitializeLog(LOG_FILENAME);
         LoadServerData(FILENAME);
 
-        Runtime.getRuntime().addShutdownHook(serverFactory.getShutdownHook(logger, serverData));
+        Runtime.getRuntime().addShutdownHook(serverFactory.getShutdownHook(serverData));
 
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(serverFactory.getRMISecurityManager());
         }
         try {
             LocateRegistry.createRegistry(port);
-            Server server = serverFactory.getServer(QuizFactory.getInstance(), logger, serverData);
+            Server server = serverFactory.getServer(QuizFactory.getInstance(), serverData);
             Naming.rebind(registryHost + serviceName, server);
         } catch (MalformedURLException | RemoteException ex) {
-            logger.severe(Arrays.toString(ex.getStackTrace()));
+            LoggerWrapper.log(Level.SEVERE, Arrays.toString(ex.getStackTrace()));
         }
-        logger.info("Server Started");
-    }
-
-    /**
-     * Initialize the logger for the server.
-     *
-     * @param fileName String. The name of the log file.
-     */
-    private void InitializeLog(String fileName) {
-        logger = Logger.getLogger("QuizServerLog");
-
-        // Remove the default logger from writing info log messages to the console.
-        logger.setUseParentHandlers(false);
-
-        try {
-            // Handler for writing log messages to a file.
-            Handler fileHandler = fileFactory.getFileHandler(fileName, true);
-            SimpleFormatter formatter = serverFactory.getSimpleFormatter();
-            fileHandler.setFormatter(formatter);
-            fileHandler.setLevel(Level.FINE);
-
-            // Handler for writing log messages to the console. i.e Exceptions
-            Handler consoleHandler = serverFactory.getConsoleHandler();
-            consoleHandler.setFormatter(formatter);
-            consoleHandler.setLevel(Level.INFO);
-
-            // Add the fileHandler and consoleHandler to the logger.
-            logger.addHandler(fileHandler);
-            logger.addHandler(consoleHandler);
-
-        } catch (SecurityException | IOException e) {
-            logger.severe(e.toString());
-        }
+        LoggerWrapper.log(Level.INFO, "Server Started");
     }
 
     /**
@@ -125,15 +93,17 @@ public class ServerLauncher {
      */
     @SuppressWarnings("unchecked")
     private void LoadServerData(String fileName) {
+
         if (new File(fileName).exists()) {
-            logger.fine("Loading data from file: " + fileName);
+            LoggerWrapper.log(Level.FINE, "Loading data from file: " + fileName);
             try (ObjectInputStream stream = fileFactory.getObjectInputStream(fileName)) {
                 serverData = (ServerData) stream.readObject();
             } catch (IOException | ClassNotFoundException e) {
-                logger.warning(Arrays.toString(e.getStackTrace()));
+                LoggerWrapper.log(Level.WARNING, Arrays.toString(e.getStackTrace()));
+
             }
         } else {
-            logger.info("Initialize server with zero quizzes/games");
+            LoggerWrapper.log(Level.INFO, "Initialize server with zero quizzes/games");
             serverData = new ServerData();
         }
     }

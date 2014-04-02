@@ -119,7 +119,7 @@ public class CreateQuizImpl extends Controller implements CreateQuiz {
     /*
         Method logic for displaying questions and answers.
      */
-    protected void displayQuestionsAndAnswers(int questionID) throws RemoteException, NullPointerException {
+    void displayQuestionsAndAnswers(int questionID) throws RemoteException, NullPointerException {
         List<Question> questions = model.getQuizQuestionsAndAnswers(quizID);
         for (Question question : questions) {
             if (question.getQuestionID() == questionID) {
