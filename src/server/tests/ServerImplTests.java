@@ -10,7 +10,6 @@ import server.models.ServerImpl;
 
 import java.rmi.RemoteException;
 import java.util.List;
-import java.util.logging.Logger;
 
 import static org.junit.Assert.*;
 
@@ -21,9 +20,8 @@ public class ServerImplTests {
     @Before
     public void before() throws RemoteException {
         QuizFactory factory = QuizFactory.getInstance();
-        Logger testLogger = Logger.getLogger("TestLogger");
         ServerData testData = new ServerData();
-        this.server = new ServerImpl(factory, testLogger, testData);
+        this.server = new ServerImpl(factory, testData);
     }
 
     // Create new Quiz
@@ -85,6 +83,14 @@ public class ServerImplTests {
         int questionID = server.addQuestionToQuiz(quizID, "Some question");
         server.addAnswerToQuestion(quizID, questionID, "some answer");
         server.setCorrectAnswer(99, questionID, 0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void setQuestionCorrectAnswerTestInvlaid() throws Exception {
+        int quizID = server.createQuiz("test quiz");
+        int questionID = server.addQuestionToQuiz(quizID, "Some question");
+        server.addAnswerToQuestion(quizID, questionID, "some answer");
+        server.setCorrectAnswer(quizID, questionID, 99);
     }
 
 

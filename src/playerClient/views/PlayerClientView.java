@@ -31,7 +31,7 @@ public class PlayerClientView {
     }
 
     public void displaySelectQuizMessage() {
-        System.out.print("Please select a quiz to play: ");
+        System.out.print("Please select a game to play: ");
     }
 
     public void displayException(String e) {
@@ -56,6 +56,10 @@ public class PlayerClientView {
 
     public void displayScoreDetails(int score, int numberOfQuestions) {
         System.out.println("Your score was: " + score + " out of " + numberOfQuestions);
+    }
+
+    public void displayExitMessage(String playerName) {
+        System.out.println("Thanks for playing " + playerName + "!");
     }
 
     public int getNextIntFromConsole() {

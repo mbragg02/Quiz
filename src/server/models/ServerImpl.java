@@ -80,7 +80,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
     }
 
     @Override
-    public void setCorrectAnswer(int quizID, int questionID, int correctAnswer) throws NullPointerException {
+    public void setCorrectAnswer(int quizID, int questionID, int correctAnswer) throws NullPointerException, IllegalArgumentException {
         validateQuizAndQuestionID(quizID, questionID);
         int numberOfAnswers = serverData.getQuiz(quizID).getQuestion(questionID).getAnswers().size();
         // numberOfAnswers - 1 to get the highest answer index
@@ -218,15 +218,14 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
      * Validates if a qiven Quiz is active or not
      *
      * @param quizID int. The ID of the Quiz to check.
-     * @throws NullPointerException               If a Quiz does not exist fof the given Quiz ID
-     * @throws java.lang.IllegalArgumentException If the Quiz for the given Quiz ID is not ACIIVE
+     * @throws NullPointerException If a Quiz does not exist or is INACTIVE for the given Quiz ID
      */
-    private void validateActiveQuizID(int quizID) throws NullPointerException, IllegalArgumentException {
+    private void validateActiveQuizID(int quizID) throws NullPointerException {
         Quiz quiz = serverData.getQuiz(quizID);
         if (!quiz.isActive()) {
-            String warning = "Quiz: " + quiz.getQuizName() + " not active";
+            String warning = "Quiz " + quizID + ": " + "\"" + quiz.getQuizName() + "\"" + " is not currently active";
             LoggerWrapper.log(Level.SEVERE, warning);
-            throw new IllegalArgumentException(warning);
+            throw new NullPointerException(warning);
         }
     }
 

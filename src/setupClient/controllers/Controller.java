@@ -12,8 +12,9 @@ public abstract class Controller {
 
     protected Server model;
 
-//    public Controller() {
-//    }
+    public Controller() {
+        // Intentional empty default constructor
+    }
 
     Controller(Server model) {
         this.model = model;

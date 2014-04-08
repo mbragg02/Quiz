@@ -1,7 +1,7 @@
 package server.utilities;
 
+import server.Factories.Factory;
 import server.Factories.FileFactory;
-import server.Factories.ServerFactory;
 
 import java.io.IOException;
 import java.util.logging.*;
@@ -53,7 +53,7 @@ public class LoggerWrapper {
         LogManager.getLogManager().reset();
 //      logger.setUseParentHandlers(false);
 
-        ServerFactory serverFactory = ServerFactory.getInstance();
+        Factory serverFactory = Factory.getInstance();
         FileFactory fileFactory = FileFactory.getInstance();
 
         // Handler for writing log messages to a file.

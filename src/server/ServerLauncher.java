@@ -1,8 +1,8 @@
 package server;
 
+import server.Factories.Factory;
 import server.Factories.FileFactory;
 import server.Factories.QuizFactory;
-import server.Factories.ServerFactory;
 import server.interfaces.Server;
 import server.models.ServerData;
 import server.utilities.LoggerWrapper;
@@ -30,7 +30,7 @@ public class ServerLauncher {
     private static String registryHost;
     private static String serviceName;
     private static int port;
-    private static ServerFactory serverFactory;
+    private static Factory serverFactory;
     private static FileFactory fileFactory;
     private ServerData serverData;
 
@@ -45,7 +45,7 @@ public class ServerLauncher {
         //System.setProperty("java.rmi.server.logCalls", "true");
 
         ServerLauncher main = new ServerLauncher();
-        serverFactory = ServerFactory.getInstance();
+        serverFactory = Factory.getInstance();
         fileFactory = FileFactory.getInstance();
 
 

@@ -48,6 +48,7 @@ public class PlayerClientImpl implements PlayerClient {
             displayActiveQuizzes();
             setPlayerQuiz();
             playQuiz();
+            view.displayExitMessage(playerName);
         }
     }
 
@@ -78,9 +79,11 @@ public class PlayerClientImpl implements PlayerClient {
             } catch (RemoteException ex) {
                 view.displayException(ex.getMessage());
             } catch (IllegalArgumentException ex) {
+                // Player name can not be blank
                 view.displayException(ex.getMessage());
                 setPlayerName();
             } catch (NullPointerException ex) {
+                // Invlaid or inactive quiz ID
                 view.displayException(ex.getMessage());
                 displayActiveQuizzes();
                 setPlayerQuiz();

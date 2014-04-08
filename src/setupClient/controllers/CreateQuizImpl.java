@@ -21,6 +21,7 @@ public class CreateQuizImpl extends Controller implements CreateQuiz {
     public CreateQuizImpl(Server model, CreateQuizView view) {
         super(model);
         this.view = view;
+        this.quizID = 0;
     }
 
     @Override
@@ -32,14 +33,14 @@ public class CreateQuizImpl extends Controller implements CreateQuiz {
     }
 
     @Override
-    public void createQuizWithName() throws RemoteException, NullPointerException {
+    public void createQuizWithName() throws RemoteException {
         do {
             view.printNameInputRequest();
             String quizName = view.getNextLineFromConsole().trim();
             try {
                 this.quizID = model.createQuiz(quizName);
                 break;
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException | NullPointerException e) {
                 view.printException(e.getMessage());
             }
         } while (true);
@@ -48,11 +49,13 @@ public class CreateQuizImpl extends Controller implements CreateQuiz {
     @Override
     public void addQuestionsAndAnswers() throws RemoteException {
         String userQuestion;
+
         do {
             view.printQuestionInputRequest();
             userQuestion = view.getNextLineFromConsole().trim();
             if (userQuestion.trim().equalsIgnoreCase("y")) {
                 if (model.getQuizQuestionsAndAnswers(quizID).isEmpty()) {
+
                     view.printQuestionNumberException();
                 } else {
                     break;
@@ -63,6 +66,7 @@ public class CreateQuizImpl extends Controller implements CreateQuiz {
                     questionId = model.addQuestionToQuiz(quizID, userQuestion);
                     addAnswers(questionId);
                 } catch (IllegalArgumentException | NullPointerException e) {
+
                     view.printException(e.getMessage());
                 }
             }
@@ -117,9 +121,9 @@ public class CreateQuizImpl extends Controller implements CreateQuiz {
     }
 
     /*
-        Method logic for displaying questions and answers.
+    Logic for displaying questions and answers.
      */
-    void displayQuestionsAndAnswers(int questionID) throws RemoteException, NullPointerException {
+    public void displayQuestionsAndAnswers(int questionID) throws RemoteException, NullPointerException {
         List<Question> questions = model.getQuizQuestionsAndAnswers(quizID);
         for (Question question : questions) {
             if (question.getQuestionID() == questionID) {

@@ -24,7 +24,6 @@ public class DisplayQuiz extends Controller {
     public void launch() throws RemoteException {
         List<Quiz> quizzes = model.getActiveQuizzes();
         if (quizzes.isEmpty()) {
-            System.out.println("Currently no active quizzes");
             view.printNoActiveQuizesMessage();
         } else {
             for (Quiz quiz : quizzes) {
