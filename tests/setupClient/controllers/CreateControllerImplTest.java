@@ -1,3 +1,5 @@
+package setupClient.controllers;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -5,7 +7,6 @@ import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 import server.interfaces.Question;
 import server.interfaces.Server;
-import setupClient.controllers.CreateQuizImpl;
 import setupClient.views.CreateQuizView;
 
 import java.rmi.RemoteException;
@@ -22,14 +23,14 @@ import static org.mockito.MockitoAnnotations.initMocks;
 /**
  * @author Michael Bragg
  */
-public class CreateQuizImplTest {
+public class CreateControllerImplTest {
 
     private static final String QUIZ_NAME = "Test Quiz";
     private static final String QUESTION = "Question";
     private static final String ANSWER = "Answer";
     @Rule
     public ExpectedException thrown = ExpectedException.none();
-    private CreateQuizImpl client;
+    private CreateControllerImpl client;
     @Mock
     private Server model;
     @Mock
@@ -64,7 +65,7 @@ public class CreateQuizImplTest {
         when(view.getNextLineFromConsole()).thenReturn(QUIZ_NAME);
         when(model.createQuiz(anyString())).thenReturn(0);
 
-        this.client = new CreateQuizImpl(model, view);
+        this.client = new CreateControllerImpl(model, view);
     }
 
     @Test

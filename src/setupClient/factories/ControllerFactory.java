@@ -32,15 +32,15 @@ public class ControllerFactory {
     }
 
     Controller getCreateQuizController(CreateQuizView view) {
-        return new CreateQuizImpl(model, view);
+        return new CreateControllerImpl(model, view);
     }
 
     Controller getEndQuizController(EndQuizView view) {
-        return new EndQuiz(model, view);
+        return new EndController(model, view);
     }
 
     Controller getViewQuizController(DisplayQuizView view) {
-        return new DisplayQuiz(model, view);
+        return new DisplayController(model, view);
     }
 
     public Controller getMenuController(MenuView menuView, CreateQuizView Createview, EndQuizView endView, DisplayQuizView view) {

@@ -11,11 +11,11 @@ import java.util.List;
  * @author Michael Bragg
  *         Class to manage displaying active quizzes.
  */
-public class DisplayQuiz extends Controller {
+public class DisplayController extends Controller {
 
     private final DisplayQuizView view;
 
-    public DisplayQuiz(Server model, DisplayQuizView view) {
+    public DisplayController(Server model, DisplayQuizView view) {
         super(model);
         this.view = view;
     }

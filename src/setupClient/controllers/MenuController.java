@@ -16,10 +16,10 @@ public class MenuController extends Controller {
     private final MenuView view;
     private boolean running;
 
-    public MenuController(Controller createController, Controller endController, Controller viewController, MenuView view) {
+    public MenuController(Controller createController, Controller endController, Controller displayController, MenuView view) {
         this.createQuizController        = createController;
         this.endQuizController           = endController;
-        this.viewActiveQuizzesController = viewController;
+        this.viewActiveQuizzesController = displayController;
         this.view = view;
         running = true;
     }

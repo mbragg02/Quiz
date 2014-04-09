@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 /**
  * @author Michael Bragg
  */
-public interface CreateQuiz {
+public interface CreateController {
 
     /**
      * Calls the server to create a new quiz, with a name from the user.

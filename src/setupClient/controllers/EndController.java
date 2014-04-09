@@ -11,10 +11,10 @@ import java.util.List;
  * @author Michael Bragg
  *         Class to manage ending a running quiz & determining the winning game.
  */
-public class EndQuiz extends Controller {
+public class EndController extends Controller {
     private final EndQuizView view;
 
-    public EndQuiz(Server model, EndQuizView view) {
+    public EndController(Server model, EndQuizView view) {
         super(model);
         this.view = view;
     }
@@ -23,11 +23,9 @@ public class EndQuiz extends Controller {
      * Sets a active Quiz to inactive & calls methods to display the winner.
      *
      * @throws RemoteException
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
      */
     @Override
-    public void launch() throws RemoteException, IllegalArgumentException, NullPointerException {
+    public void launch() throws RemoteException {
         if (model.getActiveQuizzes().isEmpty()) {
             view.printNoActiveQuizesMessage();
         } else {

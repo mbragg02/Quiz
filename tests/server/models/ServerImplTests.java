@@ -1,3 +1,4 @@
+package server.models;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -5,8 +6,6 @@ import server.Factories.QuizFactory;
 import server.interfaces.Question;
 import server.interfaces.Quiz;
 import server.interfaces.Server;
-import server.models.ServerData;
-import server.models.ServerImpl;
 
 import java.rmi.RemoteException;
 import java.util.List;
@@ -183,13 +182,13 @@ public class ServerImplTests {
         server.startGame(0, "Michael");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NullPointerException.class)
     public void startGameTestBlankName() throws Exception {
         int quizID = server.createQuiz("test quiz");
         server.startGame(quizID, "");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NullPointerException.class)
     public void startGameTestInactive() throws Exception {
         int quizID = server.createQuiz("test quiz");
         server.startGame(quizID, "Michael");

@@ -13,7 +13,7 @@ import java.util.List;
  * @author Michael Bragg
  *         Class to manage creating a new quiz.
  */
-public class CreateQuizImpl extends Controller implements CreateQuiz {
+public class CreateControllerImpl extends Controller implements CreateController {
 
     private final CreateQuizView view;
     private int quizID;
@@ -21,7 +21,7 @@ public class CreateQuizImpl extends Controller implements CreateQuiz {
     private boolean buildComplete;
     private boolean questionComplete;
 
-    public CreateQuizImpl(Server model, CreateQuizView view) {
+    public CreateControllerImpl(Server model, CreateQuizView view) {
         super(model);
         this.view = view;
         this.quizID = 0;

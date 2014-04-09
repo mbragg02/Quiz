@@ -1,3 +1,4 @@
+package playerClient.controllers;
 
 import org.junit.Before;
 import org.junit.Test;

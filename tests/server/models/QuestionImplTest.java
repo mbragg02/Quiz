@@ -1,8 +1,8 @@
+package server.models;
 
 import org.junit.Before;
 import org.junit.Test;
 import server.interfaces.Question;
-import server.models.QuestionImpl;
 
 import static org.junit.Assert.*;
 
