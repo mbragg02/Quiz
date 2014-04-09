@@ -12,6 +12,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -80,7 +81,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
     }
 
     @Override
-    public void setCorrectAnswer(int quizID, int questionID, int correctAnswer) throws NullPointerException, IllegalArgumentException {
+    public void setCorrectAnswer(int quizID, int questionID, int correctAnswer)
+            throws NullPointerException, IllegalArgumentException, InputMismatchException {
         validateQuizAndQuestionID(quizID, questionID);
         int numberOfAnswers = serverData.getQuiz(quizID).getQuestion(questionID).getAnswers().size();
         // numberOfAnswers - 1 to get the highest answer index

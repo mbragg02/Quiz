@@ -2,10 +2,10 @@ package setupClient.controllers;
 
 import server.interfaces.Question;
 import server.interfaces.Server;
-import setupClient.interfaces.CreateQuiz;
 import setupClient.views.CreateQuizView;
 
 import java.rmi.RemoteException;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 
@@ -17,19 +17,38 @@ public class CreateQuizImpl extends Controller implements CreateQuiz {
 
     private final CreateQuizView view;
     private int quizID;
+    private int questionID;
+    private boolean buildComplete;
+    private boolean questionComplete;
 
     public CreateQuizImpl(Server model, CreateQuizView view) {
         super(model);
         this.view = view;
         this.quizID = 0;
+
     }
 
     @Override
     public void launch() throws RemoteException {
-        createQuizWithName();
-        addQuestionsAndAnswers();
+        quizBuilder();
         view.printQuizID(quizID);
         setQuizStatus();
+    }
+
+    /*
+    Method calls and logic for building a complete new quiz
+     */
+    private void quizBuilder() throws RemoteException {
+        buildComplete = false;
+        createQuizWithName();
+        do {
+            addQuestion();
+            if (!buildComplete) {
+                addAnswers(questionID);
+                selectCorrectAnswer(questionID);
+            }
+
+        } while (!buildComplete);
     }
 
     @Override
@@ -47,36 +66,38 @@ public class CreateQuizImpl extends Controller implements CreateQuiz {
     }
 
     @Override
-    public void addQuestionsAndAnswers() throws RemoteException {
+    public void addQuestion() throws RemoteException {
         String userQuestion;
-
+        questionComplete = false;
         do {
             view.printQuestionInputRequest();
             userQuestion = view.getNextLineFromConsole().trim();
             if (userQuestion.trim().equalsIgnoreCase("y")) {
                 if (model.getQuizQuestionsAndAnswers(quizID).isEmpty()) {
-
                     view.printQuestionNumberException();
                 } else {
+                    buildComplete = true;
                     break;
                 }
             } else {
-                int questionId;
-                try {
-                    questionId = model.addQuestionToQuiz(quizID, userQuestion);
-                    addAnswers(questionId);
-                } catch (IllegalArgumentException | NullPointerException e) {
-
-                    view.printException(e.getMessage());
-                }
+                addQuestionToServer(userQuestion);
             }
-        } while (true);
+        } while (!questionComplete);
     }
 
-    /*
-        Method to get answers to questions from the user.
-     */
-    private void addAnswers(int questionId) throws RemoteException, NullPointerException {
+    private void addQuestionToServer(String userQuestion) {
+        try {
+            this.questionID = model.addQuestionToQuiz(quizID, userQuestion);
+            questionComplete = true;
+        } catch (IllegalArgumentException | NullPointerException e) {
+            view.printException(e.getMessage());
+        } catch (RemoteException e) {
+            view.printException(Arrays.toString(e.getStackTrace()));
+        }
+    }
+
+    @Override
+    public void addAnswers(int questionId) throws RemoteException, NullPointerException {
         String userInput;
         do {
             view.printAnswerInputRequest();
@@ -95,8 +116,6 @@ public class CreateQuizImpl extends Controller implements CreateQuiz {
                 }
             }
         } while (true);
-
-        selectCorrectAnswer(questionId);
     }
 
 
@@ -120,9 +139,7 @@ public class CreateQuizImpl extends Controller implements CreateQuiz {
         } while (true);
     }
 
-    /*
-    Logic for displaying questions and answers.
-     */
+    @Override
     public void displayQuestionsAndAnswers(int questionID) throws RemoteException, NullPointerException {
         List<Question> questions = model.getQuizQuestionsAndAnswers(quizID);
         for (Question question : questions) {
