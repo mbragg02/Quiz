@@ -4,8 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import server.interfaces.Question;
 import server.interfaces.Quiz;
-import server.models.QuestionImpl;
-import server.models.QuizImpl;
 
 import java.util.List;
 
