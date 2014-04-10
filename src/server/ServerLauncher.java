@@ -15,6 +15,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
+import java.security.AccessControlException;
 import java.util.Arrays;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -56,6 +57,8 @@ public class ServerLauncher {
             registryHost = props.getProperty("registryHost");
             serviceName = props.getProperty("serviceName");
             port = Integer.parseInt(props.getProperty("port"));
+        } catch (AccessControlException e) {
+            System.out.println("hhhhh");
         } catch (FileNotFoundException e) {
             System.out.println("Server properties file not found.");
         } catch (IOException e) {
@@ -79,10 +82,12 @@ public class ServerLauncher {
             LocateRegistry.createRegistry(port);
             Server server = serverFactory.getServer(QuizFactory.getInstance(), serverData);
             Naming.rebind(registryHost + serviceName, server);
+            LoggerWrapper.log(Level.INFO, "Server Started");
+        } catch (AccessControlException e) {
+            LoggerWrapper.log(Level.SEVERE, "Access Control Exception. Check that the security.policy file has been properly configured as a VM argument. See the readme for details");
         } catch (MalformedURLException | RemoteException ex) {
-            LoggerWrapper.log(Level.SEVERE, Arrays.toString(ex.getStackTrace()));
+            LoggerWrapper.log(Level.SEVERE, ex.getMessage());
         }
-        LoggerWrapper.log(Level.INFO, "Server Started");
     }
 
     /**

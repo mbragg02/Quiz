@@ -46,13 +46,15 @@ public class PlayerClientImpl implements PlayerClient {
         } else {
             setPlayerName();
             displayActiveQuizzes();
-            setPlayerQuiz();
-            playQuiz();
-            view.displayExitMessage(playerName);
+            selectQuizToPlay();
+            playGame();
+            displayQuestions();
+            submitScore();
         }
     }
 
-    private void setPlayerName() {
+    @Override
+    public void setPlayerName() {
         view.displayNameRequest();
         try {
             this.playerName = view.getNextLineFromConsole();
@@ -70,8 +72,21 @@ public class PlayerClientImpl implements PlayerClient {
         }
     }
 
+    private void selectQuizToPlay() {
+        do {
+            try {
+                view.displaySelectQuizMessage();
+                this.quizID = view.getNextIntFromConsole();
+                break;
+            } catch (InputMismatchException ex) {
+                view.displayException(ex.getMessage());
+            }
+        } while (true);
+        view.getNextLineFromConsole();
+    }
+
     @Override
-    public void playQuiz() throws RemoteException {
+    public void playGame() throws RemoteException {
         do {
             try {
                 this.gameID = model.startGame(this.quizID, this.playerName);
@@ -86,15 +101,15 @@ public class PlayerClientImpl implements PlayerClient {
                 // Invlaid or inactive quiz ID
                 view.displayException(ex.getMessage());
                 displayActiveQuizzes();
-                setPlayerQuiz();
+                selectQuizToPlay();
             }
         } while (true);
 
-        displayQuestions();
-        submitScore();
+
     }
 
-    private void displayQuestions() {
+    @Override
+    public void displayQuestions() {
 
         try {
             questions = model.getQuizQuestionsAndAnswers(this.quizID);
@@ -122,7 +137,8 @@ public class PlayerClientImpl implements PlayerClient {
         }
     }
 
-    private void selectAnswer() {
+    @Override
+    public void selectAnswer() {
         int playerAnswer;
         do {
             view.displayAnswerRequest();
@@ -147,18 +163,8 @@ public class PlayerClientImpl implements PlayerClient {
             view.displayException(e.getMessage());
         }
         view.displayScoreDetails(score, questions.size());
+        view.displayExitMessage(playerName);
     }
 
-    private void setPlayerQuiz() {
-        do {
-            try {
-                view.displaySelectQuizMessage();
-                this.quizID = view.getNextIntFromConsole();
-                break;
-            } catch (InputMismatchException ex) {
-                view.displayException(ex.getMessage());
-            }
-        } while (true);
-        view.getNextLineFromConsole();
-    }
+
 }

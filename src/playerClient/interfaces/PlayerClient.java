@@ -15,6 +15,8 @@ public interface PlayerClient {
      */
     void launch() throws RemoteException;
 
+    void setPlayerName();
+
     /**
      * Displays the current active/playable quizzes
      *
@@ -27,7 +29,11 @@ public interface PlayerClient {
      *
      * @throws RemoteException
      */
-    void playQuiz() throws RemoteException;
+    void playGame() throws RemoteException;
+
+    void displayQuestions();
+
+    void selectAnswer();
 
     /**
      * Submits a player score.
