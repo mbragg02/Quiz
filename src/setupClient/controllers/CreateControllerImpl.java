@@ -10,8 +10,9 @@ import java.util.InputMismatchException;
 import java.util.List;
 
 /**
+ * Class to manage creating a new quiz.
+ *
  * @author Michael Bragg
- *         Class to manage creating a new quiz.
  */
 public class CreateControllerImpl extends Controller implements CreateController {
 

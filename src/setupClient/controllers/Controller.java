@@ -5,8 +5,9 @@ import server.interfaces.Server;
 import java.rmi.RemoteException;
 
 /**
+ * Abstract class for the set-up client controllers
+ *
  * @author Michael Bragg
- *         Abstract class for the set-up client controllers
  */
 public abstract class Controller {
 

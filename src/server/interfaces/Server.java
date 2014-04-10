@@ -5,8 +5,9 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 /**
- * @author Michael Bragg
  * The methods required for the quiz server.
+ *
+ * @author Michael Bragg
  */
 public interface Server extends Remote {
     /**

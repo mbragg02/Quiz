@@ -21,8 +21,9 @@ import java.util.Properties;
 import java.util.logging.Level;
 
 /**
+ * Class to setup and launch the Quiz Server.
+ *
  * @author Michael Bragg
- *         Class to setup and launch the Quiz Server.
  */
 public class ServerLauncher {
 

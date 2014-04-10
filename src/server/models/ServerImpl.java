@@ -17,8 +17,9 @@ import java.util.List;
 import java.util.logging.Level;
 
 /**
+ * The Quiz Server
+ *
  * @author Michael Bragg
- *         The Quiz server.
  */
 public class ServerImpl extends UnicastRemoteObject implements Server {
 

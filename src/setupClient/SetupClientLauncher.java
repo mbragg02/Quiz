@@ -11,9 +11,10 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
+ * Set-up client launcher.
+ * Set-up client connects to the Quiz server to create quizzes.
+ *
  * @author Michael Bragg
- *         Set-up client launcher.
- *         Set-up client connects to the Quiz server to create quizzes.
  */
 class SetupClientLauncher {
 

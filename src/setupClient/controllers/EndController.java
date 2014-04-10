@@ -8,8 +8,9 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 /**
+ * Class to manage ending a running quiz & determining the winning game.
+ *
  * @author Michael Bragg
- *         Class to manage ending a running quiz & determining the winning game.
  */
 public class EndController extends Controller {
     private final EndQuizView view;

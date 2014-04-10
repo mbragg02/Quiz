@@ -7,16 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Michael Bragg
  * A question class which contains multiple answers.
+ *
+ * @author Michael Bragg
  */
 public class QuestionImpl implements Question, Serializable {
 
     private static final long serialVersionUID = 2103675520207133041L;
+    private final List<String> answers;
     private int questionID;
     private String question;
     private int correctAnswerID;
-    private final List<String> answers;
 
     public QuestionImpl(int questionID, String quizQuestion) {
         setQuestionID(questionID);
@@ -29,9 +30,17 @@ public class QuestionImpl implements Question, Serializable {
         return questionID;
     }
 
+    private void setQuestionID(int questionID) {
+        this.questionID = questionID;
+    }
+
     @Override
     public String getQuestion() {
         return question;
+    }
+
+    private void setQuestion(String question) {
+        this.question = question;
     }
 
     @Override
@@ -52,12 +61,5 @@ public class QuestionImpl implements Question, Serializable {
     @Override
     public List<String> getAnswers() {
         return this.answers;
-    }
-
-    private void setQuestionID(int questionID) {
-        this.questionID = questionID;
-    }
-    private void setQuestion(String question) {
-        this.question = question;
     }
 }

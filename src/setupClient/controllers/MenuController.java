@@ -5,8 +5,9 @@ import setupClient.views.MenuView;
 import java.rmi.RemoteException;
 
 /**
- * @author Michael Bragg
  * Main menu for the set-up client
+ *
+ * @author Michael Bragg
  */
 public class MenuController extends Controller {
 

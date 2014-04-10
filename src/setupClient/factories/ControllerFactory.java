@@ -8,8 +8,9 @@ import setupClient.views.EndQuizView;
 import setupClient.views.MenuView;
 
 /**
+ * Factory for the controller actions for the set-up client
+ *
  * @author Michael Bragg
- *         Factory for the controller actions for the set-up client
  */
 public class ControllerFactory {
 

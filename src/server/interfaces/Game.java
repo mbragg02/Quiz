@@ -2,6 +2,8 @@ package server.interfaces;
 
 /**
  * A Game is created with a players name and a unique game ID.
+ *
+ * @author Michael Bragg
  */
 public interface Game {
 

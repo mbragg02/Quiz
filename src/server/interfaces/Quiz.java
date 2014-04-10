@@ -3,8 +3,9 @@ package server.interfaces;
 import java.util.List;
 
 /**
- * @author Michael Bragg
  * A full quiz.
+ *
+ * @author Michael Bragg
  */
 public interface Quiz {
 

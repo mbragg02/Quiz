@@ -1,8 +1,9 @@
 package setupClient.views;
 
 /**
- * @author Michael Bragg
  * View for messages relating to ending an active Quiz.
+ *
+ * @author Michael Bragg
  */
 public class EndQuizView extends SetupClientView {
 

@@ -4,11 +4,15 @@ import server.Factories.Factory;
 import server.Factories.FileFactory;
 
 import java.io.IOException;
-import java.util.logging.*;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 /**
- * Created by Michael Bragg
  * A wrapper class for Logger
+ *
+ * @author Michael Bragg
  */
 public class LoggerWrapper {
 

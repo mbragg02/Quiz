@@ -9,6 +9,8 @@ import java.util.List;
 
 /**
  * A class for a quiz. A quiz has a unique ID and a list of questions.
+ *
+ * @author Michael Bragg
  */
 public class QuizImpl implements Quiz, Serializable {
 

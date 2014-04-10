@@ -4,6 +4,8 @@ import java.util.List;
 
 /**
  * A question for a quiz - with multiple answers.
+ *
+ * @author Michael Bragg
  */
 public interface Question {
 

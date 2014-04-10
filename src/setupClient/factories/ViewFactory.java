@@ -6,8 +6,9 @@ import setupClient.views.EndQuizView;
 import setupClient.views.MenuView;
 
 /**
- * Created by Michael Bragg
+ * Factory for creating different views the diffrent actions of the setup client
  *
+ * @author Michael Bragg
  */
 public class ViewFactory {
 

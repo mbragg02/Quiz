@@ -5,8 +5,9 @@ import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 
 /**
- * Created by Michael Bragg
  * Factory tp create objects related to files and streams.
+ *
+ * @author Michael Bragg
  */
 public class FileFactory {
 

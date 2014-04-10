@@ -1,8 +1,9 @@
 package setupClient.views;
 
 /**
- * @author Michael Bragg
  * View for displaying a quizzes details
+ *
+ * @author Michael Bragg
  */
 public class DisplayQuizView extends SetupClientView {
 	

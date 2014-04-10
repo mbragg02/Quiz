@@ -11,8 +11,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Michael Bragg
  * Factory to create quizzes, questions and games.
+ *
+ * @author Michael Bragg
  */
 public class QuizFactory {
 

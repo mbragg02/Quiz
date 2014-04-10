@@ -1,8 +1,9 @@
 package setupClient.views;
 
 /**
- * @author Michael Bragg
  * View for the set-up clients main menu
+ *
+ * @author Michael Bragg
  */
 public class MenuView extends SetupClientView{
 	

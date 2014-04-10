@@ -12,8 +12,9 @@ import java.util.logging.Handler;
 import java.util.logging.SimpleFormatter;
 
 /**
- * Created by Michael Bragg
  * Factory to supply objects for the setup of the Quiz server.
+ *
+ * @author Michael Bragg
  */
 public class Factory {
 

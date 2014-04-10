@@ -8,8 +8,9 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 /**
+ * Class to manage displaying active quizzes.
+ *
  * @author Michael Bragg
- *         Class to manage displaying active quizzes.
  */
 public class DisplayController extends Controller {
 

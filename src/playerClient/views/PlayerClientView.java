@@ -3,8 +3,9 @@ package playerClient.views;
 import java.util.Scanner;
 
 /**
- * @author Michael Bragg
  * All console view calls for player client.
+ *
+ * @author Michael Bragg
  */
 public class PlayerClientView {
 

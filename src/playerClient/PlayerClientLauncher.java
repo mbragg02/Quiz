@@ -12,9 +12,10 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
+ * Class for connecting to the Quiz serve and
+ * launching the Quiz player client.
+ *
  * @author Michael Bragg
- *         Class for connecting to the Quiz serve and
- *         launching the Quiz player client.
  */
 class PlayerClientLauncher {
 

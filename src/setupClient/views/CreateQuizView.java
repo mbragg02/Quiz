@@ -1,8 +1,9 @@
 package setupClient.views;
 
 /**
- * @author Michael Bragg
  * View for messages relating to creating a new Quiz.
+ *
+ * @author Michael Bragg
  */
 public class CreateQuizView extends SetupClientView {
 

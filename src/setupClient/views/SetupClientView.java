@@ -3,8 +3,9 @@ package setupClient.views;
 import java.util.Scanner;
 
 /**
- * @author Michael Bragg
  * View for general messages required for the set-up client.
+ *
+ * @author Michael Bragg
  */
 public abstract class SetupClientView {
 	

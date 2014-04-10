@@ -3,6 +3,8 @@ package setupClient.controllers;
 import java.rmi.RemoteException;
 
 /**
+ * Methods for creating a new Quiz
+ *
  * @author Michael Bragg
  */
 public interface CreateController {
