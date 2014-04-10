@@ -1,5 +1,7 @@
 package setupClient.views;
 
+import static setupClient.factories.MessageProperties.msg;
+
 /**
  * View for messages relating to ending an active Quiz.
  *
@@ -8,15 +10,15 @@ package setupClient.views;
 public class EndQuizView extends SetupClientView {
 
     public void printQuizIDDeactivationRequest() {
-        System.out.print("Please enter a Quiz ID to deactivate: ");
+        System.out.print(msg("quizid_deactivation_request"));
     }
 
     public void printNoPlayersMessage() {
-        System.out.println("There were no players that took the quiz");
+        System.out.println(msg("no_players"));
     }
 
     public void printWinnersAreMessage() {
-        System.out.println("And the winners are...");
+        System.out.println(msg("winners_header"));
     }
 
     public void printWinnerDetails(int count, String name, Double score, String date) {

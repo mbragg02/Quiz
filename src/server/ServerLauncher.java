@@ -59,7 +59,7 @@ public class ServerLauncher {
             serviceName = props.getProperty("serviceName");
             port = Integer.parseInt(props.getProperty("port"));
         } catch (AccessControlException e) {
-            System.out.println("hhhhh");
+            System.out.println(e.getMessage());
         } catch (FileNotFoundException e) {
             System.out.println("Server properties file not found.");
         } catch (IOException e) {

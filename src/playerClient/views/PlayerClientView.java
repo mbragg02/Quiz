@@ -2,6 +2,8 @@ package playerClient.views;
 
 import java.util.Scanner;
 
+import static setupClient.factories.MessageProperties.msg;
+
 /**
  * All console view calls for player client.
  *
@@ -12,19 +14,19 @@ public class PlayerClientView {
     private final Scanner in = new Scanner(System.in);
 
     public void displayWelcomeMessage() {
-        System.out.println("Welcome to Quiz Player Client");
+        System.out.println(msg("player_welcome"));
     }
 
     public void displayNoActiveQuizesMessage() {
-        System.out.println("Currently no active quizzes. Please try again later.");
+        System.out.println(msg("no_active_quizzes"));
     }
 
     public void displayNameRequest() {
-        System.out.print("Please enter your name: ");
+        System.out.print(msg("player_name"));
     }
 
     public void displayCurrentActiveQuizesMessage() {
-        System.out.println("Current active games: ");
+        System.out.println(msg("active_games_header"));
     }
 
     public void displayQuizDetails(int quizID, String quizName) {
@@ -32,7 +34,7 @@ public class PlayerClientView {
     }
 
     public void displaySelectQuizMessage() {
-        System.out.print("Please select a game to play: ");
+        System.out.print(msg("game_prompt"));
     }
 
     public void displayException(String e) {
@@ -40,7 +42,7 @@ public class PlayerClientView {
     }
 
     public void displayInvlaidInputException() {
-        System.out.println("Invalid input");
+        System.out.println(msg("invalid_input"));
     }
 
     public void displayQuestion(int questionCount, String question) {
@@ -52,7 +54,7 @@ public class PlayerClientView {
     }
 
     public void displayAnswerRequest() {
-        System.out.print("Please select an answer: ");
+        System.out.print(msg("answer_select_prompt"));
     }
 
     public void displayScoreDetails(int score, int numberOfQuestions) {
@@ -60,7 +62,7 @@ public class PlayerClientView {
     }
 
     public void displayExitMessage(String playerName) {
-        System.out.println("Thanks for playing " + playerName + "!");
+        System.out.println(msg("player_thanks") + " " + playerName + "!");
     }
 
     public int getNextIntFromConsole() {

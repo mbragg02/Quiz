@@ -12,6 +12,8 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import static setupClient.factories.MessageProperties.msg;
+
 /**
  * Class for a player client.
  *
@@ -80,10 +82,11 @@ public class PlayerClientImpl implements PlayerClient {
                 this.quizID = view.getNextIntFromConsole();
                 break;
             } catch (InputMismatchException ex) {
-                view.displayException(ex.getMessage());
+                view.displayException(msg("invalid_input_format"));
+            } finally {
+                view.getNextLineFromConsole();
             }
         } while (true);
-        view.getNextLineFromConsole();
     }
 
     @Override

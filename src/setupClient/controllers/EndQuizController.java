@@ -32,7 +32,7 @@ public class EndQuizController extends Controller {
     public void launch() throws RemoteException {
         List<Quiz> quizzes = model.getActiveQuizzes();
         if (quizzes.isEmpty()) {
-            view.printNoActiveQuizesMessage();
+            view.printNoActiveQuizzesMessage();
         } else {
             int quizId = getQuizFromUser(quizzes);
 

@@ -1,5 +1,7 @@
 package setupClient.views;
 
+import static setupClient.factories.MessageProperties.msg;
+
 /**
  * View for the set-up clients main menu
  *
@@ -8,19 +10,19 @@ package setupClient.views;
 public class MenuView extends SetupClientView{
 	
 	public void printMainMenu() {
-		System.out.println("  Main Menu");
-		System.out.println("> Enter 1 to create a new Quiz");
-		System.out.println("> Enter 2 to make a Quiz active");
-		System.out.println("> Enter 3 to make a Quiz inactive");
-		System.out.println("> Enter EXIT to disconnect");
+        System.out.println(msg("main_menu"));
+		System.out.println("> " + msg("menu_1"));
+		System.out.println("> " + msg("menu_2"));
+		System.out.println("> " + msg("menu_3"));
+		System.out.println("> " + msg("menu_exit"));
 		System.out.println(": ");
 	}
 	
 	public void printWelcomeMessage() {
-		System.out.println("Welcome to Quiz Setup Client");
+		System.out.println(msg("setup_welcome"));
 	}
 	
 	public void printExitMessage() {
-		System.out.println("Exit successful");
+		System.out.println(msg("exit"));
 	}
 }

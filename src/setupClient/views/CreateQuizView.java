@@ -1,5 +1,7 @@
 package setupClient.views;
 
+import static setupClient.factories.MessageProperties.msg;
+
 /**
  * View for messages relating to creating a new Quiz.
  *
@@ -8,43 +10,43 @@ package setupClient.views;
 public class CreateQuizView extends SetupClientView {
 
     public void printQuizID(int quizID) {
-        System.out.println("Your quiz id is: " + quizID);
+        System.out.println(msg("your_quizid") + quizID);
     }
 
     public void printNameInputRequest() {
-        System.out.print("Please enter a name for your quiz: ");
+        System.out.print(msg("quiz_name_prompt"));
     }
 
     public void printQuestionInputRequest() {
-        System.out.print("Please enter a question for your quiz or \"y\" when you are finished: ");
+        System.out.print(msg("question_prompt"));
     }
 
     public void printQuestionNumberException() {
-        System.out.println("A quiz must have at least 1 question");
+        System.out.println(msg("question_warning"));
     }
 
     public void printAnswerInputRequest() {
-        System.out.print("Please enter an answer for your question or \"y\" when you are finished: ");
+        System.out.print(msg("answer_prompt"));
     }
 
     public void printAnswerNumberException() {
-        System.out.println("A question must have at least 1 answer");
+        System.out.println(msg("answer_warning"));
     }
 
     public void printCorrectAnswerRequest() {
-        System.out.println("Please enter the number of the correct answer: ");
+        System.out.println(msg("correct_answer_prompt"));
     }
 
     public void printActivationRequest() {
-        System.out.print("Would you like to activate your new quiz? y / n : ");
+        System.out.print(msg("activation_prompt"));
     }
 
     public void printActiveMessage() {
-        System.out.println("Quiz active");
+        System.out.println(msg("quiz_active"));
     }
 
     public void printInActiveMessage() {
-        System.out.println("Quiz Not active");
+        System.out.println(msg("quiz_inactive"));
     }
 
     public void printQuestion(String question) {

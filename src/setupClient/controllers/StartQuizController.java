@@ -31,7 +31,7 @@ public class StartQuizController extends Controller {
     public void launch() throws RemoteException {
         
         if(model.getInactiveQuizzes().isEmpty()) {
-            view.printNoInActiveQuizesMessage();
+            view.printNoInActiveQuizzesMessage();
         } else {
          displayInactiveQuizzes();
         }

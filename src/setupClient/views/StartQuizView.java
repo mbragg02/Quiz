@@ -1,5 +1,7 @@
 package setupClient.views;
 
+import static setupClient.factories.MessageProperties.msg;
+
 /**
  * View for start quiz controller
  *
@@ -8,10 +10,11 @@ package setupClient.views;
 public class StartQuizView extends SetupClientView {
 
     public void printQuizIDActivationRequest() {
-        System.out.print("Please enter a Quiz ID to activate: ");
+        System.out.print(msg("quizid_activation_request"));
     }
 
     public void printActivationSuccess() {
-        System.out.println(" Activation succesfull. The Quiz is now avaiable to play.");}
+        System.out.println(msg("quiz_activation_success"));
+    }
 
 }

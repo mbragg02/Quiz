@@ -2,6 +2,8 @@ package setupClient.views;
 
 import java.util.Scanner;
 
+import static setupClient.factories.MessageProperties.msg;
+
 /**
  * View for general messages required for the set-up client.
  *
@@ -12,15 +14,15 @@ public abstract class SetupClientView {
 	private final Scanner in = new Scanner(System.in);
 	
 	public void printInvalidInputMessage() {
-		System.out.println("Not a valid option. Please try again");
+		System.out.println(msg("invalid_input"));
 	}
 	
-	public void printNoActiveQuizesMessage() {
-		System.out.println("Currently no active quizzes");
+	public void printNoActiveQuizzesMessage() {
+		System.out.println(msg("no_active_quizzes"));
 	}
 
-	public void printNoInActiveQuizesMessage() {
-		System.out.println("Currently no inactive quizzes");
+	public void printNoInActiveQuizzesMessage() {
+        System.out.println(msg("no_inactive_quizzes"));
 	}
 
 	public void printException(String e) {
@@ -28,7 +30,7 @@ public abstract class SetupClientView {
 	}
 	
 	public void printInvalidInputException() {
-		System.out.println("Not a valid number");
+        System.out.println(msg("invalid_input_format"));
 	}
 	
 	public int getNextIntFromConsole() {

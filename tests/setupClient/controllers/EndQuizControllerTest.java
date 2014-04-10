@@ -9,12 +9,12 @@ import server.interfaces.Server;
 import setupClient.views.EndQuizView;
 
 import java.rmi.RemoteException;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
 
 import static org.mockito.Matchers.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
@@ -65,6 +65,16 @@ public class EndQuizControllerTest {
         nonEmptyListOfGames.add(0, game);
         when(emptyListOfGames.isEmpty()).thenReturn(true);
 
+        // Set up mock Quiz iterator behaviour
+        when(nonEmptyListOfQuizzes.iterator()).thenReturn(quizIterator);
+        when(quizIterator.hasNext()).thenReturn(true).thenReturn(false);
+        when(quizIterator.next()).thenReturn(quiz);
+
+        // Setup mock game iterator behaviour
+        when(nonEmptyListOfGames.iterator()).thenReturn(gameIterator);
+        when(gameIterator.hasNext()).thenReturn(true).thenReturn(false);
+        when(gameIterator.next()).thenReturn(game);
+
         when(view.getNextIntFromConsole()).thenReturn(10);
 
         client = new EndQuizController(model, view);
@@ -79,7 +89,7 @@ public class EndQuizControllerTest {
 
         client.launch();
 
-        verify(view).printNoActiveQuizesMessage();
+        verify(view).printNoActiveQuizzesMessage();
     }
 
     /*
@@ -89,12 +99,10 @@ public class EndQuizControllerTest {
     public void testLaunchNoPlayers() throws RemoteException {
         when(model.getActiveQuizzes()).thenReturn(nonEmptyListOfQuizzes);
         when(model.setQuizInactive(anyInt())).thenReturn(emptyListOfGames);
-        when(nonEmptyListOfQuizzes.iterator()).thenReturn(quizIterator);
-        when(quizIterator.hasNext()).thenReturn(true).thenReturn(false);
-        when(quizIterator.next()).thenReturn(quiz);
 
         client.launch();
 
+        verify(view).printQuizDetails(anyInt(), anyString());
         verify(view).printQuizIDDeactivationRequest();
         verify(view).getNextIntFromConsole();
         verify(view).getNextLineFromConsole();
@@ -109,22 +117,40 @@ public class EndQuizControllerTest {
         when(model.getActiveQuizzes()).thenReturn(nonEmptyListOfQuizzes);
         when(model.setQuizInactive(anyInt())).thenReturn(nonEmptyListOfGames);
 
-        when(nonEmptyListOfQuizzes.iterator()).thenReturn(quizIterator);
-        when(quizIterator.hasNext()).thenReturn(true).thenReturn(false);
-        when(quizIterator.next()).thenReturn(quiz);
-
-        // Setup mock game iterator behaviour
-        when(nonEmptyListOfGames.iterator()).thenReturn(gameIterator);
-        when(gameIterator.hasNext()).thenReturn(true).thenReturn(false);
-        when(gameIterator.next()).thenReturn(game);
-
         client.launch();
 
+        verify(view).printQuizDetails(anyInt(), anyString());
         verify(view).printQuizIDDeactivationRequest();
         verify(view).getNextIntFromConsole();
         verify(view).getNextLineFromConsole();
         verify(view).printWinnersAreMessage();
         verify(view).printWinnerDetails(eq(1), eq(TEST_NAME), anyDouble(), eq(TEST_DATE));
+
+    }
+
+    @Test
+    public void testLaunchInputMismatchException() throws RemoteException {
+        when(model.getActiveQuizzes()).thenReturn(nonEmptyListOfQuizzes);
+        when(model.setQuizInactive(anyInt())).thenReturn(nonEmptyListOfGames);
+        doThrow(new InputMismatchException()).doReturn(0).when(view).getNextIntFromConsole();
+
+        client.launch();
+
+        verify(view, times(2)).printQuizIDDeactivationRequest();
+        verify(view, times(2)).getNextLineFromConsole();
+        verify(view).printException(anyString());
+    }
+
+    @Test
+    public void testLaunchNullPointerException() throws RemoteException {
+        when(model.getActiveQuizzes()).thenReturn(nonEmptyListOfQuizzes);
+        when(model.setQuizInactive(anyInt())).thenReturn(nonEmptyListOfGames);
+        doThrow(new NullPointerException()).doReturn(0).when(view).getNextIntFromConsole();
+
+        client.launch();
+
+        verify(view, times(2)).printQuizIDDeactivationRequest();
+        verify(view).printException(anyString());
 
     }
 }
