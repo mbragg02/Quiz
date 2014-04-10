@@ -1,6 +1,6 @@
 package server.models;
 
-import server.Factories.QuizFactory;
+import server.factories.QuizFactory;
 import server.interfaces.Game;
 import server.interfaces.Question;
 import server.interfaces.Quiz;
@@ -10,10 +10,7 @@ import server.utilities.LoggerWrapper;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Level;
 
 /**
@@ -108,6 +105,9 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
     @Override
     public void setQuizActive(int quizID) {
+
+        validateInactiveQuizzes(quizID);
+
         serverData.getQuiz(quizID).setActive(true);
         LoggerWrapper.log(Level.FINE, "Quiz \"" + serverData.getQuiz(quizID).getQuizName() + "\" set ACTIVE");
 
@@ -115,14 +115,29 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
     @Override
     public List<Quiz> getActiveQuizzes() {
-        List<Quiz> activeQuizzes = new ArrayList<>();
+        List<Quiz> result = new ArrayList<>();
 
         for (Quiz quiz : serverData.getQuizzes().values()) {
             if (quiz.isActive()) {
-                activeQuizzes.add(quiz);
+                result.add(quiz);
             }
         }
-        return activeQuizzes;
+        Collections.sort(result, factory.getQuizIdComparator());
+        return result;
+    }
+
+    @Override
+    public List<Quiz> getInactiveQuizzes() {
+        List<Quiz> result = new ArrayList<>();
+
+        for (Quiz quiz : serverData.getQuizzes().values()) {
+            if (!quiz.isActive()) {
+                result.add(quiz);
+            }
+        }
+        Collections.sort(result, factory.getQuizIdComparator());
+        return result;
+
     }
 
     @Override
@@ -227,6 +242,15 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         Quiz quiz = serverData.getQuiz(quizID);
         if (!quiz.isActive()) {
             String warning = "Quiz " + quizID + ": " + "\"" + quiz.getQuizName() + "\"" + " is not currently active";
+            LoggerWrapper.log(Level.SEVERE, warning);
+            throw new NullPointerException(warning);
+        }
+    }
+
+    private void validateInactiveQuizzes(int quizID) {
+        Quiz quiz = serverData.getQuiz(quizID);
+        if (quiz.isActive()) {
+            String warning = "Quiz " + quizID + ": " + "\"" + quiz.getQuizName() + "\"" + " is already currently active";
             LoggerWrapper.log(Level.SEVERE, warning);
             throw new NullPointerException(warning);
         }

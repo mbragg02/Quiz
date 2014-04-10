@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author Michael Bragg
  */
-public class CreateControllerImpl extends Controller implements CreateController {
+public class CreateQuizControllerImpl extends Controller implements CreateQuizController {
 
     private final CreateQuizView view;
     private int quizID;
@@ -22,7 +22,7 @@ public class CreateControllerImpl extends Controller implements CreateController
     private boolean buildComplete;
     private boolean questionComplete;
 
-    public CreateControllerImpl(Server model, CreateQuizView view) {
+    public CreateQuizControllerImpl(Server model, CreateQuizView view) {
         super(model);
         this.view = view;
         this.quizID = 0;

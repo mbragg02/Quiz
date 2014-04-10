@@ -12,15 +12,15 @@ import java.rmi.RemoteException;
 public class MenuController extends Controller {
 
     private final Controller createQuizController;
-    private final Controller viewActiveQuizzesController;
+    private final Controller startQuizController;
     private final Controller endQuizController;
     private final MenuView view;
     private boolean running;
 
-    public MenuController(Controller createController, Controller endController, Controller displayController, MenuView view) {
-        this.createQuizController        = createController;
-        this.endQuizController           = endController;
-        this.viewActiveQuizzesController = displayController;
+    public MenuController(Controller createController, Controller endController, Controller startController, MenuView view) {
+        this.createQuizController = createController;
+        this.endQuizController    = endController;
+        this.startQuizController  = startController;
         this.view = view;
         running = true;
     }
@@ -66,7 +66,7 @@ public class MenuController extends Controller {
                 createQuizController.launch();
                 break;
             case 2:
-                viewActiveQuizzesController.launch();
+                startQuizController.launch();
                 break;
             case 3:
                 endQuizController.launch();

@@ -1,8 +1,8 @@
 package server;
 
-import server.Factories.Factory;
-import server.Factories.FileFactory;
-import server.Factories.QuizFactory;
+import server.factories.Factory;
+import server.factories.FileFactory;
+import server.factories.QuizFactory;
 import server.interfaces.Server;
 import server.models.ServerData;
 import server.utilities.LoggerWrapper;

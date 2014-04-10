@@ -7,25 +7,24 @@ import setupClient.views.MenuView;
 
 import java.rmi.RemoteException;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
+ * Tests for the setup clients menu controller
+ *
  * @author Michael Bragg
- *         Tests for the setup clients menu controller
  */
 public class MenuControllerTest {
 
     private MenuController client;
 
     @Mock
-    private CreateControllerImpl createController;
+    private CreateQuizControllerImpl createController;
     @Mock
-    private EndController endController;
+    private EndQuizController endQuizController;
     @Mock
-    private DisplayController displayController;
+    private StartQuizController startQuizController;
     @Mock
     private MenuView view;
 
@@ -33,7 +32,7 @@ public class MenuControllerTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        this.client = new MenuController(createController, endController, displayController, view);
+        this.client = new MenuController(createController, endQuizController, startQuizController, view);
     }
 
     /*
@@ -87,7 +86,7 @@ public class MenuControllerTest {
     Test for launching the menu and displaying all active quizzes
      */
     @Test
-    public void testLaunchThenCallViewActiveQuizzes() throws RemoteException {
+    public void testLaunchThenCallStartQuizController() throws RemoteException {
         when(view.getNextLineFromConsole()).thenReturn("2").thenReturn("exit");
 
         client.launch();
@@ -95,7 +94,7 @@ public class MenuControllerTest {
         verify(view).printWelcomeMessage();
         verify(view, times(2)).printMainMenu();
         verify(view, times(2)).getNextLineFromConsole();
-        verify(displayController).launch();
+        verify(startQuizController).launch();
         verify(view).printExitMessage();
 
     }
@@ -104,7 +103,7 @@ public class MenuControllerTest {
     Test for launching the menu and ending a running quiz game.
     */
     @Test
-    public void testLaunchThenCallEndQuiz() throws RemoteException {
+    public void testLaunchThenCallEndQuizController() throws RemoteException {
         when(view.getNextLineFromConsole()).thenReturn("3").thenReturn("exit");
 
         client.launch();
@@ -112,7 +111,7 @@ public class MenuControllerTest {
         verify(view).printWelcomeMessage();
         verify(view, times(2)).printMainMenu();
         verify(view, times(2)).getNextLineFromConsole();
-        verify(endController).launch();
+        verify(endQuizController).launch();
         verify(view).printExitMessage();
 
     }

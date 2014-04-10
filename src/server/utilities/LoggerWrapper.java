@@ -1,7 +1,7 @@
 package server.utilities;
 
-import server.Factories.Factory;
-import server.Factories.FileFactory;
+import server.factories.Factory;
+import server.factories.FileFactory;
 
 import java.io.IOException;
 import java.util.logging.Handler;

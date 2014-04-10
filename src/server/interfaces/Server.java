@@ -34,7 +34,7 @@ public interface Server extends Remote {
     /**
      * Set a Quiz to ACTIVE. i.e Playable by a player client
      * @param quizID int The Quiz ID to set ACTIVE
-     * @throws RemoteException
+     * @throws RemoteException if the quiz ID is not valid
      */
 	void setQuizActive(int quizID) throws RemoteException;
 
@@ -44,6 +44,8 @@ public interface Server extends Remote {
      * @throws RemoteException
      */
 	List<Quiz> getActiveQuizzes() throws RemoteException;
+
+    List<Quiz> getInactiveQuizzes() throws RemoteException;
 
     /**
      * Set a particular Quiz as INACTIVE. i.e No longer playable.

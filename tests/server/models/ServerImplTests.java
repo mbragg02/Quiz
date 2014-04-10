@@ -2,7 +2,7 @@ package server.models;
 
 import org.junit.Before;
 import org.junit.Test;
-import server.Factories.QuizFactory;
+import server.factories.QuizFactory;
 import server.interfaces.Question;
 import server.interfaces.Quiz;
 import server.interfaces.Server;

@@ -23,14 +23,14 @@ import static org.mockito.MockitoAnnotations.initMocks;
 /**
  * @author Michael Bragg
  */
-public class CreateControllerImplTest {
+public class CreateQuizControllerImplTest {
 
     private static final String QUIZ_NAME = "Test Quiz";
     private static final String QUESTION = "Question";
     private static final String ANSWER = "Answer";
     @Rule
     public ExpectedException thrown = ExpectedException.none();
-    private CreateControllerImpl client;
+    private CreateQuizControllerImpl client;
     @Mock
     private Server model;
     @Mock
@@ -65,7 +65,7 @@ public class CreateControllerImplTest {
         when(view.getNextLineFromConsole()).thenReturn(QUIZ_NAME);
         when(model.createQuiz(anyString())).thenReturn(0);
 
-        this.client = new CreateControllerImpl(model, view);
+        this.client = new CreateQuizControllerImpl(model, view);
     }
 
     @Test

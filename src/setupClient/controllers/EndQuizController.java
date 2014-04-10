@@ -1,10 +1,12 @@
 package setupClient.controllers;
 
 import server.interfaces.Game;
+import server.interfaces.Quiz;
 import server.interfaces.Server;
 import setupClient.views.EndQuizView;
 
 import java.rmi.RemoteException;
+import java.util.InputMismatchException;
 import java.util.List;
 
 /**
@@ -12,10 +14,11 @@ import java.util.List;
  *
  * @author Michael Bragg
  */
-public class EndController extends Controller {
+public class EndQuizController extends Controller {
+
     private final EndQuizView view;
 
-    public EndController(Server model, EndQuizView view) {
+    public EndQuizController(Server model, EndQuizView view) {
         super(model);
         this.view = view;
     }
@@ -27,19 +30,45 @@ public class EndController extends Controller {
      */
     @Override
     public void launch() throws RemoteException {
-        if (model.getActiveQuizzes().isEmpty()) {
+        List<Quiz> quizzes = model.getActiveQuizzes();
+        if (quizzes.isEmpty()) {
             view.printNoActiveQuizesMessage();
         } else {
-            view.printQuizIDDeactivationRequest();
-            int input = view.getNextIntFromConsole();
-            view.getNextLineFromConsole();
+            int quizId = getQuizFromUser(quizzes);
 
-            List<Game> highscoreGames = model.setQuizInactive(input);
+            List<Game> highscoreGames = model.setQuizInactive(quizId);
+
             if (highscoreGames.isEmpty()) {
                 view.printNoPlayersMessage();
             } else {
                 displayPlayers(highscoreGames);
             }
+        }
+    }
+
+    private int getQuizFromUser(List<Quiz> quizzes) {
+        int input;
+        do {
+            displayActiveQuizzes(quizzes);
+            view.printQuizIDDeactivationRequest();
+
+            try {
+                input = view.getNextIntFromConsole();
+                break;
+            } catch (InputMismatchException e) {
+                view.printException("Invlaid input: only numbers are accepted. Please try again");
+            } catch (NullPointerException e) {
+                view.printException(e.getMessage());
+            } finally {
+                view.getNextLineFromConsole();
+            }
+        } while (true);
+        return input;
+    }
+
+    private void displayActiveQuizzes(List<Quiz> quizzes) {
+        for (Quiz quiz : quizzes) {
+            view.printQuizDetails(quiz.getQuizID(), quiz.getQuizName());
         }
     }
 

@@ -3,9 +3,9 @@ package setupClient.factories;
 import server.interfaces.Server;
 import setupClient.controllers.*;
 import setupClient.views.CreateQuizView;
-import setupClient.views.DisplayQuizView;
 import setupClient.views.EndQuizView;
 import setupClient.views.MenuView;
+import setupClient.views.StartQuizView;
 
 /**
  * Factory for the controller actions for the set-up client
@@ -33,19 +33,19 @@ public class ControllerFactory {
     }
 
     Controller getCreateQuizController(CreateQuizView view) {
-        return new CreateControllerImpl(model, view);
+        return new CreateQuizControllerImpl(model, view);
     }
 
     Controller getEndQuizController(EndQuizView view) {
-        return new EndController(model, view);
+        return new EndQuizController(model, view);
     }
 
-    Controller getViewQuizController(DisplayQuizView view) {
-        return new DisplayController(model, view);
+    Controller getStartQuizController(StartQuizView view) {
+        return new StartQuizController(model, view);
     }
 
-    public Controller getMenuController(MenuView menuView, CreateQuizView Createview, EndQuizView endView, DisplayQuizView view) {
-        return new MenuController(getCreateQuizController(Createview), getEndQuizController(endView), getViewQuizController(view), menuView);
+    public Controller getMenuController(MenuView menuView, CreateQuizView Createview, EndQuizView endView, StartQuizView view) {
+        return new MenuController(getCreateQuizController(Createview), getEndQuizController(endView), getStartQuizController(view), menuView);
     }
 
 

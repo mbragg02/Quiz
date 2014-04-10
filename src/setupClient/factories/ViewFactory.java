@@ -1,9 +1,9 @@
 package setupClient.factories;
 
 import setupClient.views.CreateQuizView;
-import setupClient.views.DisplayQuizView;
 import setupClient.views.EndQuizView;
 import setupClient.views.MenuView;
+import setupClient.views.StartQuizView;
 
 /**
  * Factory for creating different views the diffrent actions of the setup client
@@ -37,7 +37,7 @@ public class ViewFactory {
         return new EndQuizView();
     }
 
-    public DisplayQuizView getDisplayQuizView() {
-        return new DisplayQuizView();
+    public StartQuizView getStartQuizView() {
+        return new StartQuizView();
     }
 }

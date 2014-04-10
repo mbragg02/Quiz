@@ -44,7 +44,7 @@ class SetupClientLauncher {
         controllerFactory.getMenuController(viewFactory.getMenuView(),
                 viewFactory.getCreateQuizView(),
                 viewFactory.getEndQuizView(),
-                viewFactory.getDisplayQuizView())
+                viewFactory.getStartQuizView())
                 .launch();
     }
 }

@@ -18,7 +18,11 @@ public abstract class SetupClientView {
 	public void printNoActiveQuizesMessage() {
 		System.out.println("Currently no active quizzes");
 	}
-	
+
+	public void printNoInActiveQuizesMessage() {
+		System.out.println("Currently no inactive quizzes");
+	}
+
 	public void printException(String e) {
 		System.out.println(e);
 	}
@@ -35,4 +39,7 @@ public abstract class SetupClientView {
 		return in.nextLine();
 	}
 
+    public void printQuizDetails(int quizID, String quizName) {
+        System.out.println(quizID + ": " + quizName);
+    }
 }

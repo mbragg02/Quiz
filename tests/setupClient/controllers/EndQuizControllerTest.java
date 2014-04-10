@@ -18,14 +18,15 @@ import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
+ * Tests for the EndQuiz class for the setup client.
+ *
  * @author Michael Bragg
- *         Tests for the EndQuiz class for the setup client.
  */
-public class EndControllerTest {
+public class EndQuizControllerTest {
 
     public static final String TEST_NAME = "Test Name";
     public static final String TEST_DATE = "Test Date";
-    private EndController client;
+    private EndQuizController client;
 
     @Mock
     private Server model;
@@ -45,6 +46,8 @@ public class EndControllerTest {
     private Game game;
     @Mock
     private Iterator<Game> gameIterator;
+    @Mock
+    private Iterator<Quiz> quizIterator;
 
     @Before
     public void setUp() throws Exception {
@@ -64,7 +67,7 @@ public class EndControllerTest {
 
         when(view.getNextIntFromConsole()).thenReturn(10);
 
-        client = new EndController(model, view);
+        client = new EndQuizController(model, view);
     }
 
     /*
@@ -86,6 +89,9 @@ public class EndControllerTest {
     public void testLaunchNoPlayers() throws RemoteException {
         when(model.getActiveQuizzes()).thenReturn(nonEmptyListOfQuizzes);
         when(model.setQuizInactive(anyInt())).thenReturn(emptyListOfGames);
+        when(nonEmptyListOfQuizzes.iterator()).thenReturn(quizIterator);
+        when(quizIterator.hasNext()).thenReturn(true).thenReturn(false);
+        when(quizIterator.next()).thenReturn(quiz);
 
         client.launch();
 
@@ -103,7 +109,11 @@ public class EndControllerTest {
         when(model.getActiveQuizzes()).thenReturn(nonEmptyListOfQuizzes);
         when(model.setQuizInactive(anyInt())).thenReturn(nonEmptyListOfGames);
 
-        // Setup mock quiz iterator behaviour
+        when(nonEmptyListOfQuizzes.iterator()).thenReturn(quizIterator);
+        when(quizIterator.hasNext()).thenReturn(true).thenReturn(false);
+        when(quizIterator.next()).thenReturn(quiz);
+
+        // Setup mock game iterator behaviour
         when(nonEmptyListOfGames.iterator()).thenReturn(gameIterator);
         when(gameIterator.hasNext()).thenReturn(true).thenReturn(false);
         when(gameIterator.next()).thenReturn(game);

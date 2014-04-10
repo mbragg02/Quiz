@@ -1,6 +1,6 @@
 package server.utilities;
 
-import server.Factories.FileFactory;
+import server.factories.FileFactory;
 import server.models.ServerData;
 
 import java.io.IOException;
