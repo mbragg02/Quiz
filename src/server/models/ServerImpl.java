@@ -62,34 +62,41 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
             throw new IllegalArgumentException("Question can not be blank");
         }
         Question question = factory.getQuestion(serverData.getQuestionID(), quizQuestion);
-        serverData.getQuiz(quizID).addQuestion(question);
-        LoggerWrapper.log(Level.FINE, "Question added to quiz: \"" + serverData.getQuiz(quizID).getQuizName() + "\"");
+        Quiz quiz = serverData.getQuiz(quizID);
+        quiz.addQuestion(question);
+        LoggerWrapper.log(Level.FINE, "Question added to quiz: \"" + quiz.getQuizName() + "\"");
         return question.getQuestionID();
     }
 
     @Override
     public void addAnswerToQuestion(int quizID, int questionID, String quizAnswer)
             throws IllegalArgumentException, NullPointerException {
-        validateQuizAndQuestionID(quizID, questionID);
         if (quizAnswer.isEmpty()) {
             throw new IllegalArgumentException("Answer can not be blank");
         }
-        serverData.getQuiz(quizID).getQuestion(questionID).addAnswer(quizAnswer);
-        LoggerWrapper.log(Level.FINE, "Answer added to quiz: \"" + serverData.getQuiz(quizID).getQuizName() + "\"");
+        validateQuizAndQuestionID(quizID, questionID);
+
+        Quiz quiz = serverData.getQuiz(quizID);
+        quiz.getQuestion(questionID).addAnswer(quizAnswer);
+        LoggerWrapper.log(Level.FINE, "Answer added to quiz: \"" + quiz.getQuizName() + "\"");
     }
 
     @Override
     public void setCorrectAnswer(int quizID, int questionID, int correctAnswer)
             throws NullPointerException, IllegalArgumentException, InputMismatchException {
         validateQuizAndQuestionID(quizID, questionID);
-        int numberOfAnswers = serverData.getQuiz(quizID).getQuestion(questionID).getAnswers().size();
+
+        Quiz quiz = serverData.getQuiz(quizID);
+        Question question = quiz.getQuestion(questionID);
+
+        int numberOfAnswers = question.getAnswers().size();
         // numberOfAnswers - 1 to get the highest answer index
         if (correctAnswer > numberOfAnswers - 1 || correctAnswer < 0) {
             throw new IllegalArgumentException("Not a valid answer");
         }
-        LoggerWrapper.log(Level.FINE, "Answer set correct for Quiz: \"" + serverData.getQuiz(quizID).getQuizName() + "\"");
+        LoggerWrapper.log(Level.FINE, "Answer set correct for Quiz: \"" + quiz.getQuizName() + "\"");
 
-        serverData.getQuiz(quizID).getQuestion(questionID).setCorrectAnswerID(correctAnswer);
+        question.setCorrectAnswerID(correctAnswer);
     }
 
     @Override
@@ -108,9 +115,10 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
         validateInactiveQuizzes(quizID);
 
-        serverData.getQuiz(quizID).setActive(true);
-        LoggerWrapper.log(Level.FINE, "Quiz \"" + serverData.getQuiz(quizID).getQuizName() + "\" set ACTIVE");
+        Quiz quiz = serverData.getQuiz(quizID);
+        quiz.setActive(true);
 
+        LoggerWrapper.log(Level.FINE, "Quiz \"" + quiz.getQuizName() + "\" set ACTIVE");
     }
 
     @Override
@@ -162,7 +170,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         return result;
     }
 
-    private List<Game> getHighScoreGames(List<Game> gamesList) {
+    @Override
+    public List<Game> getHighScoreGames(List<Game> gamesList) {
         int highScore = 0;
         List<Game> result = new ArrayList<>();
 
@@ -172,6 +181,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
                 highScore = game.getScore();
             }
         }
+
         // Find the games with that high score
         for (Game game : gamesList) {
             if (game.getScore() == highScore) {
@@ -187,7 +197,6 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
     @Override
     public int startGame(int quizID, String playerName)
             throws IllegalArgumentException, NullPointerException {
-        validateActiveQuizID(quizID);
 
         if (playerName.isEmpty()) {
             throw new IllegalArgumentException("Player name can not be blank");
@@ -195,6 +204,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         if (Character.isDigit(playerName.charAt(ZERO_INDEX))) {
             throw new IllegalArgumentException("Name can not begin with a number");
         }
+        validateActiveQuizID(quizID);
 
         Game game = factory.getGame(serverData.getGameID(), playerName);
         Quiz quiz = serverData.getQuiz(quizID);

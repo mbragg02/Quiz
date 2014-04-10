@@ -11,38 +11,44 @@ public interface Question {
 
     /**
      * Get the questions unique ID
+     *
      * @return int. Question ID
      */
-	int getQuestionID();
+    int getQuestionID();
 
     /**
      * Get the question
+     *
      * @return String. The Question
      */
-	String getQuestion();
+    String getQuestion();
 
     /**
      * Get the ID of the correct answer.
+     *
      * @return int.
      */
-	int getCorrectAnswerID();
+    int getCorrectAnswerID();
 
     /**
      * Set an answer as being correct.
+     *
      * @param correctAnswerID int. Correct answer ID
      */
-	void setCorrectAnswerID(int correctAnswerID);
+    void setCorrectAnswerID(int correctAnswerID);
 
     /**
      * Add an answer to the question.
+     *
      * @param answer String. A answer
      */
-	void addAnswer(String answer);
+    void addAnswer(String answer);
 
     /**
      * Get a list of all the answers for this question.
+     *
      * @return List<String> answers
      */
-	List<String> getAnswers();
+    List<String> getAnswers();
 
 }
