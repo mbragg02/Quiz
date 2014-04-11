@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.util.*;
 import java.util.logging.Level;
 
+
 /**
  * The Quiz Server
  *
@@ -231,7 +232,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         for (Game game : gamesList) {
             if (game.getGameID() == gameID) {
                 Date date = factory.getDate();
-                game.setPlayerScoreWithDate(score, dateFormat.format(date));
+                String dateString = dateFormat.format(date);
+                game.setPlayerScoreWithDate(score, dateString);
                 break;
             }
         }

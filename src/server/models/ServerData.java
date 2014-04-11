@@ -34,10 +34,6 @@ public class ServerData implements Serializable {
         return quizzes;
     }
 
-    public void setQuizzes(ConcurrentMap<Integer, Quiz> quizzes) {
-        this.quizzes = quizzes;
-    }
-
     public void addQuiz(int key, Quiz quiz) {
         quizzes.put(key, quiz);
     }
