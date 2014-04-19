@@ -2,6 +2,11 @@
 /build/
 /bin/
 target/
+
+.idea
+*.iml
+*.log
+serverData.txt
  
 # OS Files #
 .DS_Store
