@@ -20,9 +20,9 @@ For example, in Intellij:
     Junit 4
 
 ###Operation:
-    1. Launch ServerLauncher to start the Quiz Server
-    2. Launch SetupClientLauncher to start to Set-up client. The set-up client can create new Quizzes & and current active Quizzes.
-    3. Launch PlayerClientLauncher to play a Quiz game.
+1. Launch ServerLauncher to start the Quiz Server
+2. Launch SetupClientLauncher to start to Set-up client. The set-up client can create new Quizzes & and current active Quizzes.
+3. Launch PlayerClientLauncher to play a Quiz game.
 
 ###Quiz Server
 The Quiz server is required for both the set-up and player clients to operate. All server activity is logged to a log file. Startup/shutdown activity as well as exceptions are loggged to the console as well.
