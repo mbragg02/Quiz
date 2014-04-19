@@ -1,0 +1,1806 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="68ffb340-20fd-49c1-a4ae-34b0afd062ac" name="Default" comment="javaDocs">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/allclasses-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/allclasses-noframe.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/constant-values.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/deprecated-list.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/help-doc.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-11.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-12.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-13.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-14.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index-files/index-9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/overview-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/overview-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/overview-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/package-list" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/controllers/PlayerClientImpl.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/controllers/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/controllers/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/controllers/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/interfaces/PlayerClient.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/interfaces/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/interfaces/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/interfaces/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/views/PlayerClientView.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/views/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/views/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/playerClient/views/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/resources/background.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/resources/tab.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/resources/titlebar.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/resources/titlebar_end.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/serialized-form.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/ServerLauncher.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/factories/Factory.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/factories/FileFactory.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/factories/QuizFactory.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/factories/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/factories/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/factories/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/interfaces/Game.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/interfaces/Question.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/interfaces/Quiz.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/interfaces/Server.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/interfaces/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/interfaces/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/interfaces/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/models/GameImpl.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/models/QuestionImpl.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/models/QuizImpl.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/models/ServerData.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/models/ServerImpl.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/models/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/models/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/models/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/utilities/LoggerWrapper.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/utilities/ShutdownHook.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/utilities/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/utilities/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/server/utilities/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/controllers/Controller.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/controllers/CreateController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/controllers/CreateControllerImpl.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/controllers/DisplayController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/controllers/EndController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/controllers/MenuController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/controllers/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/controllers/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/controllers/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/factories/ControllerFactory.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/factories/ViewFactory.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/factories/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/factories/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/factories/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/views/CreateQuizView.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/views/DisplayQuizView.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/views/EndQuizView.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/views/MenuView.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/views/SetupClientView.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/views/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/views/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/setupClient/views/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javaDoc/stylesheet.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/messages.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/security.policy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/playerClient/PlayerClientLauncher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/playerClient/controllers/PlayerClientImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/playerClient/interfaces/PlayerClient.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/playerClient/views/PlayerClientView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/ServerLauncher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/factories/Factory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/factories/FileFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/factories/QuizFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/interfaces/Game.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/interfaces/Question.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/interfaces/Quiz.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/interfaces/Server.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/models/GameImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/models/QuestionImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/models/QuizImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/models/ServerData.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/models/ServerImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/utilities/LoggerWrapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/utilities/MessageProperties.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/utilities/QuizIdComparator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/server/utilities/ShutdownHook.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/SetupClientLauncher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/controllers/Controller.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/controllers/CreateQuizController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/controllers/CreateQuizControllerImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/controllers/EndQuizController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/controllers/MenuController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/controllers/StartQuizController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/factories/ControllerFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/factories/ViewFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/views/CreateQuizView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/views/EndQuizView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/views/MenuView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/views/SetupClientView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setupClient/views/StartQuizView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/playerClient/controllers/PlayerClientImplTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/GameImplTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/QuestionImplTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/QuizImplTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/ServerDataTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/serverImplTests/AddAnswerToQuestionTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/serverImplTests/AddQuizToQuestionTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/serverImplTests/CreateQuizTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/serverImplTests/GetActiveQuizzesTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/serverImplTests/GetAnswersForQuestionsTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/serverImplTests/GetHighScoreGamesTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/serverImplTests/GetInactiveQuizzesTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/serverImplTests/GetQuizQuestionsAndAnswersTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/serverImplTests/SetCorrectAnswerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/serverImplTests/SetQuizActiveTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/serverImplTests/SetQuizInactiveTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/serverImplTests/StartGameTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/server/models/serverImplTests/SubmitScoreTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/setupClient/controllers/CreateQuizControllerImplTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/setupClient/controllers/EndQuizControllerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/setupClient/controllers/MenuControllerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/setupClient/controllers/StartQuizControllerTest.java" afterPath="" />
+    </list>
+    <list id="ac568522-9b19-441c-a1b2-c279a0735f00" name="Failed commit: Default" comment="javaDocs" />
+    <ignored path="Quiz.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Quiz$ServerLauncher.coverage" NAME="ServerLauncher Coverage Results" MODIFIED="1396014896356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Quiz$CreateQuizImplTest.coverage" NAME="CreateQuizImplTest Coverage Results" MODIFIED="1397042736812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Quiz$All_in_Quiz.coverage" NAME="All in Quiz Coverage Results" MODIFIED="1397483657826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Quiz$server_models_in_Quiz.coverage" NAME="server.models in Quiz Coverage Results" MODIFIED="1397210904587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.models.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Quiz$GameImplTest_and_3_more.coverage" NAME="GameImplTest and 3 more Coverage Results" MODIFIED="1396948737154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Quiz$PlayerClientImplTest_testSetPlayerName.coverage" NAME="PlayerClientImplTest.testSetPlayerName Coverage Results" MODIFIED="1397065783223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>playerClient.controllers.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Quiz$ServerImplTests.coverage" NAME="ServerImplTests Coverage Results" MODIFIED="1397172384680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.models.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true" />
+    <breakpoint_rules converted="true" />
+    <ui_properties converted="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="Quiz" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="Factory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/factories/Factory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="825">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/factories/FileFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="39" max-vertical-offset="615">
+              <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QuizFactory.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/server/factories/QuizFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.24048096" vertical-offset="0" max-vertical-offset="630">
+              <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessageProperties.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/utilities/MessageProperties.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.7777777" vertical-offset="0" max-vertical-offset="690">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$/../GradleTestClone" value="1394119936000" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/playerClient/views/PlayerClientView.java" />
+        <option value="$PROJECT_DIR$/messages.properties" />
+        <option value="$PROJECT_DIR$/src/server/interfaces/Quiz.java" />
+        <option value="$PROJECT_DIR$/src/server/interfaces/Question.java" />
+        <option value="$PROJECT_DIR$/src/server/interfaces/Game.java" />
+        <option value="$PROJECT_DIR$/src/server/interfaces/Server.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/ServerImplTests.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/AddQuizToQuestionTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/AddAnswerToQuestionTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/GetQuizQuestionsAndAnswertsTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/GetAnswersForQuestionsTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/SetQuizActiveTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/GetActiveQuizzesTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/GetInactiveQuizzesTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/SetQuizInactiveTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/GetHighScoreGamesTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/StartGameTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/ServerImplTests.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/SubmitScoreTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/AddQuizToQuestionTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/CreateQuizTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/GetActiveQuizzesTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/GetAnswersForQuestionsTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/GetInactiveQuizzesTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/GetQuizQuestionsAndAnswertsTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/GetQuizQuestionsAndAnswersTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/SetCorrectAnswerTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/StartGameTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/AddAnswerToQuestionTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/SetQuizActiveTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/SetQuizInactiveTest.java" />
+        <option value="$PROJECT_DIR$/src/server/models/ServerImpl.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/SubmitScoreTest.java" />
+        <option value="$PROJECT_DIR$/src/server/models/ServerData.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/ServerDataTest.java" />
+        <option value="$PROJECT_DIR$/tests/setupClient/controllers/CreateQuizControllerImplTest.java" />
+        <option value="$PROJECT_DIR$/tests/setupClient/controllers/EndQuizControllerTest.java" />
+        <option value="$PROJECT_DIR$/tests/playerClient/controllers/PlayerClientImplTest.java" />
+        <option value="$PROJECT_DIR$/tests/setupClient/controllers/StartQuizControllerTest.java" />
+        <option value="$PROJECT_DIR$/tests/server/models/serverImplTests/GetHighScoreGamesTest.java" />
+        <option value="$PROJECT_DIR$/src/playerClient/controllers/PlayerClientImpl.java" />
+        <option value="$PROJECT_DIR$/src/server/utilities/LoggerWrapper.java" />
+        <option value="$PROJECT_DIR$/src/server/utilities/QuizIdComparator.java" />
+        <option value="$PROJECT_DIR$/src/setupClient/controllers/CreateQuizControllerImpl.java" />
+        <option value="$PROJECT_DIR$/src/setupClient/factories/MessageProperties.java" />
+        <option value="$PROJECT_DIR$/src/playerClient/controllers/MessageProperties.java" />
+        <option value="$PROJECT_DIR$/src/MessageProperties.java" />
+        <option value="$PROJECT_DIR$/src/server/utilities/MessageProperties.java" />
+        <option value="$PROJECT_DIR$/src/server/Factory.java" />
+        <option value="$PROJECT_DIR$/src/server/factories/Factory.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="4" />
+    <option name="y" value="22" />
+    <option name="width" value="1436" />
+    <option name="height" value="878" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+          <State>
+            <id>Android Lint</id>
+          </State>
+          <State>
+            <id>Bean Validation issues</id>
+          </State>
+          <State>
+            <id>GSPGrailsGroovy</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>Google Web Toolkit issues</id>
+          </State>
+          <State>
+            <id>Gradle</id>
+          </State>
+          <State>
+            <id>GrailsGroovy</id>
+          </State>
+          <State>
+            <id>Groovy</id>
+          </State>
+          <State>
+            <id>J2ME Plugin</id>
+          </State>
+          <State>
+            <id>Java language level migration aids</id>
+          </State>
+          <State>
+            <id>Maven</id>
+          </State>
+          <State>
+            <id>Naming conventions</id>
+          </State>
+          <State>
+            <id>Numeric issues</id>
+          </State>
+          <State>
+            <id>Plugin DevKit</id>
+          </State>
+          <State>
+            <id>Probable bugs</id>
+          </State>
+          <State>
+            <id>Probable bugsGradle</id>
+          </State>
+          <State>
+            <id>QAPlug</id>
+          </State>
+          <State>
+            <id>Threading issues</id>
+          </State>
+          <State>
+            <id>XPath</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>TryFinallyCanBeTryWithResources</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <OptionsSetting value="true" id="Undo Check Out" />
+    <OptionsSetting value="true" id="Get Latest Version" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quiz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quiz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quiz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quiz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quiz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quiz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quiz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quiz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quiz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="playerClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quiz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quiz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javaDoc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/mockito/mockito-all-1.9.5.jar!/" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="FullScreen" value="false" />
+    <property name="LayoutCode.rearrangeEntriesJava" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/tests" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="151" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="153" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="156" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="950" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="151" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="153" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="156" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="950" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="server.models" />
+      <recent name="server.models.serverImplTests" />
+      <recent name="setupClient.controllers" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+      <recent name="setupClient.controllers.Controller" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="setupClient.controllers" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="server" />
+      <recent name="" />
+      <recent name="playerClient.controllers" />
+      <recent name="server.models" />
+      <recent name="setupClient.controllers" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/setupClient/views" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ServerLauncher">
+    <configuration default="false" name="GetQuizQuestionsAndAnswersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="server.models.serverImplTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Quiz" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="server.models.serverImplTests" />
+      <option name="MAIN_CLASS_NAME" value="server.models.serverImplTests.GetQuizQuestionsAndAnswersTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="GetInactiveQuizzesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="server.models.serverImplTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Quiz" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="server.models.serverImplTests" />
+      <option name="MAIN_CLASS_NAME" value="server.models.serverImplTests.GetInactiveQuizzesTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="GetHighScoreGamesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="server.models.serverImplTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Quiz" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="server.models.serverImplTests" />
+      <option name="MAIN_CLASS_NAME" value="server.models.serverImplTests.GetHighScoreGamesTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="server.models.serverImplTests in Quiz" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="server.models.serverImplTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Quiz" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="server.models.serverImplTests" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="SetupClientLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="setupClient.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="setupClient.SetupClientLauncher" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Quiz" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="scalaCoverage" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="scalaCoverage" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ServerLauncher" type="Application" factoryName="Application" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="server.ServerLauncher" />
+      <option name="VM_PARAMETERS" value="-Djava.security.policy=file:security.policy -Djava.rmi.server.codebase=file:out/production/Quiz/server/" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Quiz" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="All in Quiz" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="Quiz" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Cover" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="7">
+      <item index="0" class="java.lang.String" itemvalue="Application.ServerLauncher" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.All in Quiz" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.GetQuizQuestionsAndAnswersTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.GetInactiveQuizzesTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.GetHighScoreGamesTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.server.models.serverImplTests in Quiz" />
+      <item index="6" class="java.lang.String" itemvalue="Application.SetupClientLauncher" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.SetupClientLauncher" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.server.models.serverImplTests in Quiz" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.GetHighScoreGamesTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.GetInactiveQuizzesTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.GetQuizQuestionsAndAnswersTest" />
+      </list>
+    </recent_temporary>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="68ffb340-20fd-49c1-a4ae-34b0afd062ac" name="Default" comment="" />
+      <created>1394193210756</created>
+      <updated>1394193210756</updated>
+      <workItem from="1394193212096" duration="50000" />
+      <workItem from="1394193262655" duration="23000" />
+      <workItem from="1395946922381" duration="1887000" />
+      <workItem from="1395948841830" duration="1154000" />
+      <workItem from="1395950005266" duration="737000" />
+      <workItem from="1396011249801" duration="8354000" />
+      <workItem from="1396026652546" duration="5205000" />
+      <workItem from="1396345370241" duration="6802000" />
+      <workItem from="1396354099937" duration="26756000" />
+      <workItem from="1396511039237" duration="8000" />
+      <workItem from="1396530075891" duration="94000" />
+      <workItem from="1396530181194" duration="3670000" />
+      <workItem from="1396708283480" duration="13000" />
+      <workItem from="1396943836475" duration="136000" />
+      <workItem from="1396944033675" duration="3824000" />
+      <workItem from="1396948006653" duration="945000" />
+      <workItem from="1396948962109" duration="3413000" />
+      <workItem from="1396953910615" duration="14292000" />
+      <workItem from="1397043080211" duration="57453000" />
+      <workItem from="1397911319984" duration="73000" />
+      <workItem from="1397911402946" duration="4480000" />
+    </task>
+    <task id="LOCAL-00001" summary="findbugs tests renamed">
+      <created>1395949613095</created>
+      <updated>1395949613095</updated>
+    </task>
+    <task id="LOCAL-00002" summary="intellij import. Code inspection complete">
+      <created>1396011875593</created>
+      <updated>1396011875593</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Factory &amp; IDFactory added. JavaDoc comments added to server interfaces.">
+      <created>1396021828604</created>
+      <updated>1396021828604</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Setup client javadocs/comments. Code clean up &amp; refactoring">
+      <created>1396030247823</created>
+      <updated>1396030247823</updated>
+    </task>
+    <task id="LOCAL-00005" summary="player client javadocs &amp; refactoring">
+      <created>1396031182284</created>
+      <updated>1396031182284</updated>
+    </task>
+    <task id="LOCAL-00006" summary="player client package update">
+      <created>1396031986589</created>
+      <updated>1396031986589</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Persist data with serialization. &#10;Creation of class to manage the servers data. &#10;ShutdownHook now also saves the state of the Quiz server.&#10;Refactoring of ServerLauncher and ShutdownHook.">
+      <created>1396358868592</created>
+      <updated>1396358868592</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Factories refactored. ID validations improved. JavaDoc added to Quiz server interface.">
+      <created>1396430325471</created>
+      <updated>1396430325471</updated>
+    </task>
+    <task id="LOCAL-00009" summary="All Quiz server Tests passing.">
+      <created>1396431503701</created>
+      <updated>1396431503701</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Read me update">
+      <created>1396432577583</created>
+      <updated>1396432577583</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Logging extracted into seperate wrapper class. Comments &amp; Javadocs updated throughout.">
+      <created>1396454129876</created>
+      <updated>1396454129876</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Tests for the server and player nearly complete. Setup tests need work / refactor of createquiz class">
+      <created>1396952084137</created>
+      <updated>1396952084137</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Setup client: CreateQuizImpl refactored and tests complete.">
+      <created>1397043209327</created>
+      <updated>1397043209327</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Setup client controllers renaming. Setup client remaining tests added">
+      <created>1397049896301</created>
+      <updated>1397049896301</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Optomized imports&#10;">
+      <created>1397049947558</created>
+      <updated>1397049947558</updated>
+    </task>
+    <task id="LOCAL-00016" summary="PlayerClient tests compete">
+      <created>1397118293170</created>
+      <updated>1397118293170</updated>
+    </task>
+    <task id="LOCAL-00017" summary="JavaDoc formatting correction (All files)">
+      <created>1397118990670</created>
+      <updated>1397118990670</updated>
+    </task>
+    <task id="LOCAL-00018" summary="JavaDoc html files added">
+      <created>1397119261350</created>
+      <updated>1397119261350</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Setup client refactoring/exception handling. Added the ability to re-activate inactive quizzes.">
+      <created>1397127783333</created>
+      <updated>1397127783333</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Setup client refactoring/exception handling. Added the ability to re-activate inactive quizzes.">
+      <created>1397137266458</created>
+      <updated>1397137266458</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Setup client refactoring/exception handling. Added the ability to re-activate inactive quizzes.">
+      <created>1397172577251</created>
+      <updated>1397172577251</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Setup client refactoring/exception handling. Added the ability to re-activate inactive quizzes.">
+      <created>1397211270737</created>
+      <updated>1397211270737</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Setup client refactoring/exception handling. Added the ability to re-activate inactive quizzes.">
+      <created>1397914336260</created>
+      <updated>1397914336260</updated>
+    </task>
+    <task id="LOCAL-00024" summary="javaDoc and README updated">
+      <created>1397914905585</created>
+      <updated>1397914905585</updated>
+    </task>
+    <task id="LOCAL-00025" summary="MessageProperties.java">
+      <created>1397915035540</created>
+      <updated>1397915035540</updated>
+    </task>
+    <task id="LOCAL-00026" summary="javaDoc update">
+      <created>1397915462027</created>
+      <updated>1397915462027</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="139369000" />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="4" y="22" width="1436" height="878" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32951653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32951653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29770446" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37150127" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32951653" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994911" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.326972" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964131" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3020086" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="FindBugs-IDEA" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3307888" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994911" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+    <MESSAGE value="player client package update" />
+    <MESSAGE value="Persist data with serialization. &#10;Creation of class to manage the servers data. &#10;ShutdownHook now also saves the state of the Quiz server.&#10;Refactoring of ServerLauncher and ShutdownHook." />
+    <MESSAGE value="Factories refactored. ID validations improved. JavaDoc added to Quiz server interface." />
+    <MESSAGE value="All Quiz server Tests passing." />
+    <MESSAGE value="Read me update" />
+    <MESSAGE value="Logging extracted into seperate wrapper class. Comments &amp; Javadocs updated throughout." />
+    <MESSAGE value="Tests for the server and player nearly complete. Setup tests need work / refactor of createquiz class" />
+    <MESSAGE value="Setup client: CreateQuizImpl refactored and tests complete." />
+    <MESSAGE value="Setup client controllers renaming. Setup client remaining tests added" />
+    <MESSAGE value="Optomized imports&#10;" />
+    <MESSAGE value="PlayerClient tests compete" />
+    <MESSAGE value="JavaDoc formatting correction (All files)" />
+    <MESSAGE value="JavaDoc html files added" />
+    <MESSAGE value="String messages moved to a seperate properties file. StartQuizController added" />
+    <MESSAGE value="Server tests major rewrite/refactor" />
+    <MESSAGE value="Server tests rewritten and refactored." />
+    <MESSAGE value="Findbugs fixes. Readme update. Package re-arrangement" />
+    <MESSAGE value="Setup client refactoring/exception handling. Added the ability to re-activate inactive quizzes." />
+    <MESSAGE value="server factories git naming problem" />
+    <MESSAGE value="javaDoc updated" />
+    <MESSAGE value="javaDoc and README updated" />
+    <MESSAGE value="MessageProperties.java" />
+    <MESSAGE value="javaDoc update" />
+    <MESSAGE value="server factories got problem" />
+    <MESSAGE value="javaDocs" />
+    <option name="LAST_COMMIT_MESSAGE" value="javaDocs" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/setupClient/controllers/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1029412" vertical-offset="420" max-vertical-offset="1215">
+          <caret line="65" column="46" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/setupClient/views/StartQuizView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28361344" vertical-offset="0" max-vertical-offset="476">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/interfaces/Quiz.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29683378" vertical-offset="0" max-vertical-offset="1005">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/interfaces/Question.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41556728" vertical-offset="0" max-vertical-offset="885">
+          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/interfaces/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3364116" vertical-offset="0" max-vertical-offset="975">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/setupClient/views/SetupClientView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.019788919" vertical-offset="0" max-vertical-offset="758">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/interfaces/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64362854" vertical-offset="722" max-vertical-offset="2145">
+          <caret line="70" column="77" selection-start-line="70" selection-start-column="77" selection-end-line="70" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/serverImplTests/AddQuizToQuestionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="840">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="25" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/serverImplTests/StartGameTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.118473895" vertical-offset="16" max-vertical-offset="1110">
+          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/serverImplTests/SetCorrectAnswerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16506718" vertical-offset="214" max-vertical-offset="1320">
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/serverImplTests/GetActiveQuizzesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5393474" vertical-offset="34" max-vertical-offset="1080">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/serverImplTests/CreateQuizTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.29558542" vertical-offset="229" max-vertical-offset="750">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/serverImplTests/SetQuizActiveTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30902112" vertical-offset="139" max-vertical-offset="1005">
+          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/serverImplTests/SetQuizInactiveTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51055664" vertical-offset="79" max-vertical-offset="1185">
+          <caret line="23" column="3" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/src.zip!/java/text/DateFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6153846" vertical-offset="4155" max-vertical-offset="14280">
+          <caret line="333" column="39" selection-start-line="333" selection-start-column="39" selection-end-line="333" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/serverImplTests/GetAnswersForQuestionsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.26679462" vertical-offset="439" max-vertical-offset="960">
+          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/serverImplTests/GetInactiveQuizzesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.14395393" vertical-offset="390" max-vertical-offset="1050">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/serverImplTests/GetQuizQuestionsAndAnswersTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2591171" vertical-offset="0" max-vertical-offset="720">
+          <caret line="24" column="43" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/serverImplTests/SubmitScoreTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.1305182" vertical-offset="0" max-vertical-offset="1230">
+          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/ServerDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="755" max-vertical-offset="1740">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/GameImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="97" max-vertical-offset="855">
+          <caret line="21" column="55" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/setupClient/controllers/CreateQuizControllerImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="92" max-vertical-offset="3615">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/setupClient/controllers/StartQuizControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1904762" vertical-offset="70" max-vertical-offset="1545">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/setupClient/controllers/EndQuizControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18469657" vertical-offset="85" max-vertical-offset="2415">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/playerClient/views/PlayerClientView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2680413" vertical-offset="75" max-vertical-offset="900">
+          <caret line="64" column="55" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/serverImplTests/GetHighScoreGamesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7598425" vertical-offset="259" max-vertical-offset="780">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/playerClient/controllers/PlayerClientImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2572" max-vertical-offset="3645">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/security.policy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="498">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/server/models/serverImplTests/AddAnswerToQuestionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63339734" vertical-offset="240" max-vertical-offset="960">
+          <caret line="54" column="53" selection-start-line="54" selection-start-column="53" selection-end-line="54" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="521">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/models/QuizImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18367347" vertical-offset="0" max-vertical-offset="960">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/models/GameImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17810026" vertical-offset="0" max-vertical-offset="885">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/ServerLauncher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11409396" vertical-offset="650" max-vertical-offset="1560">
+          <caret line="67" column="22" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/playerClient/controllers/PlayerClientImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1747" max-vertical-offset="2505">
+          <caret line="53" column="28" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/playerClient/PlayerClientLauncher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7678245" vertical-offset="0" max-vertical-offset="600">
+          <caret line="37" column="31" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/models/QuestionImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24680074" vertical-offset="0" max-vertical-offset="765">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messages.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05870021" vertical-offset="2" max-vertical-offset="555">
+          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/utilities/QuizIdComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8490566" vertical-offset="0" max-vertical-offset="630">
+          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/models/ServerData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.318" vertical-offset="351" max-vertical-offset="1020">
+          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/utilities/LoggerWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1477573" vertical-offset="0" max-vertical-offset="1215">
+          <caret line="67" column="12" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/setupClient/views/CreateQuizView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17810026" vertical-offset="0" max-vertical-offset="758">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/setupClient/SetupClientLauncher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11873351" vertical-offset="0" max-vertical-offset="758">
+          <caret line="14" column="63" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/models/ServerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="4635">
+          <caret line="51" column="52" selection-start-line="51" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/setupClient/controllers/CreateQuizControllerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23218997" vertical-offset="1144" max-vertical-offset="2520">
+          <caret line="95" column="53" selection-start-line="95" selection-start-column="53" selection-end-line="95" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/serverData.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="745">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/factories/Factory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="825">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/factories/FileFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="39" max-vertical-offset="615">
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7777777" vertical-offset="0" max-vertical-offset="690">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/utilities/MessageProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/factories/QuizFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24048096" vertical-offset="0" max-vertical-offset="630">
+          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>scala-compiler</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Quiz</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
+
