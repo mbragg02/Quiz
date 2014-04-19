@@ -14,9 +14,6 @@ import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 

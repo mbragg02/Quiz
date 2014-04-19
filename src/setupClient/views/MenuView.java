@@ -1,6 +1,6 @@
 package setupClient.views;
 
-import static setupClient.factories.MessageProperties.msg;
+import static server.utilities.MessageProperties.msg;
 
 /**
  * View for the set-up clients main menu

@@ -71,9 +71,8 @@ public class LoggerWrapper {
         if (fileHandler != null) {
             fileHandler.setFormatter(serverFactory.getSimpleFormatter());
             fileHandler.setLevel(Level.FINER);
+            logger.addHandler(fileHandler);
         }
-
-        logger.addHandler(fileHandler);
 
         // Handler for writing log messages to the console. i.e Exceptions
         Handler consoleHandler = serverFactory.getConsoleHandler();

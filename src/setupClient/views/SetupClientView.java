@@ -2,7 +2,7 @@ package setupClient.views;
 
 import java.util.Scanner;
 
-import static setupClient.factories.MessageProperties.msg;
+import static server.utilities.MessageProperties.msg;
 
 /**
  * View for general messages required for the set-up client.

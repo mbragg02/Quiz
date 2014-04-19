@@ -12,7 +12,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import static setupClient.factories.MessageProperties.msg;
+import static server.utilities.MessageProperties.msg;
 
 /**
  * Class for a player client.
@@ -93,7 +93,7 @@ public class PlayerClientImpl implements PlayerClient {
     public void playGame() throws RemoteException {
         do {
             try {
-                this.gameID = model.startGame(this.quizID, this.playerName);
+                this.gameID = model.startGame(quizID, playerName);
                 break;
             } catch (RemoteException ex) {
                 view.displayException(ex.getMessage());
@@ -116,7 +116,7 @@ public class PlayerClientImpl implements PlayerClient {
     public void displayQuestions() {
 
         try {
-            questions = model.getQuizQuestionsAndAnswers(this.quizID);
+            questions = model.getQuizQuestionsAndAnswers(quizID);
         } catch (NullPointerException | RemoteException ex) {
             view.displayException(ex.getMessage());
         }

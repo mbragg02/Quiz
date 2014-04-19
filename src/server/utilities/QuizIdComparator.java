@@ -28,7 +28,7 @@ public class QuizIdComparator implements Comparator<Quiz>, Serializable {
      */
     @Override
     public int compare(Quiz o1, Quiz o2) {
-        if (o1 == o2) {
+        if (o1.equals(o2)) {
             return 0;
         } else if (o1.getQuizID() > o2.getQuizID()) {
             return 1;

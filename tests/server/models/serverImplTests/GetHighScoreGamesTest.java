@@ -57,7 +57,6 @@ public class GetHighScoreGamesTest {
         when(gameIterator.next()).thenReturn(game, game);
 
         List<Game> result = server.getHighScoreGames(games);
-        System.out.println(result.size());
         assertEquals(1, result.size());
     }
 }

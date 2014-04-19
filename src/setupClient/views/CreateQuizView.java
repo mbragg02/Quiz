@@ -1,6 +1,6 @@
 package setupClient.views;
 
-import static setupClient.factories.MessageProperties.msg;
+import static server.utilities.MessageProperties.msg;
 
 /**
  * View for messages relating to creating a new Quiz.

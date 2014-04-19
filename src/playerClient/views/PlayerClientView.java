@@ -2,7 +2,7 @@ package playerClient.views;
 
 import java.util.Scanner;
 
-import static setupClient.factories.MessageProperties.msg;
+import static server.utilities.MessageProperties.msg;
 
 /**
  * All console view calls for player client.
