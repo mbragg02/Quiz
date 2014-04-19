@@ -5,18 +5,16 @@ import server.factories.FileFactory;
 import server.factories.QuizFactory;
 import server.interfaces.Server;
 import server.models.ServerData;
+import server.utilities.DB;
 import server.utilities.LoggerWrapper;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.security.AccessControlException;
-import java.util.Arrays;
 import java.util.Properties;
 import java.util.logging.Level;
 
@@ -29,12 +27,16 @@ public class ServerLauncher {
 
     public static final String FILENAME = "serverData.txt";
     private static final String SERVER_PROPERTIES_FILE = "server.properties";
-    private static String registryHost;
-    private static String serviceName;
-    private static int port;
-    private static Factory serverFactory;
-    private static FileFactory fileFactory;
-    private ServerData serverData;
+    private String registryHost;
+    private String serviceName;
+    private int port;
+    private Factory serverFactory;
+    private FileFactory fileFactory;
+
+    public ServerLauncher() {
+        serverFactory = Factory.getInstance();
+        fileFactory   = FileFactory.getInstance();
+    }
 
     /**
      * Main method. Gets server properties from properties file needed before launch.
@@ -44,27 +46,7 @@ public class ServerLauncher {
      */
     public static void main(String[] args) throws RemoteException {
 
-        //System.setProperty("java.rmi.server.logCalls", "true");
-
         ServerLauncher main = new ServerLauncher();
-        serverFactory = Factory.getInstance();
-        fileFactory = FileFactory.getInstance();
-
-
-        Properties props = serverFactory.getProperties();
-
-        try {
-            props.load(fileFactory.getFileInputStream(SERVER_PROPERTIES_FILE));
-            registryHost = props.getProperty("registryHost");
-            serviceName = props.getProperty("serviceName");
-            port = Integer.parseInt(props.getProperty("port"));
-        } catch (AccessControlException e) {
-            System.out.println(e.getMessage());
-        } catch (FileNotFoundException e) {
-            System.out.println("Server properties file not found.");
-        } catch (IOException e) {
-            System.out.println("Exception reading server properties file.");
-        }
         main.launch();
     }
 
@@ -72,8 +54,11 @@ public class ServerLauncher {
      * Method to launch the Quiz server.
      */
     private void launch() {
-        LoadServerData(FILENAME);
 
+        System.setProperty("java.security.policy", "security.policy");
+        loadRMIPropertyFile();
+
+        ServerData serverData = DB.read(FILENAME);
         Runtime.getRuntime().addShutdownHook(serverFactory.getShutdownHook(serverData));
 
         if (System.getSecurityManager() == null) {
@@ -91,26 +76,21 @@ public class ServerLauncher {
         }
     }
 
-    /**
-     * Load the Quiz, Game and ID data from disk. If the file does not exists then
-     * initiate a new empty data store.
-     *
-     * @param fileName String. Name of the server data file.
-     */
-    @SuppressWarnings("unchecked")
-    private void LoadServerData(String fileName) {
+    private void loadRMIPropertyFile() {
 
-        if (new File(fileName).exists()) {
-            LoggerWrapper.log(Level.FINE, "Loading data from file: " + fileName);
-            try (ObjectInputStream stream = fileFactory.getObjectInputStream(fileName)) {
-                serverData = (ServerData) stream.readObject();
-            } catch (IOException | ClassNotFoundException e) {
-                LoggerWrapper.log(Level.WARNING, Arrays.toString(e.getStackTrace()));
+        Properties props = serverFactory.getProperties();
 
-            }
-        } else {
-            LoggerWrapper.log(Level.INFO, "Initialize server with zero quizzes/games");
-            serverData = new ServerData();
+        try {
+            props.load(fileFactory.getFileInputStream(SERVER_PROPERTIES_FILE));
+            registryHost = props.getProperty("registryHost");
+            serviceName = props.getProperty("serviceName");
+            port = Integer.parseInt(props.getProperty("port"));
+        } catch (AccessControlException e) {
+            System.out.println(e.getMessage());
+        } catch (FileNotFoundException e) {
+            System.out.println("Server properties file not found.");
+        } catch (IOException e) {
+            System.out.println("Exception reading server properties file.");
         }
     }
 

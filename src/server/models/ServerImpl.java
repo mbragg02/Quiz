@@ -5,6 +5,7 @@ import server.interfaces.Game;
 import server.interfaces.Question;
 import server.interfaces.Quiz;
 import server.interfaces.Server;
+import server.utilities.DB;
 import server.utilities.LoggerWrapper;
 
 import java.rmi.RemoteException;
@@ -119,6 +120,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         Quiz quiz = serverData.getQuiz(quizID);
         quiz.setActive(true);
 
+        DB.write(serverData);
+
         LoggerWrapper.log(Level.FINE, "Quiz \"" + quiz.getQuizName() + "\" set ACTIVE");
     }
 
@@ -167,6 +170,9 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         } else {
             result = getHighScoreGames(playedGames);
         }
+
+        DB.write(serverData);
+
         LoggerWrapper.log(Level.FINE, "Quiz \"" + serverData.getQuiz(quizID).getQuizName() + "\" set INACTIVE");
         return result;
     }
