@@ -37,5 +37,6 @@ On initial startup, the server creates serverData.txt where Quiz/Game data is re
 ###Set-up client
 The set-up client allows you to create a new quiz, add questions and answers, select an answer as being "correct", and set the Quiz as being ACTIVE. An active Quiz is playable by a player client. The set-up client also allows you to end a currently ACTIVE quiz and change an INACTIVE quiz as ACTIVE
 
+
 ###Player client
 The player client allows you to enter your name and play a currently ACTIVE Quiz. You score is returned at the end of the game before the client closes.
