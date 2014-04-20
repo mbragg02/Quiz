@@ -18,8 +18,6 @@ import java.rmi.registry.Registry;
  */
 public class PlayerClientLauncher {
 
-    //private static final String SERVER_ADDRESS = "//127.0.0.1:1099/quiz";
-
     public static void main(String[] args) throws RemoteException {
         PlayerClientLauncher client = new PlayerClientLauncher();
         client.launch();
