@@ -10,7 +10,7 @@ import static server.utilities.MessageProperties.msg;
 public class EndQuizView extends SetupClientView {
 
     public void printQuizIDDeactivationRequest() {
-        System.out.print(msg("quizid_deactivation_request"));
+        System.out.print(msg("quizid_deactivation_prompt")  + " ");
     }
 
     public void printNoPlayersMessage() {

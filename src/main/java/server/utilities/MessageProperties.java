@@ -23,8 +23,6 @@ public class MessageProperties {
 
     private static void loadPropertiesFile() {
         try {
-            //URL url = getClass().getResource("messages.properties");
-            //System.out.println(url);
             try (InputStream in = new FileInputStream("messages.properties")) {
                 props = new Properties();
                 props.load(in);

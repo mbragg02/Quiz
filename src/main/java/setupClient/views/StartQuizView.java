@@ -10,7 +10,7 @@ import static server.utilities.MessageProperties.msg;
 public class StartQuizView extends SetupClientView {
 
     public void printQuizIDActivationRequest() {
-        System.out.print(msg("quizid_activation_request"));
+        System.out.print(msg("quizid_activation_prompt") + " ");
     }
 
     public void printActivationSuccess() {

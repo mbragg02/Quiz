@@ -10,15 +10,15 @@ import static server.utilities.MessageProperties.msg;
 public class CreateQuizView extends SetupClientView {
 
     public void printQuizID(int quizID) {
-        System.out.println(msg("your_quizid") + quizID);
+        System.out.println(msg("your_quizid") + " " + quizID);
     }
 
     public void printNameInputRequest() {
-        System.out.print(msg("quiz_name_prompt"));
+        System.out.print(msg("quiz_name_prompt") + " ");
     }
 
     public void printQuestionInputRequest() {
-        System.out.print(msg("question_prompt"));
+        System.out.print(msg("question_prompt") + " ");
     }
 
     public void printQuestionNumberException() {
@@ -26,7 +26,7 @@ public class CreateQuizView extends SetupClientView {
     }
 
     public void printAnswerInputRequest() {
-        System.out.print(msg("answer_prompt"));
+        System.out.print(msg("answer_prompt") + " ");
     }
 
     public void printAnswerNumberException() {
@@ -34,11 +34,11 @@ public class CreateQuizView extends SetupClientView {
     }
 
     public void printCorrectAnswerRequest() {
-        System.out.println(msg("correct_answer_prompt"));
+        System.out.println(msg("correct_answer_prompt") + " ");
     }
 
     public void printActivationRequest() {
-        System.out.print(msg("activation_prompt"));
+        System.out.print(msg("activation_prompt") + " ");
     }
 
     public void printActiveMessage() {

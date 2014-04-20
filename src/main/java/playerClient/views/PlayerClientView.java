@@ -22,7 +22,7 @@ public class PlayerClientView {
     }
 
     public void displayNameRequest() {
-        System.out.print(msg("player_name"));
+        System.out.print(msg("player_name_prompt") + " ");
     }
 
     public void displayCurrentActiveQuizesMessage() {
@@ -34,7 +34,7 @@ public class PlayerClientView {
     }
 
     public void displaySelectQuizMessage() {
-        System.out.print(msg("game_prompt"));
+        System.out.print(msg("game_prompt") + " ");
     }
 
     public void displayException(String e) {
@@ -54,7 +54,7 @@ public class PlayerClientView {
     }
 
     public void displayAnswerRequest() {
-        System.out.print(msg("answer_select_prompt"));
+        System.out.print(msg("answer_select_prompt") + " ");
     }
 
     public void displayScoreDetails(int score, int numberOfQuestions) {

@@ -72,26 +72,14 @@ public class ServerLauncher {
             Registry registry = LocateRegistry.createRegistry(port);
             registry.rebind(serviceName, server);
 
-            //System.out.println(System.getProperty("java.rmi.server.hostname"));
-
-
-            //LocateRegistry.getRegistry().bind("quizServer", server);
-            //registry.rebind("quizServer", server);
-            //System.out.println(Arrays.toString(registry.list()));
-
-
-//            LocateRegistry.createRegistry(1099);
-//
-//            Naming.rebind("//localhost:1099/SERVER", server);
             LoggerWrapper.log(Level.INFO, "Server Started");
+
         } catch (AccessControlException e) {
             e.printStackTrace();
             //LoggerWrapper.log(Level.SEVERE, "Access Control Exception. Check that the security.policy file has been properly configured.");
         } catch (RemoteException ex) {
             LoggerWrapper.log(Level.SEVERE, ex.getMessage());
         }
-
-
     }
 
     private void loadPropertiesFile() {

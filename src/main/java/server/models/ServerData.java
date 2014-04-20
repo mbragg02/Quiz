@@ -58,20 +58,14 @@ public class ServerData implements Serializable {
      */
 
     public int getQuizID() {
-        int id = quizIDs;
-        ++quizIDs;
-        return id;
+        return quizIDs++;
     }
 
     public int getQuestionID() {
-        int id = questionIDs;
-        ++questionIDs;
-        return id;
+        return questionIDs++;
     }
 
     public int getGameID() {
-        int id = gameIDs;
-        ++gameIDs;
-        return id;
+        return gameIDs++;
     }
 }

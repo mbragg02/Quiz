@@ -1,10 +1,7 @@
 package server.utilities;
 
-import server.factories.FileFactory;
 import server.models.ServerData;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 
 /**
@@ -14,13 +11,11 @@ import java.util.logging.Level;
  * @author Michael Bragg
  */
 public class ShutdownHook extends Thread {
-    private final ServerData serverData;
-    private final String serverDataFileName;
 
+    private final ServerData serverData;
 
     public ShutdownHook(ServerData serverData) {
         this.serverData = serverData;
-        this.serverDataFileName = server.ServerLauncher.FILENAME;
     }
 
     /**
@@ -30,18 +25,7 @@ public class ShutdownHook extends Thread {
     @Override
     public void run() {
         LoggerWrapper.log(Level.INFO, "Server Shutdown");
-        save();
+        DB.write(serverData);
     }
 
-    /*
-    Writes the current state for the data store to disk.
-     */
-    void save() {
-        try (ObjectOutputStream stream = FileFactory.getInstance().getObjectOutputStream(serverDataFileName)) {
-            stream.writeObject(serverData);
-        } catch (IOException ex) {
-            LoggerWrapper.log(Level.SEVERE, "Write error: " + ex);
-
-        }
-    }
 }
