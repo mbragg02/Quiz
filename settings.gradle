@@ -1,5 +1,6 @@
 rootProject.name = 'Quiz-Gradle'
 
+
 include 'QuizServer'
 
 include 'SetupClient'

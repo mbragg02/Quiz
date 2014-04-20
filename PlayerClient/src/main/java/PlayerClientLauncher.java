@@ -23,6 +23,8 @@ public class PlayerClientLauncher {
 
     private void launch() {
 
+        System.setProperty("java.security.policy", "PlayerClient/security.policy");
+
         try {
 
             Registry registry = LocateRegistry.getRegistry("localhost");

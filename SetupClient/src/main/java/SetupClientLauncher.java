@@ -22,6 +22,8 @@ public class SetupClientLauncher {
 
     private void launch() throws RemoteException {
 
+        System.setProperty("java.security.policy", "SetupClient/security.policy");
+
         try {
 
             Registry registry = LocateRegistry.getRegistry("localhost");
