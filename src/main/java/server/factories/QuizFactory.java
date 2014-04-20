@@ -19,6 +19,9 @@ import java.util.Date;
  */
 public class QuizFactory {
 
+    private static final String DATE_FORMAT = "yyyy/MM/dd HH:mm:ss";
+
+
     private static QuizFactory quizFactory;
 
     private QuizFactory() {
@@ -44,8 +47,8 @@ public class QuizFactory {
         return new GameImpl(id, playerName);
     }
 
-    public SimpleDateFormat getSimpleDataFormat(String dateFormat) {
-        return new SimpleDateFormat(dateFormat);
+    public SimpleDateFormat getSimpleDataFormat() {
+        return new SimpleDateFormat(DATE_FORMAT);
     }
 
     public Date getDate() {

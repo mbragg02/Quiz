@@ -24,7 +24,6 @@ import java.util.logging.Level;
  */
 public class ServerLauncher {
 
-    public static final String FILENAME = "serverData.txt";
     private static final String SERVER_PROPERTIES_FILE = "server.properties";
     private String serviceName;
     private int port;
@@ -53,7 +52,7 @@ public class ServerLauncher {
 
         loadPropertiesFile();
 
-        ServerData serverData = DB.read(FILENAME);
+        ServerData serverData = DB.read();
 
         Runtime.getRuntime().addShutdownHook(serverFactory.getShutdownHook(serverData));
 

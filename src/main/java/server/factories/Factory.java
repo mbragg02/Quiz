@@ -4,7 +4,6 @@ import server.models.ServerData;
 import server.models.ServerImpl;
 import server.utilities.ShutdownHook;
 
-import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 import java.util.Properties;
 import java.util.logging.ConsoleHandler;

@@ -23,7 +23,6 @@ import java.util.logging.Level;
 public class ServerImpl extends UnicastRemoteObject implements Server {
 
     private static final long serialVersionUID = -8930948399199628273L;
-    private static final String DATE_FORMAT = "yyyy/MM/dd HH:mm:ss";
     private static final int ZERO_INDEX = 0;
 
     private DateFormat dateFormat;
@@ -34,7 +33,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         super();
         this.factory = factory;
         this.serverData = serverData;
-        dateFormat = factory.getSimpleDataFormat(DATE_FORMAT);
+        dateFormat = factory.getSimpleDataFormat();
     }
 
 

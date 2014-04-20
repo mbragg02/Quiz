@@ -17,12 +17,15 @@ import java.util.logging.Level;
  */
 public class DB {
 
-    public static ServerData read(String fileName) {
+    public static final String FILENAME = "serverData.txt";
+
+
+    public static ServerData read() {
         ServerData data = null;
 
-        if (new File(fileName).exists()) {
-            LoggerWrapper.log(Level.FINE, "Loading data from file: " + fileName);
-            try (ObjectInputStream stream =  FileFactory.getInstance().getObjectInputStream(fileName)) {
+        if (new File(FILENAME).exists()) {
+            LoggerWrapper.log(Level.FINE, "Loading data from file: " + FILENAME);
+            try (ObjectInputStream stream =  FileFactory.getInstance().getObjectInputStream(FILENAME)) {
                 data = (ServerData) stream.readObject();
             } catch (IOException | ClassNotFoundException e) {
                 LoggerWrapper.log(Level.WARNING, Arrays.toString(e.getStackTrace()));
@@ -37,9 +40,8 @@ public class DB {
     }
 
     public static void write(ServerData serverData) {
-        String serverDataFileName = server.ServerLauncher.FILENAME;
 
-        try (ObjectOutputStream stream = FileFactory.getInstance().getObjectOutputStream(serverDataFileName)) {
+        try (ObjectOutputStream stream = FileFactory.getInstance().getObjectOutputStream(FILENAME)) {
             stream.writeObject(serverData);
         } catch (IOException ex) {
             LoggerWrapper.log(Level.SEVERE, "Write error: " + ex);

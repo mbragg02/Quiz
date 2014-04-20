@@ -47,7 +47,7 @@ public class GetInactiveQuizzesTest {
 
     // getInactiveQuizzes
     @Test
-    public void testgetInactiveQuizzes() throws RemoteException {
+    public void testGetInactiveQuizzes() throws RemoteException {
         when(quiz.isActive()).thenReturn(false);
         quizzes.add(0, quiz);
 

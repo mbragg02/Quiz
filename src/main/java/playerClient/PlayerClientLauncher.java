@@ -25,7 +25,7 @@ public class PlayerClientLauncher {
         client.launch();
     }
 
-    private void launch() throws RemoteException {
+    private void launch() {
 
         try {
 
