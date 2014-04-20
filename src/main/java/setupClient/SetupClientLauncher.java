@@ -17,8 +17,6 @@ import java.rmi.registry.Registry;
  */
 class SetupClientLauncher {
 
-    private static final String SERVER_ADDRESS = "//127.0.0.1:1099/quiz";
-
     public static void main(String[] args) throws RemoteException {
         SetupClientLauncher setup = new SetupClientLauncher();
         setup.launch();
@@ -26,13 +24,9 @@ class SetupClientLauncher {
 
     private void launch() throws RemoteException {
 
-        Registry registry;
         try {
 
-//              Remote service = Naming.lookup("//localhost:1099/SERVER");
-//            Server server = (Server) service;
-
-            registry = LocateRegistry.getRegistry("localhost");
+            Registry registry = LocateRegistry.getRegistry("localhost");
 
             Server server = (Server) registry.lookup("quizServer");
 
@@ -51,18 +45,5 @@ class SetupClientLauncher {
         } catch (NotBoundException e) {
             e.printStackTrace();
         }
-
-
-//        Remote service;
-//        try {
-//            service = Naming.lookup(SERVER_ADDRESS);
-//        } catch (NotBoundException | MalformedURLException | RemoteException e) {
-//            System.out.println("Can not find server at: " + SERVER_ADDRESS);
-//            return;
-//        }
-//
-//        Server server = (Server) service;
-
-
     }
 }

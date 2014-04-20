@@ -5,17 +5,15 @@ import server.factories.FileFactory;
 import server.factories.QuizFactory;
 import server.interfaces.Server;
 import server.models.ServerData;
+import server.utilities.DB;
 import server.utilities.LoggerWrapper;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.security.AccessControlException;
-import java.util.Arrays;
 import java.util.Properties;
 import java.util.logging.Level;
 
@@ -28,12 +26,11 @@ public class ServerLauncher {
 
     public static final String FILENAME = "serverData.txt";
     private static final String SERVER_PROPERTIES_FILE = "server.properties";
-    private static String registryHost;
-    private static String serviceName;
-    private static int port;
-    private static Factory serverFactory;
-    private static FileFactory fileFactory;
-    private ServerData serverData;
+    private String registryHost;
+    private String serviceName;
+    private int port;
+    private Factory serverFactory;
+    private FileFactory fileFactory;
 
     /**
      * Main method. Gets server properties from properties file needed before launch.
@@ -57,12 +54,12 @@ public class ServerLauncher {
 
         loadPropertiesFile();
 
-        LoadServerData(FILENAME);
+        ServerData serverData = DB.read(FILENAME);
 
         Runtime.getRuntime().addShutdownHook(serverFactory.getShutdownHook(serverData));
 
         if (System.getSecurityManager() == null) {
-            System.setSecurityManager(serverFactory.getRMISecurityManager());
+            System.setSecurityManager(serverFactory.getSecurityManager());
         }
 
 
@@ -104,27 +101,5 @@ public class ServerLauncher {
 
     }
 
-    /**
-     * Load the Quiz, Game and ID data from disk. If the file does not exists then
-     * initiate a new empty data store.
-     *
-     * @param fileName String. Name of the server data file.
-     */
-    @SuppressWarnings("unchecked")
-    private void LoadServerData(String fileName) {
-
-        if (new File(fileName).exists()) {
-            LoggerWrapper.log(Level.FINE, "Loading data from file: " + fileName);
-            try (ObjectInputStream stream = fileFactory.getObjectInputStream(fileName)) {
-                serverData = (ServerData) stream.readObject();
-            } catch (IOException | ClassNotFoundException e) {
-                LoggerWrapper.log(Level.WARNING, Arrays.toString(e.getStackTrace()));
-
-            }
-        } else {
-            LoggerWrapper.log(Level.INFO, "Initialize server with zero quizzes/games");
-            serverData = new ServerData();
-        }
-    }
 
 }

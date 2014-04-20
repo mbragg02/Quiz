@@ -5,11 +5,10 @@ import playerClient.interfaces.PlayerClient;
 import playerClient.views.PlayerClientView;
 import server.interfaces.Server;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
 import java.rmi.NotBoundException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 /**
  * Class for connecting to the Quiz serve and
@@ -19,7 +18,7 @@ import java.rmi.RemoteException;
  */
 class PlayerClientLauncher {
 
-    private static final String SERVER_ADDRESS = "//127.0.0.1:1099/quiz";
+    //private static final String SERVER_ADDRESS = "//127.0.0.1:1099/quiz";
 
     public static void main(String[] args) throws RemoteException {
         PlayerClientLauncher client = new PlayerClientLauncher();
@@ -28,17 +27,20 @@ class PlayerClientLauncher {
 
     private void launch() throws RemoteException {
 
-        Remote service;
         try {
-            service = Naming.lookup(SERVER_ADDRESS);
-        } catch (NotBoundException | MalformedURLException | RemoteException e) {
-            System.out.println("Can not find server at: " + SERVER_ADDRESS);
-            return;
-        }
-        Server model = (Server) service;
-        PlayerClientView view = new PlayerClientView();
 
-        PlayerClient client = new PlayerClientImpl(model, view);
-        client.launch();
+            Registry registry = LocateRegistry.getRegistry("localhost");
+
+            Server server = (Server) registry.lookup("quizServer");
+
+            PlayerClientView view = new PlayerClientView();
+
+            PlayerClient client = new PlayerClientImpl(server, view);
+            client.launch();
+
+        } catch (NotBoundException | RemoteException e) {
+            System.out.println("Can not find server at localhost");
+        }
+
     }
 }

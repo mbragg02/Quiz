@@ -41,8 +41,8 @@ public class Factory {
         return new ShutdownHook(serverData);
     }
 
-    public RMISecurityManager getRMISecurityManager() {
-        return new RMISecurityManager();
+    public SecurityManager getSecurityManager() {
+        return new SecurityManager();
     }
 
     public ServerImpl getServer(QuizFactory quizFactory, ServerData serverData) throws RemoteException {

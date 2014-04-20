@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.logging.Level;
 
 /**
- * Sttaic methods to write and read data to disk
+ * Static methods to write and read data to disk
  *
  * @author Michael Bragg
  */

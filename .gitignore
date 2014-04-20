@@ -6,6 +6,7 @@ target/
 .idea
 *.iml
 *.log
+*.lck
 serverData.txt
 
 # OS Files #
