@@ -15,7 +15,7 @@ import java.rmi.registry.Registry;
  *
  * @author Michael Bragg
  */
-class SetupClientLauncher {
+public class SetupClientLauncher {
 
     public static void main(String[] args) throws RemoteException {
         SetupClientLauncher setup = new SetupClientLauncher();

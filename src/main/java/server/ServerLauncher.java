@@ -26,7 +26,6 @@ public class ServerLauncher {
 
     public static final String FILENAME = "serverData.txt";
     private static final String SERVER_PROPERTIES_FILE = "server.properties";
-    private String registryHost;
     private String serviceName;
     private int port;
     private Factory serverFactory;
@@ -62,7 +61,6 @@ public class ServerLauncher {
             System.setSecurityManager(serverFactory.getSecurityManager());
         }
 
-
         try {
             Server server = serverFactory.getServer(QuizFactory.getInstance(), serverData);
 
@@ -72,8 +70,7 @@ public class ServerLauncher {
             LoggerWrapper.log(Level.INFO, "Server Started");
 
         } catch (AccessControlException e) {
-            e.printStackTrace();
-            //LoggerWrapper.log(Level.SEVERE, "Access Control Exception. Check that the security.policy file has been properly configured.");
+            LoggerWrapper.log(Level.SEVERE, "Access Control Exception. Check that the security.policy file has been properly configured.");
         } catch (RemoteException ex) {
             LoggerWrapper.log(Level.SEVERE, ex.getMessage());
         }
@@ -84,10 +81,7 @@ public class ServerLauncher {
         Properties props = serverFactory.getProperties();
 
         try {
-            //URL url = getClass().getResource(SERVER_PROPERTIES_FILE);
             props.load(fileFactory.getFileInputStream(SERVER_PROPERTIES_FILE));
-
-            registryHost = props.getProperty("registryHost");
             serviceName = props.getProperty("serviceName");
             port = Integer.parseInt(props.getProperty("port"));
 
@@ -98,8 +92,6 @@ public class ServerLauncher {
         } catch (IOException e) {
             System.out.println("Exception reading server properties file.");
         }
-
     }
-
 
 }

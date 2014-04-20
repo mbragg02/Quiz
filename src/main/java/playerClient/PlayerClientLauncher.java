@@ -16,7 +16,7 @@ import java.rmi.registry.Registry;
  *
  * @author Michael Bragg
  */
-class PlayerClientLauncher {
+public class PlayerClientLauncher {
 
     //private static final String SERVER_ADDRESS = "//127.0.0.1:1099/quiz";
 
