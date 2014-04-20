@@ -17,7 +17,7 @@ public class PlayerClientView {
         System.out.println(msg("player_welcome"));
     }
 
-    public void displayNoActiveQuizesMessage() {
+    public void displayNoActiveQuizzesMessage() {
         System.out.println(msg("no_active_quizzes"));
     }
 
@@ -25,7 +25,7 @@ public class PlayerClientView {
         System.out.print(msg("player_name_prompt") + " ");
     }
 
-    public void displayCurrentActiveQuizesMessage() {
+    public void displayCurrentActiveQuizzesMessage() {
         System.out.println(msg("active_games_header"));
     }
 
@@ -41,7 +41,7 @@ public class PlayerClientView {
         System.out.println(e);
     }
 
-    public void displayInvlaidInputException() {
+    public void displayInvalidInputException() {
         System.out.println(msg("invalid_input"));
     }
 

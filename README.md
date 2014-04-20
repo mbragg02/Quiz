@@ -24,7 +24,7 @@ Run the build.gradle file for installation.
     3. Launch playerClient/PlayerClientLauncher to play a Quiz game.
 
 ###Quiz Server
-The Quiz server is required for both the set-up and player clients to operate. All server activity is logged to a log file. Startup/shutdown activity as well as exceptions are loggged to the console as well.
+The Quiz server is required for both the set-up and player clients to operate. All server activity is logged to a log file. Startup/shutdown activity as well as exceptions are logged to the console as well.
 On initial startup, the server creates serverData.txt where Quiz/Game data is recorded. Note: data is serialized to serverData.txt on shutdown. The server needs to "Exit" as apposed to being "Stopped" for the server shutdown hook thread to run and the file be written.
 
     The servers RMI properties can be edited in server.properties

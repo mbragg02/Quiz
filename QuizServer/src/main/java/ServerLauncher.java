@@ -13,6 +13,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.security.AccessControlException;
 import java.util.Properties;
+import java.util.Scanner;
 import java.util.logging.Level;
 
 /**
@@ -71,6 +72,14 @@ public class ServerLauncher {
         } catch (RemoteException ex) {
             LoggerWrapper.log(Level.SEVERE, ex.getMessage());
         }
+        shutdown();
+    }
+
+    private void shutdown() {
+        System.out.println("[Press enter to shutdown the server.]");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+        System.exit(0);
     }
 
     private void loadPropertiesFile() {

@@ -22,7 +22,7 @@ public interface Server extends Remote {
     int createQuiz(String quizName) throws RemoteException, IllegalArgumentException, NullPointerException;
 
     /**
-     * Add a new Quiestion to a Quiz
+     * Add a new Question to a Quiz
      *
      * @param quizID       int The ID of the Quiz to add the question to.
      * @param quizQuestion String. The question
@@ -117,7 +117,7 @@ public interface Server extends Remote {
     void setCorrectAnswer(int quizID, int questionID, int correctAnswer) throws RemoteException, NullPointerException;
 
     /**
-     * Get a list of Questions (and containging answers) for a Quiz
+     * Get a list of Questions (and containing answers) for a Quiz
      *
      * @param quizID int. The ID of the Quiz that contains the Questions/Answers
      * @return List<Question> The list of Questions.
@@ -130,7 +130,7 @@ public interface Server extends Remote {
      * Get a list of all the answers for a particular Question.
      *
      * @param quizID     int. The Id of the Quiz that contains the particular Question.
-     * @param questionID int. The ID of the Question for the requuied list of Answers.
+     * @param questionID int. The ID of the Question for the required list of Answers.
      * @return List<String> The list of Answers.
      * @throws RemoteException
      * @throws NullPointerException

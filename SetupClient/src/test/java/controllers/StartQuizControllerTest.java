@@ -31,7 +31,7 @@ public class StartQuizControllerTest {
     @Mock
     private List<Quiz> nonEmptyListOfQuizzes;
     @Mock
-    private List<Quiz> emptyListOfquizzes;
+    private List<Quiz> emptyListOfQuizzes;
     @Mock
     private Quiz quiz;
     @Mock
@@ -44,7 +44,7 @@ public class StartQuizControllerTest {
 
         // Setup mock empty/non-empty quiz lists
         nonEmptyListOfQuizzes.add(0, quiz);
-        when(emptyListOfquizzes.isEmpty()).thenReturn(true);
+        when(emptyListOfQuizzes.isEmpty()).thenReturn(true);
 
         // Set up mock Quiz iterator behaviour
         when(nonEmptyListOfQuizzes.iterator()).thenReturn(quizIterator);
@@ -58,7 +58,7 @@ public class StartQuizControllerTest {
 
     @Test
     public void testLaunchNoInactiveQuizzes() throws Exception {
-        when(model.getInactiveQuizzes()).thenReturn(emptyListOfquizzes);
+        when(model.getInactiveQuizzes()).thenReturn(emptyListOfQuizzes);
 
         client.launch();
 

@@ -6,7 +6,7 @@ import views.MenuView;
 import views.StartQuizView;
 
 /**
- * Factory for creating different views the diffrent actions of the setup client
+ * Factory for creating different views the different actions of the setup client
  *
  * @author Michael Bragg
  */

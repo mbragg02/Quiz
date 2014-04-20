@@ -250,7 +250,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
     // Validations for Quiz, Question and Game IDs.
 
     /**
-     * Validates if a qiven Quiz is active or not
+     * Validates if a given Quiz is active or not
      *
      * @param quizID int. The ID of the Quiz to check.
      * @throws NullPointerException If a Quiz does not exist or is INACTIVE for the given Quiz ID

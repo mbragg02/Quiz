@@ -92,7 +92,7 @@ public class EndQuizControllerTest {
     }
 
     /*
-    Tests calling a view message if there where no games that tooke place for a Quiz.
+    Tests calling a view message if there where no games that took place for a Quiz.
      */
     @Test
     public void testLaunchNoPlayers() throws RemoteException {

@@ -58,7 +58,7 @@ public class CreateQuizTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void testcreateQuizNullName() throws Exception {
+    public void testCreateQuizNullName() throws Exception {
         server.createQuiz(null);
     }
 

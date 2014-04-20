@@ -56,7 +56,7 @@ public class EndQuizController extends Controller {
                 input = view.getNextIntFromConsole();
                 break;
             } catch (InputMismatchException e) {
-                view.printException("Invlaid input: only numbers are accepted. Please try again");
+                view.printException("Invalid input: only numbers are accepted. Please try again");
             } catch (NullPointerException e) {
                 view.printException(e.getMessage());
             } finally {

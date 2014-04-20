@@ -89,10 +89,10 @@ public class CreateQuizControllerImplTest {
     }
 
     /*
-    Test trying to finsh the question loop without adding a question first
+    Test trying to finish the question loop without adding a question first
      */
     @Test
-    public void testAddZeroQuesiton() throws RemoteException {
+    public void testAddZeroQuestion() throws RemoteException {
         when(view.getNextLineFromConsole())
                 .thenReturn("y", "y");
         when(model.getQuizQuestionsAndAnswers(anyInt()))

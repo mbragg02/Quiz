@@ -45,7 +45,7 @@ public class PlayerClientImpl implements PlayerClient {
         view.displayWelcomeMessage();
 
         if (model.getActiveQuizzes().isEmpty()) {
-            view.displayNoActiveQuizesMessage();
+            view.displayNoActiveQuizzesMessage();
         } else {
             setPlayerName();
             displayActiveQuizzes();
@@ -69,7 +69,7 @@ public class PlayerClientImpl implements PlayerClient {
     @Override
     public void displayActiveQuizzes() throws RemoteException {
         List<Quiz> quizzes = model.getActiveQuizzes();
-        view.displayCurrentActiveQuizesMessage();
+        view.displayCurrentActiveQuizzesMessage();
         for (Quiz quiz : quizzes) {
             view.displayQuizDetails(quiz.getQuizID(), quiz.getQuizName());
         }
@@ -102,7 +102,7 @@ public class PlayerClientImpl implements PlayerClient {
                 view.displayException(ex.getMessage());
                 setPlayerName();
             } catch (NullPointerException ex) {
-                // Invlaid or inactive quiz ID
+                // Invalid or inactive quiz ID
                 view.displayException(ex.getMessage());
                 displayActiveQuizzes();
                 selectQuizToPlay();
@@ -150,7 +150,7 @@ public class PlayerClientImpl implements PlayerClient {
                 playerAnswer = view.getNextIntFromConsole();
                 break;
             } catch (InputMismatchException ex) {
-                view.displayInvlaidInputException();
+                view.displayInvalidInputException();
                 view.getNextLineFromConsole();
             }
         } while (true);

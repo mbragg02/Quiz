@@ -21,7 +21,7 @@ public class LoggerWrapper {
 
     /*
     Private constructor so only a method inside this class can create new wrappers.
-    Creates a Logger and calls prepare to initilize it.
+    Creates a Logger and calls prepare to initialize it.
      */
     private LoggerWrapper() {
         logger = Logger.getAnonymousLogger();
@@ -43,15 +43,15 @@ public class LoggerWrapper {
      * Make a log call with a log level and a message.
      *
      * @param level Level. The level at which the log call is written.
-     * @param msg   Stirng. The message to accompany the log entry.
+     * @param msg   String. The message to accompany the log entry.
      */
     public static void log(Level level, String msg) {
         getLogger().log(level, msg);
     }
 
     /*
-    Initalizes the logger and sets up writiing to a log file and the console (at diffrent Levels),
-    so console only recieves basic informaion & any exceptions.
+    Initializes the logger and sets up writing to a log file and the console (at different Levels),
+    so console only receives basic information & any exceptions.
      */
     private static void prepareLogger() {
         LogManager.getLogManager().reset();

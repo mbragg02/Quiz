@@ -67,7 +67,7 @@ public class MenuControllerTest {
     }
 
     /*
-    Test for launching the menu and seleting create a new Quiz
+    Test for launching the menu and selecting create a new Quiz
      */
     @Test
     public void testLaunchThenCallCreateQuiz() throws RemoteException {

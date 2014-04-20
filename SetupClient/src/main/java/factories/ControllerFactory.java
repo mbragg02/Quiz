@@ -44,8 +44,8 @@ public class ControllerFactory {
         return new StartQuizController(model, view);
     }
 
-    public Controller getMenuController(MenuView menuView, CreateQuizView Createview, EndQuizView endView, StartQuizView view) {
-        return new MenuController(getCreateQuizController(Createview), getEndQuizController(endView), getStartQuizController(view), menuView);
+    public Controller getMenuController(MenuView menuView, CreateQuizView CreateView, EndQuizView endView, StartQuizView view) {
+        return new MenuController(getCreateQuizController(CreateView), getEndQuizController(endView), getStartQuizController(view), menuView);
     }
 
 

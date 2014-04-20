@@ -74,7 +74,7 @@ public class PlayerClientImplTest {
         client.launch();
 
         verify(view).displayWelcomeMessage();
-        verify(view).displayNoActiveQuizesMessage();
+        verify(view).displayNoActiveQuizzesMessage();
     }
 
     @Test
@@ -116,7 +116,7 @@ public class PlayerClientImplTest {
 
         client.displayActiveQuizzes();
 
-        verify(view).displayCurrentActiveQuizesMessage();
+        verify(view).displayCurrentActiveQuizzesMessage();
         verify(view).displayQuizDetails(50, "Test Quiz");
     }
 
