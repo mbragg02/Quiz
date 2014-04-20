@@ -34,7 +34,7 @@ public class EndQuizControllerTest {
     @Mock
     private List<Quiz> nonEmptyListOfQuizzes;
     @Mock
-    private List<Quiz> emptyListOfquizzes;
+    private List<Quiz> emptyListOfQuizzes;
     @Mock
     private Quiz quiz;
     @Mock
@@ -58,7 +58,7 @@ public class EndQuizControllerTest {
 
         // Setup mock empty/non-empty quiz lists
         nonEmptyListOfQuizzes.add(0, quiz);
-        when(emptyListOfquizzes.isEmpty()).thenReturn(true);
+        when(emptyListOfQuizzes.isEmpty()).thenReturn(true);
 
         // Setup mock empty/non-empty game lists
         nonEmptyListOfGames.add(0, game);
@@ -84,7 +84,7 @@ public class EndQuizControllerTest {
      */
     @Test
     public void testLaunchNoActiveQuizzes() throws Exception {
-        when(model.getActiveQuizzes()).thenReturn(emptyListOfquizzes);
+        when(model.getActiveQuizzes()).thenReturn(emptyListOfQuizzes);
 
         client.launch();
 
