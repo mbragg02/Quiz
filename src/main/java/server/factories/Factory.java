@@ -14,6 +14,7 @@ import java.util.logging.SimpleFormatter;
  * Factory to supply objects for the setup of the Quiz server.
  *
  * @author Michael Bragg
+ * x
  */
 public class Factory {
 
