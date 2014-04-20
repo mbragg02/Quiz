@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.logging.Level;
 
 /**
  * Created by Michael Bragg on 10/04/2014.
@@ -28,7 +27,7 @@ public class MessageProperties {
                 props.load(in);
             }
         } catch (IOException e) {
-            utilities.LoggerWrapper.log(Level.SEVERE, e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 }
